@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://spisanieOSINMAEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="spisanieOSINMADc"
+                  class="kg.infosystems.buhproject.entity.documents.SpisanieOSINMA">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="sobytie" fetchPlan="_instance_name"/>
+                <property name="mOL" fetchPlan="_instance_name"/>
+                <property name="podrazdelenie" fetchPlan="_instance_name"/>
+                <property name="scetZatrat" fetchPlan="_instance_name"/>
+                <property name="stat1aZatrat" fetchPlan="_instance_name"/>
+                <property name="komissiaPoSpisaniuOS" fetchPlan="_instance_name"/>
+                <property name="pricinaSpisania" fetchPlan="_instance_name"/>
+                <property name="dokumentOsnovanie" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="os" fetchPlan="_base">
+                    <property name="osnovnoeSredstvo" fetchPlan="_instance_name"/>
+                </property>
+                <property name="nma" fetchPlan="_base">
+                    <property name="nematerial1nyjAktiv" fetchPlan="_instance_name"/>
+                </property>
+                <property name="komissia" fetchPlan="_base">
+                    <property name="fizLico" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="osDc" property="os"/>
+            <collection id="nmaDc" property="nma"/>
+            <collection id="komissiaDc" property="komissia"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="spisanieOSINMADc">
+                <column width="350px">
+                    <entityPicker id="sobytieField" property="sobytie">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="mOLField" property="mOL">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="podrazdelenieField" property="podrazdelenie">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="scetZatratField" property="scetZatrat">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="stat1aZatratField" property="stat1aZatrat">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <checkBox id="neUkazyvat1StoimostiField" property="neUkazyvat1Stoimosti"/>
+                </column>
+                <column width="350px">
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data"/>
+<!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="vidFinansirovaniaField" property="vidFinansirovania">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+
+                    <entityPicker id="dokumentOsnovanieField" property="dokumentOsnovanie">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+            </form>
+            <tabSheet id="tabSheet" height="600px">
+                <tab id="tab1" caption="Основные средства" spacing="true" margin="true" expand="osBox">
+                    <groupBox id="osBox" caption="msg://kg.infosystems.buhproject.entity.documents/SpisanieOSINMA.os" expand="osTable">
+                        <table id="osTable" dataContainer="osDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="osnovnoeSredstvo" editable="true"/>
+                                <column id="inventarnyjNomer" editable="true"/>
+                                <column id="stoimost1" editable="true"/>
+                                <column id="nakoplennaaAmortizacia" editable="true"/>
+                                <column id="ostatocnaaStoimost1" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="osTable.create"/>
+<!--                                <button action="osTable.edit"/>-->
+                                <button action="osTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="НМА" spacing="true" margin="true" expand="nmaBox">
+                    <groupBox id="nmaBox" caption="msg://kg.infosystems.buhproject.entity.documents/SpisanieOSINMA.nma" expand="nmaTable">
+                        <table id="nmaTable" dataContainer="nmaDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="nematerial1nyjAktiv" editable="true"/>
+                                <column id="inventarnyjNomer" editable="true"/>
+                                <column id="stoimost1" editable="true"/>
+                                <column id="nakoplennaaAmortizacia" editable="true"/>
+                                <column id="ostatocnaaStoimost1" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="nmaTable.create"/>
+<!--                                <button action="nmaTable.edit"/>-->
+                                <button action="nmaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab3" caption="Комиссия" spacing="true" margin="true" expand="komissiaBox">
+                    <groupBox id="komissiaBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/SpisanieOSINMA.komissia" expand="komissiaTable">
+                        <table id="komissiaTable" dataContainer="komissiaDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="fizLico" editable="true"/>
+                                <column id="predsedatel1" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="komissiaTable.create"/>
+<!--                                <button action="komissiaTable.edit"/>-->
+                                <button action="komissiaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab4" caption="Дополнительно" spacing="true" margin="true">
+                    <form dataContainer="spisanieOSINMADc">
+                        <column width="350px">
+                            <entityPicker id="komissiaPoSpisaniuOSField" property="komissiaPoSpisaniuOS">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <dateField id="dataSpisaniaField" property="dataSpisania"/>
+                            <textField id="nomerSpisaniaField" property="nomerSpisania"/>
+                            <entityPicker id="pricinaSpisaniaField" property="pricinaSpisania">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+
+                            <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                            <entityPicker id="avtorField" property="avtor">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

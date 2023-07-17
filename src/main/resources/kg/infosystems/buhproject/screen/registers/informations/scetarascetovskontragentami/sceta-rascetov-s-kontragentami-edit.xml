@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://scetaRascetovSKontragentamiEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="scetaRascetovSKontragentamiDc"
+                  class="kg.infosystems.buhproject.entity.registers.informations.ScetaRascetovSKontragentami">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="kontragent" fetchPlan="_instance_name"/>
+                <property name="scetRascetovSPostavsikom" fetchPlan="_instance_name"/>
+                <property name="scetRascetovSPokupatelem" fetchPlan="_instance_name"/>
+                <property name="scetRascetovPoUslugam" fetchPlan="_instance_name"/>
+                <property name="scetRascetovPoOS" fetchPlan="_instance_name"/>
+                <property name="scetAvansovPostavsiku" fetchPlan="_instance_name"/>
+                <property name="scetAvansovOtPokupatela" fetchPlan="_instance_name"/>
+                <property name="scetAvansovPoUslugam" fetchPlan="_instance_name"/>
+                <property name="scetAvansovPoOS" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="scetaRascetovSKontragentamiDc">
+                <column width="700px">
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="kontragentField" property="kontragent">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+            </form>
+            <form dataContainer="scetaRascetovSKontragentamiDc">
+                <column width="350px">
+                    <entityPicker id="scetRascetovSPostavsikomField" property="scetRascetovSPostavsikom">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="scetRascetovPoUslugamField" property="scetRascetovPoUslugam">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="scetRascetovPoOSField" property="scetRascetovPoOS">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="scetRascetovSPokupatelemField" property="scetRascetovSPokupatelem">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+                <column width="350px">
+                    <entityPicker id="scetAvansovPostavsikuField" property="scetAvansovPostavsiku">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="scetAvansovPoUslugamField" property="scetAvansovPoUslugam">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="scetAvansovPoOSField" property="scetAvansovPoOS">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="scetAvansovOtPokupatelaField" property="scetAvansovOtPokupatela">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

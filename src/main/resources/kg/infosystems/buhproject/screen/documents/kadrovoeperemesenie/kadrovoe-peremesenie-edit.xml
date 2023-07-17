@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://kadrovoePeremesenieEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="kadrovoePeremesenieDc"
+                  class="kg.infosystems.buhproject.entity.documents.KadrovoePeremesenie">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="sotrudnik" fetchPlan="_instance_name"/>
+                <property name="podrazdelenie" fetchPlan="_instance_name"/>
+                <property name="dolznost1" fetchPlan="_instance_name"/>
+                <property name="grafikRaboty" fetchPlan="_instance_name"/>
+                <property name="vidRasceta" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="nacislenia" fetchPlan="_base">
+                    <property name="vidRasceta" fetchPlan="_instance_name"/>
+                    <property name="vidDejstvia" fetchPlan="_instance_name"/>
+                </property>
+                <property name="kategoriaRabotnikov" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="nacisleniaDc" property="nacislenia">
+            </collection>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="tabSheet">
+        <form dataContainer="kadrovoePeremesenieDc">
+            <column width="350px">
+                <textField id="nomerField" property="nomer" editable="false"/>
+                <entityPicker id="sotrudnikField" property="sotrudnik">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+                <dateField id="periodField" property="period" resolution="DAY"/>
+            </column>
+            <column width="350px">
+                <dateField id="dataField" property="data" resolution="DAY"/>
+            </column>
+            <column width="350px">
+                <entityPicker id="organizaciaField" property="organizacia">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+            </column>
+        </form>
+        <tabSheet id="tabSheet" width="100%">
+            <tab caption="Приказ" id="tab_1" spacing="true" margin="true">
+                <hbox>
+                    <form id="form" dataContainer="kadrovoePeremesenieDc">
+                        <column width="350px">
+                            <label value="Текущие значения" css="color: #8A2BE2; font-size: 200%;"/>
+                            <entityPicker id="podrazdelenieField" property="podrazdelenie">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <entityPicker id="dolznost1Field" property="dolznost1">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <entityPicker id="grafikRabotyField" property="grafikRaboty">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <entityPicker id="vidRascetaField" property="vidRasceta">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <textField id="razmerField" property="razmer"/>
+                            <textField id="zanimaemyhStavokField" property="zanimaemyhStavok"/>
+                            <entityPicker id="kategoriaRabotnikovField" property="kategoriaRabotnikov"/>
+                            <textField id="kolvoIjdivencevField" property="kolvoIjdivencev"/>
+                        </column>
+                    </form>
+                    <vbox width="50px" css="height: 310px; border-left: 8px solid #32a1ce;"/>
+                    <vbox id="lastValue">
+                    </vbox>
+                </hbox>
+
+            </tab>
+            <tab caption="Прочие начисления" id="tab_2" spacing="true" margin="true" expand="nacisleniaBox">
+                <groupBox id="nacisleniaBox"
+                          caption="msg://kg.infosystems.buhproject.entity.documents/KadrovoePeremesenie.nacislenia"
+                          expand="nacisleniaTable">
+                    <table id="nacisleniaTable" dataContainer="nacisleniaDc" editable="true" width="100%">
+                        <actions>
+                            <action id="create" type="create"/>
+                            <action id="remove" type="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="nomerStroki"/>
+                            <column id="vidRasceta" editable="true"/>
+                            <column id="vidDejstvia" editable="true"/>
+                            <column id="razmer" editable="true"/>
+                            <!--                                <column id="dobavlenoAvtomaticeski"/>-->
+                        </columns>
+                        <buttonsPanel>
+                            <button action="nacisleniaTable.create"/>
+                            <button action="nacisleniaTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </tab>
+            <tab caption="Дополнительно" id="tab_3" spacing="true" margin="true">
+                <form dataContainer="kadrovoePeremesenieDc">
+                    <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                    <entityPicker id="avtorField" property="avtor">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </form>
+            </tab>
+        </tabSheet>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

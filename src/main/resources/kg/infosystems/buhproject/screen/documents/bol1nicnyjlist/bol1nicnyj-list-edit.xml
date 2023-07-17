@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://bol1nicnyjListEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="bol1nicnyjListDc"
+                  class="kg.infosystems.buhproject.entity.documents.Bol1nicnyjList">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="sotrudnik" fetchPlan="_instance_name"/>
+                <property name="grafikRaboty" fetchPlan="_instance_name"/>
+                <property name="podrazdelenie" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="srednijZarabotok" fetchPlan="_base"/>
+                <property name="nacislenia" fetchPlan="_base">
+                    <property name="vidRasceta" fetchPlan="_instance_name"/>
+                    <property name="sposobOtrazenia" fetchPlan="_instance_name"/>
+                </property>
+                <property name="procent" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="sredniyZarabotokDc" property="srednijZarabotok"/>
+            <collection id="nacisleniaDc" property="nacislenia"/>
+        </instance>
+        <collection id="procentyDc"
+                    class="kg.infosystems.buhproject.entity.enumerations.Procenty"
+                    fetchPlan="_base">
+            <loader>
+                <query>
+                    <![CDATA[select m from Procenty m]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="false">
+            <form id="form" dataContainer="bol1nicnyjListDc">
+                <column width="350px">
+                    <entityPicker id="sotrudnikField" property="sotrudnik">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="grafikRabotyField" property="grafikRaboty">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <textField id="kolicestvoLetStazaField" property="kolicestvoLetStaza"/>
+                    <entityPicker id="dolznost1Field" property="dolznost1" caption="Должность">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="podrazdelenie1Field" property="podrazdelenie">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <dateField id="dataVydaciListkaField" property="dataVydaciListka" caption="Дата выдачи листка" resolution="DAY"/>
+                    <textField id="nomerListkaField" property="nomerListka" caption="Номер листка"/>
+                    <textField id="organizasiaZdravohraneniaField" property="organizasiaZdravohranenia"
+                               caption="Организация здравохранения"/>
+                    <entityPicker property="vidPosobii" id="vidPosobiiField"/>
+                </column>
+                <column width="350px">
+                    <entityComboBox id="procent11yComboBox" property="procent" caption="Проценты" optionsContainer="procentyDc"
+                                    required="true"/>
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data" required="true" resolution="DAY"/>
+                    <!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <dateField id="dataNacalaField" property="dataNacala" required="true" resolution="DAY"/>
+                    <dateField id="dataOkoncaniaField" property="dataOkoncania" required="true" resolution="DAY"/>
+                    <textField id="dnejField" property="dnej"/>
+                    <textField id="dnejOrganizaciiField" property="dnejOrganizacii" caption="Дни за счет организации" editable="false"/>
+                    <textField id="dnejZaScetSFField" property="dnejZaScetSF" editable="false"/>
+                </column>
+            </form>
+            <groupBox id="sredniyZarabotokBox"
+                      caption="msg://kg.infosystems.buhproject.entity.documents/Bol1nicnyjList.sredniyZarabotok"
+                      expand="sredniyZarabotokTable"
+                      height="380px" spacing="false">
+                <table id="sredniyZarabotokTable" dataContainer="sredniyZarabotokDc" width="100%" editable="true">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <!--                                <action id="edit" type="edit"/>-->
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="periodRegistracii" editable="true" caption="Месяц" dateFormat="MM/yyyy" resolution="DAY"/>
+                        <column id="normaDnej" editable="true"/>
+                        <column id="rezul1tat" editable="true" caption="Выплата"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="sredniyZarabotokTable.create"/>
+                        <!--                                <button action="sredniyZarabotokTable.edit"/>-->
+                        <button action="sredniyZarabotokTable.remove"/>
+                    </buttonsPanel>
+                </table>
+                <groupBox orientation="horizontal" spacing="false">
+                    <textField editable="false" id="averageSalaryField" caption="СМЗП"/>
+                    <textField editable="false" id="averageSampleField" caption="Итого норма"/>
+                    <textField editable="false" id="totalField" caption="Итого выплат"/>
+                </groupBox>
+            </groupBox>
+            <groupBox id="nacisleniaBox"
+                      caption="msg://kg.infosystems.buhproject.entity.documents/Bol1nicnyjList.nacislenia"
+                      expand="nacisleniaTable"
+                      height="270px">
+                <table id="nacisleniaTable" dataContainer="nacisleniaDc" width="100%" editable="true">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <!--                                <action id="edit" type="edit"/>-->
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="vidRasceta" editable="true"/>
+                        <column id="sposobOtrazenia" editable="true"/>
+                        <column id="razmer"/>
+                        <column id="promejutocniy"/>
+                        <column id="rezul1tat"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="nacisleniaTable.create"/>
+                        <!--                                <button action="nacisleniaTable.edit"/>-->
+                        <button action="nacisleniaTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+            <form dataContainer="bol1nicnyjListDc">
+                <column width="500px">
+                    <entityPicker id="avtorField" property="avtor">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <textArea id="kommentarijField" property="kommentarij" rows="1"/>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

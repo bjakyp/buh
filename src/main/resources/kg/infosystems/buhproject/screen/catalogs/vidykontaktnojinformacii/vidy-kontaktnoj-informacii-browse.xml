@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://vidyKontaktnojInformaciiBrowse.caption"
+        focusComponent="vidyKontaktnojInformaciisTable">
+    <data readOnly="true">
+        <collection id="vidyKontaktnojInformaciisDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.VidyKontaktnojInformacii">
+            <fetchPlan extends="_base">
+                <property name="roditel1" fetchPlan="_instance_name"/>
+                <property name="tip" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="vidyKontaktnojInformaciisDl">
+                <query>
+                    <![CDATA[select e from VidyKontaktnojInformacii e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="vidyKontaktnojInformaciisTable" spacing="true">
+        <filter id="filter"
+                dataLoader="vidyKontaktnojInformaciisDl">
+            <properties include=".*"/>
+        </filter>
+        <treeTable id="vidyKontaktnojInformaciisTable"
+                   width="100%"
+                   dataContainer="vidyKontaktnojInformaciisDc"
+                   hierarchyProperty="roditel1">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="naimenovanie"/>
+                <column id="roditel1"/>
+                <column id="etoGruppa"/>
+                <column id="tol1koNacional1nyjAdres"/>
+                <column id="vidRedaktirovania"/>
+                <column id="vidPolaDrugoe"/>
+                <column id="vklucat1StranuVPredstavlenie"/>
+                <column id="zapretit1RedaktirovaniePol1zovatelem"/>
+                <column id="ispol1zuetsa"/>
+                <column id="moznoIzmenat1SposobRedaktirovania"/>
+                <column id="obazatel1noeZapolnenie"/>
+                <column id="proverat1Korrektnost1"/>
+                <column id="proverat1PoFIAS"/>
+                <column id="razresit1VvodNeskol1kihZnacenij"/>
+                <column id="udalit1RedaktirovanieTol1koVDialoge"/>
+                <column id="rekvizitDopUporadocivania"/>
+                <column id="skryvat1Neaktual1nyeAdresa"/>
+                <column id="telefonCDobavocnymNomerom"/>
+                <column id="tip"/>
+                <column id="ukazyvat1OKTMO"/>
+                <column id="hranit1IstoriuIzmenenij"/>
+                <column id="mezdunarodnyjFormatAdresa"/>
+                <column id="imaPredopredelennogoVida"/>
+                <column id="imaGruppy"/>
+                <column id="ispravlat1UstarevsieAdresa"/>
+                <column id="identifikatorDlaFormul"/>
+                <column id="maskaNomeraTelefona"/>
+                <column id="vvodit1NomerPoMaske"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="vidyKontaktnojInformaciisTable.create"/>
+                <button id="editBtn" action="vidyKontaktnojInformaciisTable.edit"/>
+                <button id="removeBtn" action="vidyKontaktnojInformaciisTable.remove"/>
+            </buttonsPanel>
+        </treeTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

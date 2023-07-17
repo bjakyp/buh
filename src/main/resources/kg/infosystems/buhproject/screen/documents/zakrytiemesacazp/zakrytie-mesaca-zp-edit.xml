@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://zakrytieMesacaZPEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="zakrytieMesacaZPDc"
+                  class="kg.infosystems.buhproject.entity.documents.ZakrytieMesacaZP">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="nalogiPoZarplate" fetchPlan="_base">
+                    <property name="sotrudnik" fetchPlan="_instance_name"/>
+                    <property name="status" fetchPlan="_instance_name"/>
+                </property>
+                <property name="uderzania" fetchPlan="_base">
+                    <property name="sotrudnik" fetchPlan="_instance_name"/>
+                    <property name="vidRasceta" fetchPlan="_instance_name"/>
+                    <property name="kontragent" fetchPlan="_instance_name"/>
+                </property>
+                <property name="provodki" fetchPlan="_base">
+                    <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                    <property name="sotrudnik" fetchPlan="_instance_name"/>
+                    <property name="scetDt" fetchPlan="_instance_name"/>
+                    <property name="subkontoDt1" fetchPlan="_instance_name"/>
+                    <property name="subkontoDt2" fetchPlan="_instance_name"/>
+                    <property name="subkontoDt3" fetchPlan="_instance_name"/>
+                    <property name="scetKt" fetchPlan="_instance_name"/>
+                    <property name="subkontoKt1" fetchPlan="_instance_name"/>
+                    <property name="subkontoKt2" fetchPlan="_instance_name"/>
+                    <property name="subkontoKt3" fetchPlan="_instance_name"/>
+                </property>
+                <property name="dannyePoVidamFinansirovania" fetchPlan="_base">
+                    <property name="sotrudnik" fetchPlan="_instance_name"/>
+                    <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                    <property name="status" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="nalogiPoZarplateDc" property="nalogiPoZarplate"/>
+            <collection id="uderzaniaDc" property="uderzania"/>
+            <collection id="provodkiDc" property="provodki"/>
+            <collection id="dannyePoVidamFinansirovaniaDc" property="dannyePoVidamFinansirovania"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="zakrytieMesacaZPDc">
+                <column width="350px">
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data"/>
+<!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+            </form>
+            <tabSheet id="tabSheet" height="600px">
+                <tab id="tab1" caption="Налоги по заработной плате" spacing="true" margin="true" expand="nalogiPoZarplateBox">
+                    <groupBox id="nalogiPoZarplateBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/ZakrytieMesacaZP.nalogiPoZarplate" expand="nalogiPoZarplateTable">
+                        <table id="nalogiPoZarplateTable" dataContainer="nalogiPoZarplateDc" width="100%" editable="true" stylename="nalogiPoZarplateTable">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="sotrudnik" editable="true"/>
+
+                                <column id="summaNacisleno" editable="true"/>
+                                <column id="summaUderzano" editable="true"/>
+                                <column id="summaDopDohod" editable="true"/>
+
+                                <column id="oDSF" editable="true"/>
+                                <column id="pFR" editable="true"/>
+                                <column id="gNPFR" editable="true"/>
+                                <column id="oDPN" editable="true"/>
+                                <column id="pN" editable="true"/>
+                                <column id="vycety" editable="true"/>
+                                <column id="otrabotanoDnej" editable="true"/>
+                                <column id="vyplaceno" editable="true"/>
+                                <column id="pFF" editable="true"/>
+                                <column id="mSF" editable="true"/>
+                                <column id="fOTF" editable="true"/>
+                                <column id="mSR" editable="true"/>
+                                <column id="fOTR" editable="true"/>
+                                <column id="status" editable="true"/>
+                                <column id="primenat1Vycet" editable="true"/>
+<!--                                <column id="pFRDlaRascetaPN"/>-->
+<!--                                <column id="gNPFRDlaRascetaPN"/>-->
+                            </columns>
+                            <buttonsPanel>
+                                <button action="nalogiPoZarplateTable.create"/>
+<!--                                <button action="nalogiPoZarplateTable.edit"/>-->
+                                <button action="nalogiPoZarplateTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="Удержания" spacing="true" margin="true" expand="uderzaniaBox">
+                    <groupBox id="uderzaniaBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/ZakrytieMesacaZP.uderzania" expand="uderzaniaTable">
+                        <table id="uderzaniaTable" dataContainer="uderzaniaDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="sotrudnik" editable="true"/>
+                                <column id="vidRasceta" editable="true"/>
+                                <column id="razmer" editable="true"/>
+                                <column id="rezul1tat" editable="true"/>
+                                <column id="razmerVyceta" editable="true"/>
+                                <column id="kontragent" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="uderzaniaTable.create"/>
+<!--                                <button action="uderzaniaTable.edit"/>-->
+                                <button action="uderzaniaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab3" caption="Проводки" spacing="true" margin="true" expand="provodkiBox">
+                    <groupBox id="provodkiBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/ZakrytieMesacaZP.provodki" expand="provodkiTable">
+                        <table id="provodkiTable" dataContainer="provodkiDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="vidFinansirovania" editable="true"/>
+                                <column id="sotrudnik" editable="true"/>
+                                <column id="scetDt" editable="true"/>
+                                <column id="subkontoDt1" editable="true"/>
+                                <column id="subkontoDt2" editable="true"/>
+                                <column id="subkontoDt3" editable="true"/>
+                                <column id="scetKt" editable="true"/>
+                                <column id="subkontoKt1" editable="true"/>
+                                <column id="subkontoKt2" editable="true"/>
+                                <column id="subkontoKt3" editable="true"/>
+                                <column id="summa" editable="true"/>
+                                <column id="soderzanie" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="provodkiTable.create"/>
+<!--                                <button action="provodkiTable.edit"/>-->
+                                <button action="provodkiTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab4" caption="Дополнительно" spacing="true" margin="true">
+                    <form dataContainer="zakrytieMesacaZPDc">
+                        <column width="350px">
+                            <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                            <entityPicker id="avtorField" property="avtor">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                    <!--<groupBox id="dannyePoVidamFinansirovaniaBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/ZakrytieMesacaZP.dannyePoVidamFinansirovania">
+                        <table id="dannyePoVidamFinansirovaniaTable" dataContainer="dannyePoVidamFinansirovaniaDc" width="100%"
+                               height="200px">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <action id="edit" type="edit"/>
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="summaNacisleno"/>
+                                <column id="oDPN"/>
+                                <column id="oDSF"/>
+                                <column id="vycety"/>
+                                <column id="pN"/>
+                                <column id="pFR"/>
+                                <column id="gNPFR"/>
+                                <column id="pFRDlaRascetaPN"/>
+                                <column id="gNPFRDlaRascetaPN"/>
+                                <column id="pFF"/>
+                                <column id="mSF"/>
+                                <column id="fOTF"/>
+                                <column id="mSR"/>
+                                <column id="otrabotanoDnej"/>
+                                <column id="strokaPoPN"/>
+                                <column id="sotrudnik"/>
+                                <column id="vidFinansirovania"/>
+                                <column id="status"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="dannyePoVidamFinansirovaniaTable.create"/>
+                                <button action="dannyePoVidamFinansirovaniaTable.edit"/>
+                                <button action="dannyePoVidamFinansirovaniaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>-->
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

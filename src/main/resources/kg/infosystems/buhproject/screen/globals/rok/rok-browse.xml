@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://rokBrowse.caption"
+        focusComponent="roksTable">
+    <data readOnly="true">
+        <collection id="roksDc"
+                    class="kg.infosystems.buhproject.entity.globals.Rok">
+            <fetchPlan extends="_base">
+                <property name="parent" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="roksDl">
+                <query>
+                    <![CDATA[select e from Rok e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="roksTable" spacing="true">
+        <filter id="filter"
+                dataLoader="roksDl">
+            <properties include=".*"/>
+        </filter>
+        <treeTable id="roksTable"
+                   width="100%"
+                   dataContainer="roksDc"
+                   hierarchyProperty="parent">
+            <actions>
+            </actions>
+            <columns>
+                <column id="code"/>
+                <column id="name"/>
+                <column id="shortName"/>
+                <column id="parent"/>
+                <column id="active"/>
+            </columns>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+            </buttonsPanel>
+        </treeTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://nacislenieZarplatyEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="nacislenieZarplatyDc"
+                  class="kg.infosystems.buhproject.entity.documents.NacislenieZarplaty">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="podrazdelenie" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="nacisleniaIUderjania" fetchPlan="_base">
+                    <property name="nacislenia" fetchPlan="_base"/>
+                    <property name="uderjania" fetchPlan="_base"/>
+                    <property name="procieUderjania" fetchPlan="_base"/>
+                </property>
+            </fetchPlan>
+            <loader id="nacislenieZarplatyDl"/>
+            <collection id="nacisleniaIUderjaniaDc" property="nacisleniaIUderjania"/>
+        </instance>
+        <collection id="nacisleniaDc" class="kg.infosystems.buhproject.entity.parts.documents.NacisleniaNacisleniaIUderjania"
+                    fetchPlan="nacisleniaNacisleniaIUderjania-fetch-plan">
+        </collection>
+        <instance id="procieUderjaniaDc" class="kg.infosystems.buhproject.entity.parts.documents.ProcieUderjania">
+            <fetchPlan extends="_base"/>
+            <loader id="procieUderjaniaDl"/>
+        </instance>
+
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="nacislenieZarplatyDc">
+                <column width="350px">
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+                <column width="350px">
+                    <textField id="nomerField" property="nomer" caption="msg://nomer"/>
+                    <dateField id="dataField" property="data" resolution="DAY" dateFormat="MM/yyyy"/>
+                </column>
+            </form>
+            <tabSheet id="tabSheet" height="600px">
+                <tab id="tab1" caption="Начисления" spacing="true" margin="true" expand="nacisleniaIUderjaniaBox">
+                    <groupBox id="nacisleniaIUderjaniaBox"
+                              caption="Работники" expand="nacisleniaIUderjaniasTable">
+                        <table id="nacisleniaIUderjaniasTable" width="100%" dataContainer="nacisleniaIUderjaniaDc">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <action id="edit" type="edit"/>
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <buttonsPanel alwaysVisible="true">
+                                <button id="nacisleniaIUderjaniasTableCreateBtn" action="nacisleniaIUderjaniasTable.create"/>
+                                <button id="nacisleniaIUderjaniasTableEditBtn" action="nacisleniaIUderjaniasTable.edit"/>
+                                <button id="nacisleniaIUderjaniasTableRemoveBtn" action="nacisleniaIUderjaniasTable.remove"/>
+                                <button id="zapolnit1" caption="Заполнить"/>
+                            </buttonsPanel>
+                            <columns>
+                                <column id="nomer" caption="Табельный номер"/>
+                                <column id="fullName" caption="ФИО"/>
+                                <column id="nacisleno"/>
+                                <column id="neOblagaemajaCastPN"/>
+                                <column id="neOblagaemajaCastSV"/>
+                                <column id="uderjano" caption="msg://kg.infosystems.buhproject.screen.documents/uderjano"/>
+                            </columns>
+                        </table>
+                    </groupBox>
+                </tab>
+                <!--<tab id="tab2" caption="Начисления всех работников" spacing="true" margin="true" expand="nacisleniaBox">
+                    <groupBox id="nacisleniaBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/NacislenieZarplaty.nacislenia"
+                              expand="nacisleniaTable">
+                        <table id="nacisleniaTable" dataContainer="nacisleniaDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <action id="edit" type="edit"/>
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="sotrudnik.kod"/>
+                                <column id="sotrudnik.naimenovanie"/>
+                                <column id="podrazdelenie" editable="true"/>
+                                <column id="dolznost1" editable="true"/>
+                                <column id="vidRasceta" editable="true" caption="Вид Начисления"/>
+                                <column id="grafikRaboty" editable="true"/>
+                                <column id="dataNacala" editable="true" resolution="DAY"/>
+                                <column id="dataOkoncania" editable="true" resolution="DAY"/>
+                                <column id="otrabotanoDnej" editable="true"/>
+                                <column id="otrabotanoCasov" editable="true"/>
+                                <column id="razmer" editable="true"/>
+                                <column id="rezul1tat" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="nacisleniaTable.create"/>
+                                <button action="nacisleniaTable.edit"/>
+                                <button action="nacisleniaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>-->
+                <tab id="tab3" caption="Удержания СВ и ПН" spacing="true" margin="true" expand="nacisleniaIUderjaniasTable2">
+                    <table id="nacisleniaIUderjaniasTable2" width="100%" dataContainer="nacisleniaIUderjaniaDc">
+                        <actions>
+                            <action id="edit" type="edit"/>
+                        </actions>
+                        <buttonsPanel alwaysVisible="true">
+                            <button id="nacisleniaIUderjaniasTable2EditBtn" action="nacisleniaIUderjaniasTable2.edit"/>
+                        </buttonsPanel>
+                        <columns>
+                            <column id="fullName" caption="ФИО"/>
+                            <column id="uderjania.kategoriaRabotnika" caption="Категория работника"/>
+                            <column id="nacisleno"/>
+                            <column id="uderjania.summaStandartnihVycetov" caption="Стандартный вычет"/>
+                            <column id="uderjania.nacislenieOblPN" caption="НБПН"/>
+                            <column id="uderjania.nacislenieOblSV" caption="НБСВ"/>
+                            <column id="uderjania.izVycetaPoGosSV" caption="ПФ"/>
+                            <column id="uderjania.gnpfSRabotnika" caption="ГНПФ"/>
+                            <column id="uderjania.itogoPN" caption="ПН"/>
+                        </columns>
+                    </table>
+                </tab>
+                <tab id="tab4" caption="Прочие Удержания" spacing="true" margin="true">
+                    <form id="procieUderjaniaForm" dataContainer="procieUderjaniaDc">
+                        <column width="350px">
+                            <textField id="nomerField5" property="nomer"/>
+                            <textField id="nameField" property="name"/>
+                        </column>
+                    </form>
+                </tab>
+                <tab id="tab5" caption="Дополнительно" spacing="true" margin="true">
+                    <form dataContainer="nacislenieZarplatyDc">
+                        <column width="350px">
+                            <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                            <entityPicker id="avtorField" property="avtor">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

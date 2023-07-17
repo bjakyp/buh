@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://klassifikatorTNVEDEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="klassifikatorTNVEDDc"
+                  class="kg.infosystems.buhproject.entity.catalogs.KlassifikatorTNVED">
+            <fetchPlan extends="_base">
+                <property name="edinicaIzmerenia" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="klassifikatorTNVEDDc">
+            <column width="350px">
+                <textField id="kodField" property="kod"/>
+                <textField id="naimenovanieField" property="naimenovanie"/>
+                <textArea id="naimenovaniePolnoeField" property="naimenovaniePolnoe" rows="5"/>
+                <entityPicker id="edinicaIzmereniaField" property="edinicaIzmerenia">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+                <checkBox id="syr1evojField" property="syr1evoj"/>
+                <dateField id="dataNacalaDejstviaField" property="dataNacalaDejstvia"/>
+                <dateField id="dataOkoncaniaDejstviaField" property="dataOkoncaniaDejstvia"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://otpuskEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="otpuskDc"
+                  class="kg.infosystems.buhproject.entity.documents.Otpusk">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="sotrudnik" fetchPlan="_instance_name"/>
+                <property name="vidyOtpuskov" fetchPlan="_instance_name"/>
+                <property name="grafikRaboty" fetchPlan="_instance_name"/>
+                <property name="podrazdelenie" fetchPlan="_instance_name"/>
+                <property name="dolznost1" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="srednijZarabotok" fetchPlan="_base"/>
+                <property name="nacislenia" fetchPlan="_base">
+                    <property name="sposobOtrazenia" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="srednijZarabotokDc" property="srednijZarabotok"/>
+            <collection id="nacisleniaDc" property="nacislenia"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="false">
+            <groupBox id="formBox">
+                <form id="form" dataContainer="otpuskDc">
+                    <column width="250px">
+                        <entityPicker id="sotrudnikField" property="sotrudnik">
+                            <actions>
+                                <action id="entityLookup" type="entity_lookup"/>
+                                <action id="entityClear" type="entity_clear"/>
+                            </actions>
+                        </entityPicker>
+                        <entityPicker id="grafikRabotyField" property="grafikRaboty">
+                            <actions>
+                                <action id="entityLookup" type="entity_lookup"/>
+                                <action id="entityClear" type="entity_clear"/>
+                            </actions>
+                        </entityPicker>
+                        <entityPicker id="organizaciaField" property="organizacia">
+                            <actions>
+                                <action id="entityLookup" type="entity_lookup"/>
+                                <action id="entityClear" type="entity_clear"/>
+                            </actions>
+                        </entityPicker>
+                    </column>
+                    <column width="200px">
+                        <textField id="nomerField" property="nomer" required="true"/>
+                        <dateField id="dataField" property="data" resolution="DAY"/>
+                    </column>
+                    <column width="230px">
+                        <entityPicker id="dolznost1Field" property="dolznost1" required="true">
+                            <actions>
+                                <action id="entityLookup" type="entity_lookup"/>
+                                <action id="entityClear" type="entity_clear"/>
+                            </actions>
+                        </entityPicker>
+                        <entityPicker id="podrazdelenieField" property="podrazdelenie">
+                            <actions>
+                                <action id="entityLookup" type="entity_lookup"/>
+                                <action id="entityClear" type="entity_clear"/>
+                            </actions>
+                        </entityPicker>
+                        <entityPicker id="vidyOtpuskovField" property="vidyOtpuskov" required="true"/>
+                    </column>
+                    <column width="180px">
+                        <dateField id="dataNacalaField" property="dataNacala" resolution="DAY"/>
+                        <dateField id="dataOkoncaniaField" property="dataOkoncania" resolution="DAY"/>
+                        <textField id="dnejField" property="dnej" editable="false"/>
+                    </column>
+                </form>
+            </groupBox>
+            <groupBox id="srednijZarabotokBox"
+                      caption="msg://kg.infosystems.buhproject.entity.documents/Otpusk.srednijZarabotok"
+                      expand="srednijZarabotokTable" height="380px">
+                <table id="srednijZarabotokTable" dataContainer="srednijZarabotokDc" width="100%" editable="true">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="nomerStroki"/>
+                        <column id="periodRegistracii" editable="true" dateFormat="MM/yyyy" required="true" resolution="DAY"/>
+                        <column id="rezul1tat" editable="true"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="srednijZarabotokTable.create"/>
+                        <button action="srednijZarabotokTable.remove"/>
+                    </buttonsPanel>
+                </table>
+                <groupBox orientation="horizontal" spacing="false">
+                    <label value="Коэф. расчета : 29.6"/>
+                    <textField editable="false" id="averageSalaryField" caption="СМЗП"/>
+                    <textField editable="false" id="monthsField" caption="Кол-во месяцев"/>
+                    <textField editable="false" id="totalField" caption="Итоговая сумма результата"/>
+                </groupBox>
+
+            </groupBox>
+            <groupBox id="nacisleniaBox" caption="msg://kg.infosystems.buhproject.entity.documents/Otpusk.nacislenia"
+                      expand="nacisleniaTable" height="270px">
+                <table id="nacisleniaTable" dataContainer="nacisleniaDc" width="100%" editable="true">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="remove" type="remove"/>
+                        <action id="calculate" caption="Рассчитать"/>
+                    </actions>
+                    <columns>
+                        <column id="nomerStroki"/>
+                        <column id="vidRasceta" editable="true" required="true"/>
+                        <column id="otrabotanoDnej" editable="true"/>
+                        <column id="razmer" editable="true"/>
+                        <column id="rezul1tat" editable="true"/>
+                        <column id="sposobOtrazenia" editable="true" required="true"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="nacisleniaTable.create"/>
+                        <button action="nacisleniaTable.remove"/>
+                        <button id="calculateBtn" action="nacisleniaTable.calculate"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+            <form dataContainer="otpuskDc">
+                <entityPicker id="avtorField" property="avtor" width="700px">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+                <textField id="kommentarijField" property="kommentarij" width="700px"/>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://otcetPoVyplatamIUderzaniamPNBrowse.caption"
+        focusComponent="otcetPoVyplatamIUderzaniamPNsTable">
+    <data readOnly="true">
+        <collection id="otcetPoVyplatamIUderzaniamPNsDc"
+                    class="kg.infosystems.buhproject.entity.documents.OtcetPoVyplatamIUderzaniamPN">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="otcetPoVyplatamIUderzaniamPNsDl">
+                <query>
+                    <![CDATA[select e from OtcetPoVyplatamIUderzaniamPN e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="otcetPoVyplatamIUderzaniamPNsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="otcetPoVyplatamIUderzaniamPNsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="otcetPoVyplatamIUderzaniamPNsTable"
+                    width="100%"
+                    dataContainer="otcetPoVyplatamIUderzaniamPNsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="data"/>
+                <column id="nomer"/>
+<!--                <column id="proveden"/>-->
+                <column id="organizacia"/>
+                <column id="vidFinansirovania"/>
+<!--                <column id="dataNacala"/>-->
+<!--                <column id="dataOkoncania"/>-->
+<!--                <column id="godovoj"/>-->
+                <column id="kommentarij"/>
+                <column id="avtor"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="otcetPoVyplatamIUderzaniamPNsTable.create"/>
+                <button id="editBtn" action="otcetPoVyplatamIUderzaniamPNsTable.edit"/>
+                <button id="removeBtn" action="otcetPoVyplatamIUderzaniamPNsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

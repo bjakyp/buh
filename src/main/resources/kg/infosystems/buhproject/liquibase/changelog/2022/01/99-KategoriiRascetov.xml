@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="buh-project-enums-data">
+        <insert tableName="KategoriiRascetov" schemaName="enumerations">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="Первичное"/>
+            <column name="SYNONYM_" value="Первичное"/>
+            <column name="ORDER_" value="1"/>
+        </insert>
+        <insert tableName="KategoriiRascetov" schemaName="enumerations">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="ЗависимоеПервогоУровня"/>
+            <column name="SYNONYM_" value="Зависимое первого уровня"/>
+            <column name="ORDER_" value="2"/>
+        </insert>
+        <insert tableName="KategoriiRascetov" schemaName="enumerations">
+            <column name="ID" value="3"/>
+            <column name="NAME" value="ЗависимоеВторогоУровня"/>
+            <column name="SYNONYM_" value="Зависимое второго уровня"/>
+            <column name="ORDER_" value="3"/>
+        </insert>
+        <insert tableName="KategoriiRascetov" schemaName="enumerations">
+            <column name="ID" value="4"/>
+            <column name="NAME" value="ЗависимоеТретьегоУровня"/>
+            <column name="SYNONYM_" value="Зависимое третьего уровня"/>
+            <column name="ORDER_" value="4"/>
+        </insert>
+        <insert tableName="KategoriiRascetov" schemaName="enumerations">
+            <column name="ID" value="5"/>
+            <column name="NAME" value="ЗависимоеЧетвертогоУровня"/>
+            <column name="SYNONYM_" value="Зависимое четвертого уровня"/>
+            <column name="ORDER_" value="5"/>
+        </insert>
+        <insert tableName="KategoriiRascetov" schemaName="enumerations">
+            <column name="ID" value="6"/>
+            <column name="NAME" value="ЗависимоеПятогоУровня"/>
+            <column name="SYNONYM_" value="Зависимое пятого уровня"/>
+            <column name="ORDER_" value="6"/>
+        </insert>
+        <insert tableName="KategoriiRascetov" schemaName="enumerations">
+            <column name="ID" value="7"/>
+            <column name="NAME" value="ЗависимоеШестогоУровня"/>
+            <column name="SYNONYM_" value="Зависимое шестого уровня"/>
+            <column name="ORDER_" value="7"/>
+        </insert>
+        <insert tableName="KategoriiRascetov" schemaName="enumerations">
+            <column name="ID" value="8"/>
+            <column name="NAME" value="ЗависимоеСедьмогоУровня"/>
+            <column name="SYNONYM_" value="Зависимое седьмого уровня"/>
+            <column name="ORDER_" value="8"/>
+        </insert>
+        <insert tableName="KategoriiRascetov" schemaName="enumerations">
+            <column name="ID" value="9"/>
+            <column name="NAME" value="ЗависимоеВосьмогоУровня"/>
+            <column name="SYNONYM_" value="Зависимое восьмого уровня"/>
+            <column name="ORDER_" value="9"/>
+        </insert>
+        <insert tableName="KategoriiRascetov" schemaName="enumerations">
+            <column name="ID" value="10"/>
+            <column name="NAME" value="ЗависимоеДевятогоУровня"/>
+            <column name="SYNONYM_" value="Зависимое девятого уровня"/>
+            <column name="ORDER_" value="10"/>
+        </insert>
+        <insert tableName="KategoriiRascetov" schemaName="enumerations">
+            <column name="ID" value="11"/>
+            <column name="NAME" value="ЗависимоеДесятогоУровня"/>
+            <column name="SYNONYM_" value="Зависимое десятого уровня"/>
+            <column name="ORDER_" value="11"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

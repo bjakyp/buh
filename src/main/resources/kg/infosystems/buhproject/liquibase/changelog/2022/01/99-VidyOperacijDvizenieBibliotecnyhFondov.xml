@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="buh-project-enums-data">
+        <insert tableName="VidyOperacijDvizenieBibliotecnyhFondov" schemaName="enumerations">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="Поступление"/>
+            <column name="SYNONYM_" value="Поступление"/>
+            <column name="ORDER_" value="1"/>
+        </insert>
+        <insert tableName="VidyOperacijDvizenieBibliotecnyhFondov" schemaName="enumerations">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="Перемещение"/>
+            <column name="SYNONYM_" value="Перемещение"/>
+            <column name="ORDER_" value="2"/>
+        </insert>
+        <insert tableName="VidyOperacijDvizenieBibliotecnyhFondov" schemaName="enumerations">
+            <column name="ID" value="3"/>
+            <column name="NAME" value="Списание"/>
+            <column name="SYNONYM_" value="Списание"/>
+            <column name="ORDER_" value="3"/>
+        </insert>
+        <insert tableName="VidyOperacijDvizenieBibliotecnyhFondov" schemaName="enumerations">
+            <column name="ID" value="4"/>
+            <column name="NAME" value="БезвозмездноеПоступление"/>
+            <column name="SYNONYM_" value="Безвозмездное поступление"/>
+            <column name="ORDER_" value="4"/>
+        </insert>
+        <insert tableName="VidyOperacijDvizenieBibliotecnyhFondov" schemaName="enumerations">
+            <column name="ID" value="5"/>
+            <column name="NAME" value="БезвозмезднаяПередача"/>
+            <column name="SYNONYM_" value="Безвозмездная передача"/>
+            <column name="ORDER_" value="5"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://izmenenieParametrovOSINMAEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="izmenenieParametrovOSINMADc"
+                  class="kg.infosystems.buhproject.entity.documents.IzmenenieParametrovOSINMA">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="sobytie" fetchPlan="_instance_name"/>
+                <property name="ob2ektIzmenenia" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="parametryOb2ekta" fetchPlan="_local">
+                    <property name="parametr" fetchPlan="_instance_name"/>
+                    <property name="staroeZnacenie" fetchPlan="_instance_name"/>
+                    <property name="novoeZnacenie" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="parametryOb2ektaDc" property="parametryOb2ekta"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="izmenenieParametrovOSINMADc">
+                <column width="350px">
+                    <entityPicker id="sobytieField" property="sobytie">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="ob2ektIzmeneniaField" property="ob2ektIzmenenia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+                <column width="350px">
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data"/>
+<!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="vidFinansirovaniaField" property="vidFinansirovania">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+            </form>
+            <tabSheet id="tabSheet1" height="600px">
+                <tab id="tab1" caption="Параметры" spacing="true" margin="true" expand="parametryOb2ektaBox">
+                    <groupBox id="parametryOb2ektaBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/IzmenenieParametrovOSINMA.parametryOb2ekta"
+                              expand="parametryOb2ektaTable">
+                        <table id="parametryOb2ektaTable" dataContainer="parametryOb2ektaDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="parametr" editable="true"/>
+                                <column id="staroeZnacenie" editable="true"/>
+                                <column id="novoeZnacenie" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="parametryOb2ektaTable.create"/>
+<!--                                <button action="parametryOb2ektaTable.edit"/>-->
+                                <button action="parametryOb2ektaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="Дополнительно" spacing="true" margin="true">
+                    <form dataContainer="izmenenieParametrovOSINMADc">
+                        <column width="350px">
+                            <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                            <entityPicker id="avtorField" property="avtor">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

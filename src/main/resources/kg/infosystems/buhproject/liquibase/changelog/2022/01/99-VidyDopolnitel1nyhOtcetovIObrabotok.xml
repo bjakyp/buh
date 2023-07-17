@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="buh-project-enums-data">
+        <insert tableName="VidyDopolnitel1nyhOtcetovIObrabotok" schemaName="enumerations">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="ДополнительнаяОбработка"/>
+            <column name="SYNONYM_" value="Дополнительная обработка"/>
+            <column name="ORDER_" value="1"/>
+        </insert>
+        <insert tableName="VidyDopolnitel1nyhOtcetovIObrabotok" schemaName="enumerations">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="ДополнительныйОтчет"/>
+            <column name="SYNONYM_" value="Дополнительный отчет"/>
+            <column name="ORDER_" value="2"/>
+        </insert>
+        <insert tableName="VidyDopolnitel1nyhOtcetovIObrabotok" schemaName="enumerations">
+            <column name="ID" value="3"/>
+            <column name="NAME" value="ЗаполнениеОбъекта"/>
+            <column name="SYNONYM_" value="Заполнение объекта"/>
+            <column name="ORDER_" value="3"/>
+        </insert>
+        <insert tableName="VidyDopolnitel1nyhOtcetovIObrabotok" schemaName="enumerations">
+            <column name="ID" value="4"/>
+            <column name="NAME" value="Отчет"/>
+            <column name="SYNONYM_" value="Отчет"/>
+            <column name="ORDER_" value="4"/>
+        </insert>
+        <insert tableName="VidyDopolnitel1nyhOtcetovIObrabotok" schemaName="enumerations">
+            <column name="ID" value="5"/>
+            <column name="NAME" value="ПечатнаяФорма"/>
+            <column name="SYNONYM_" value="Печатная форма"/>
+            <column name="ORDER_" value="5"/>
+        </insert>
+        <insert tableName="VidyDopolnitel1nyhOtcetovIObrabotok" schemaName="enumerations">
+            <column name="ID" value="6"/>
+            <column name="NAME" value="СозданиеСвязанныхОбъектов"/>
+            <column name="SYNONYM_" value="Создание связанных объектов"/>
+            <column name="ORDER_" value="6"/>
+        </insert>
+        <insert tableName="VidyDopolnitel1nyhOtcetovIObrabotok" schemaName="enumerations">
+            <column name="ID" value="7"/>
+            <column name="NAME" value="ШаблонСообщения"/>
+            <column name="SYNONYM_" value="Шаблон сообщения"/>
+            <column name="ORDER_" value="7"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

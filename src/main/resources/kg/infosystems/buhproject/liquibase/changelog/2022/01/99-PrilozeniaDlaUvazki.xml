@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="buh-project-enums-data">
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="БюджетныеРасходы"/>
+            <column name="SYNONYM_" value="Ежекварт. отчет в казнач. по бюджетным средствам"/>
+            <column name="ORDER_" value="1"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="Расходы"/>
+            <column name="SYNONYM_" value="Расходы"/>
+            <column name="ORDER_" value="2"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="3"/>
+            <column name="NAME" value="Доходы"/>
+            <column name="SYNONYM_" value="Доходы"/>
+            <column name="ORDER_" value="3"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="4"/>
+            <column name="NAME" value="Баланс"/>
+            <column name="SYNONYM_" value="Баланс"/>
+            <column name="ORDER_" value="4"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="5"/>
+            <column name="NAME" value="Приложение1"/>
+            <column name="SYNONYM_" value="Приложение1"/>
+            <column name="ORDER_" value="5"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="6"/>
+            <column name="NAME" value="Приложение2"/>
+            <column name="SYNONYM_" value="Приложение2"/>
+            <column name="ORDER_" value="6"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="7"/>
+            <column name="NAME" value="Приложение3"/>
+            <column name="SYNONYM_" value="Приложение3"/>
+            <column name="ORDER_" value="7"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="8"/>
+            <column name="NAME" value="Приложение4"/>
+            <column name="SYNONYM_" value="Приложение4"/>
+            <column name="ORDER_" value="8"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="9"/>
+            <column name="NAME" value="Приложение5"/>
+            <column name="SYNONYM_" value="Приложение5"/>
+            <column name="ORDER_" value="9"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="10"/>
+            <column name="NAME" value="Приложение6"/>
+            <column name="SYNONYM_" value="Приложение6"/>
+            <column name="ORDER_" value="10"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="11"/>
+            <column name="NAME" value="Приложение7"/>
+            <column name="SYNONYM_" value="Приложение7"/>
+            <column name="ORDER_" value="11"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="12"/>
+            <column name="NAME" value="Приложение8"/>
+            <column name="SYNONYM_" value="Приложение8"/>
+            <column name="ORDER_" value="12"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="13"/>
+            <column name="NAME" value="Приложение9"/>
+            <column name="SYNONYM_" value="Приложение9"/>
+            <column name="ORDER_" value="13"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="14"/>
+            <column name="NAME" value="Приложение10"/>
+            <column name="SYNONYM_" value="Приложение10"/>
+            <column name="ORDER_" value="14"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="15"/>
+            <column name="NAME" value="Приложение11"/>
+            <column name="SYNONYM_" value="Приложение11"/>
+            <column name="ORDER_" value="15"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="16"/>
+            <column name="NAME" value="Приложение12"/>
+            <column name="SYNONYM_" value="Приложение12"/>
+            <column name="ORDER_" value="16"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="17"/>
+            <column name="NAME" value="Приложение13"/>
+            <column name="SYNONYM_" value="Приложение13"/>
+            <column name="ORDER_" value="17"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="18"/>
+            <column name="NAME" value="Приложение4_1"/>
+            <column name="SYNONYM_" value="Приложение4_1"/>
+            <column name="ORDER_" value="18"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="19"/>
+            <column name="NAME" value="Приложение4_2"/>
+            <column name="SYNONYM_" value="Приложение4_2"/>
+            <column name="ORDER_" value="19"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="20"/>
+            <column name="NAME" value="Приложение6_1"/>
+            <column name="SYNONYM_" value="Приложение6_1"/>
+            <column name="ORDER_" value="20"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="21"/>
+            <column name="NAME" value="Приложение8_1"/>
+            <column name="SYNONYM_" value="Приложение8_1"/>
+            <column name="ORDER_" value="21"/>
+        </insert>
+        <insert tableName="PrilozeniaDlaUvazki" schemaName="enumerations">
+            <column name="ID" value="22"/>
+            <column name="NAME" value="Приложение8_2"/>
+            <column name="SYNONYM_" value="Приложение8_2"/>
+            <column name="ORDER_" value="22"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://sotrudnikiEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="sotrudnikiDc"
+                  class="kg.infosystems.buhproject.entity.catalogs.Sotrudniki">
+            <fetchPlan extends="_base">
+                <property name="roditel1" fetchPlan="_instance_name"/>
+                <property name="fizLico" fetchPlan="_base"/>
+                <property name="osnovnojBankovskijScet" fetchPlan="_base"/>
+                <property name="drugieBankovskieSceta" fetchPlan="_base"/>
+                <property name="kartScet" fetchPlan="_base"/>
+                <property name="organizacia" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="sotrudnikiDl"/>
+            <collection id="drugieBankovskieScetaDc" property="drugieBankovskieSceta"/>
+            <collection id="kartScetaDc" property="kartScet"/>
+            <collection id="profsoyuzDc" property="profsoyuz"/>
+        </instance>
+        <collection id="kontaktnaaInformaciaDc" class="kg.infosystems.buhproject.entity.parts.catalogs.FiziceskieLicaKontaktnaaInformacia"
+                    fetchPlan="_base">
+            <loader id="kontaktnaaInformaciaDl">
+                <query>
+                    <![CDATA[select e from FiziceskieLicaKontaktnaaInformacia e where e.part=:fizLico]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox spacing="true" id="scrollBox">
+            <tabSheet width="100%">
+                <tab id="tab_1" caption="Основное" margin="true" spacing="true">
+                    <form id="form" dataContainer="sotrudnikiDc">
+                        <column width="350px">
+                            <textField id="kodField" property="kod" required="true"/>
+                            <entityPicker id="organizaciaField" property="organizacia" required="true"/>
+                            <textField id="iNNField" property="iNN" editable="false"/>
+                            <!--                        <entityPicker id="fizLicoField" property="fizLico" editable="false">-->
+                            <!--                            <actions>-->
+                            <!--                                <action id="entityLookup" type="entity_lookup"/>-->
+                            <!--                                <action id="entityClear" type="entity_clear"/>-->
+                            <!--                            </actions>-->
+                            <!--                        </entityPicker>-->
+                            <textField id="firsNameField" property="fizLico.firsName" caption="msg://firsName" editable="false"/>
+                            <textField id="nameField" property="fizLico.name" caption="msg://name" editable="false"/>
+                            <textField id="lastNameField" property="fizLico.lastName" caption="msg://lastName" editable="false"/>
+                            <entityPicker id="osnovnojBankovskijScetField" property="osnovnojBankovskijScet"/>
+                        </column>
+                    </form>
+                    <label/>
+                </tab>
+                <tab id="contactTable" caption="Контактные данные">
+                    <label/>
+                    <label value="msg://kontaktnaaInformacia"/>
+                    <label/>
+                    <table id="kontaktnaaInformaciaTable" dataContainer="kontaktnaaInformaciaDc" width="100%"
+                           height="300px" editable="true">
+                        <actions>
+                            <action id="create" type="create"/>
+                            <action id="remove" type="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="nomerStroki"/>
+                            <column id="predstavlenie" editable="true"/>
+                            <column id="znaceniaPolej" editable="true"/>
+                            <column id="strana" editable="true"/>
+                            <column id="region" editable="true"/>
+                            <column id="gorod" editable="true"/>
+                            <column id="adresEP" editable="true"/>
+                            <column id="domennoeImaServera" editable="true"/>
+                            <column id="nomerTelefona" editable="true"/>
+                            <column id="nomerTelefonaBezKodov" editable="true"/>
+                            <column id="znacenie" editable="true"/>
+                        </columns>
+                        <buttonsPanel>
+                            <button action="kontaktnaaInformaciaTable.create"/>
+                            <button action="kontaktnaaInformaciaTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </tab>
+                <tab id="tab_2" caption="Банковские счета" margin="true" spacing="true">
+                    <table id="bankovskieScetasTable" height="200px" width="100%" dataContainer="drugieBankovskieScetaDc">
+                        <actions>
+                            <action id="add" type="add"/>
+                            <action id="create" type="create"/>
+                            <action id="edit" type="edit"/>
+                            <action id="remove" type="remove"/>
+                        </actions>
+                        <buttonsPanel alwaysVisible="true">
+                            <button id="bankovskieScetasTableCreateBtn" action="bankovskieScetasTable.create"/>
+                            <button id="bankovskieScetasTableAddBtn" action="bankovskieScetasTable.add"/>
+                            <button id="bankovskieScetasTableEditBtn" action="bankovskieScetasTable.edit"/>
+                            <button id="bankovskieScetasTableRemoveBtn" action="bankovskieScetasTable.remove"/>
+                        </buttonsPanel>
+                        <columns>
+                            <column id="vladelec"/>
+                            <column id="kod"/>
+                            <column id="naimenovanie"/>
+                            <column id="prefiks"/>
+                            <column id="scetUceta"/>
+                            <column id="vidFinansirovania"/>
+                            <column id="nomerSceta"/>
+                            <column id="scetVROK"/>
+                            <column id="bank"/>
+                            <column id="sotrudniki"/>
+                        </columns>
+                    </table>
+                </tab>
+                <tab id="tab_3" caption="Карт счёта" margin="true" spacing="true">
+
+                    <table id="kartScetaSotrudnikovsTable" height="200px" width="100%" dataContainer="kartScetaDc">
+                        <actions>
+                            <action id="add" type="add"/>
+                            <action id="create" type="create"/>
+                            <action id="edit" type="edit"/>
+                            <action id="remove" type="remove"/>
+                        </actions>
+                        <buttonsPanel alwaysVisible="true">
+                            <button id="kartScetaSotrudnikovsTableCreateBtn" action="kartScetaSotrudnikovsTable.create"/>
+                            <button id="kartScetaSotrudnikovsTableAddBtn" action="kartScetaSotrudnikovsTable.add"/>
+                            <button id="kartScetaSotrudnikovsTableEditBtn" action="kartScetaSotrudnikovsTable.edit"/>
+                            <button id="kartScetaSotrudnikovsTableRemoveBtn" action="kartScetaSotrudnikovsTable.remove"/>
+                        </buttonsPanel>
+                        <columns>
+                            <column id="vladelec"/>
+                            <column id="kod"/>
+                            <column id="naimenovanie"/>
+                            <column id="bank"/>
+                            <column id="nomerSceta"/>
+                            <column id="vArhive"/>
+                            <column id="sotrudniki"/>
+                        </columns>
+                    </table>
+                </tab>
+                <tab id="tab4" caption="msg://pasportnyeDannye">
+                    <form id="form4" dataContainer="sotrudnikiDc">
+                        <column width="350px">
+                            <textField id="kod2Field" property="fizLico.kod" editable="false"/>
+                            <textField id="iNN2Field" property="fizLico.iNN" required="true" editable="false"/>
+                            <dateField id="dataRozdeniaField" property="fizLico.dataRozdenia" editable="false"/>
+                            <entityPicker id="polField" property="fizLico.pol" editable="false"/>
+                            <entityPicker id="nacional1nost1Field" property="fizLico.nacional1nost1" editable="false">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <textField id="mestoRozdeniaField" property="fizLico.mestoRozdenia" editable="false"/>
+                            <entityPicker id="grazdanstvoField" property="fizLico.grazdanstvo" editable="false">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <textField id="firsNameField1" property="fizLico.firsName" caption="msg://firsName" editable="false"/>
+                            <textField id="nameField1" property="fizLico.name" caption="msg://name" editable="false"/>
+                            <textField id="lastNameField1" property="fizLico.lastName" caption="msg://lastName" editable="false"/>
+                            <textField property="fizLico.passportNumber" caption="msg://passportNumber" editable="false"/>
+                            <textField property="fizLico.passportSeries" caption="msg://passportSeries" editable="false"/>
+                            <textField property="fizLico.issuedDate" caption="msg://issuedDate" editable="false"/>
+                            <textField property="fizLico.expiredDate" caption="msg://expire dDate" editable="false"/>
+                            <textField property="fizLico.passportAuthority" caption="msg://passportAuthority" editable="false"/>
+                            <textField property="fizLico.addressLocalityCode" editable="false"/>
+                            <textField property="fizLico.passportNumberAC" editable="false"/>
+                        </column>
+                    </form>
+                </tab>
+                <tab id="tab_5" caption="Профсоюз" margin="true" spacing="true">
+                    <table id="profsoyuzTable" width="100%" dataContainer="profsoyuzDc">
+                        <actions>
+                            <action id="create" type="create" caption="msg://kg.infosystems.buhproject.screen.catalogs.sotrudniki/Create"/>
+                            <action id="leave" caption="msg://kg.infosystems.buhproject.screen.catalogs.sotrudniki/Leave"
+                                    icon="font-icon:ALIGN_LEFT" primary="true"/>
+                        </actions>
+                        <buttonsPanel alwaysVisible="true">
+                            <button id="profsoyuzTableCreateBtn" action="profsoyuzTable.create"/>
+                            <button id="profsoyuzTableLeaveBtn" action="profsoyuzTable.leave" visible="false"/>
+                        </buttonsPanel>
+                        <columns>
+                            <column id="dataDvizenia" dateFormat="dd.MM.yyyy" resolution="DAY" sort="ASCENDING"/>
+                            <column id="vidDvizenia"/>
+                        </columns>
+                    </table>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://neavkaBrowse.caption"
+        focusComponent="neavkasTable">
+    <data readOnly="true">
+        <collection id="neavkasDc"
+                    class="kg.infosystems.buhproject.entity.documents.Neavka">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="neavkasDl">
+                <query>
+                    <![CDATA[select e from Neavka e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="neavkasTable" spacing="true">
+        <filter id="filter"
+                dataLoader="neavkasDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="neavkasTable"
+                    width="100%"
+                    dataContainer="neavkasDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="reportAction" icon="PRINT" type="itemTracking"/>
+                <action id="refresh" type="refresh"/>
+                <action id="provesti" type="itemTracking" icon="DIALOG_OK"/>
+                <action id="otmenit1Provedenie" icon="BOOK" type="itemTracking"/>
+            </actions>
+            <columns>
+                <column id="nomer"/>
+                <column id="data"/>
+                <!--                <column id="proveden"/>-->
+                <column id="organizacia"/>
+                <!--                <column id="vidNeavki"/>-->
+                <column id="kommentarij"/>
+                <column id="avtor"/>
+                <column id="dataDeistvia"
+                        caption="msg:///dataDeistvia.caption">
+                    <formatter>
+                        <date format="MM/yyyy"/>
+                    </formatter>
+                </column>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="neavkasTable.create"/>
+                <button id="editBtn" action="neavkasTable.edit"/>
+                <button id="removeBtn" action="neavkasTable.remove"/>
+                <button id="provestiBtn" action="neavkasTable.provesti"/>
+                <button id="otmenit1ProvestiBtn" action="neavkasTable.otmenit1Provedenie"/>
+                <comboBox id="reportTemplates" nullOptionVisible="false" nullName="Печать"/>
+                <button id="reportRunBtn" action="neavkasTable.reportAction"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

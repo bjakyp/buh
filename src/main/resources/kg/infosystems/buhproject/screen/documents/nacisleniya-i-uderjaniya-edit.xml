@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://nacisleniyaIUderjaniyaEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="nacisleniyaIUderjaniyaDc"
+                  class="kg.infosystems.buhproject.entity.documents.NacisleniyaIUderjaniya">
+            <fetchPlan extends="_base">
+                <property name="nacislenia" fetchPlan="_base"/>
+                <property name="uderjania" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="nacisleniaDc" property="nacislenia"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="800"
+                width="1200"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox spacing="true" id="scrollBox">
+            <form id="form" dataContainer="nacisleniyaIUderjaniyaDc">
+                <column width="200px">
+                    <textField id="nomerField" property="nomer" caption="Табельный номер"/>
+                </column>
+                <column width="500px">
+                    <entityPicker id="rabotnikField" property="sotrudnik" caption="Сотрудник" editable="false">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+            </form>
+            <groupBox id="nacisleniaBox"
+                      caption="msg://kg.infosystems.buhproject.entity.documents/NacisleniaIUderjania.nacislenia">
+                <table id="nacisleniaTable" dataContainer="nacisleniaDc" width="100%" height="450px" editable="true">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="podrazdelenie" editable="true"/>
+                        <column id="dolznost1" editable="true"/>
+                        <column id="dataNacala" editable="true" resolution="DAY"/>
+                        <column id="dataOkoncania" editable="true" resolution="DAY"/>
+                        <column id="vidRasceta" editable="true"  caption="Вид начисления"/>
+                        <column id="grafikRaboty" editable="true"/>
+                        <column id="normaDnej" editable="true"/>
+                        <column id="normaCasov" editable="true"/>
+                        <column id="otrabotanoDnej" editable="true"/>
+                        <column id="otrabotanoCasov" editable="true"/>
+                        <column id="razmer" editable="true"/>
+                        <column id="rezul1tat" editable="true"/>
+
+                    </columns>
+                    <buttonsPanel>
+                        <button action="nacisleniaTable.create"/>
+                        <button action="nacisleniaTable.remove"/>
+                    </buttonsPanel>
+                </table>
+                <form id="form1" dataContainer="nacisleniyaIUderjaniyaDc">
+                    <column width="215px">
+                        <label/>
+                        <textField id="neOblagaemajaCastPNField" property="neOblagaemajaCastPN"  editable="false"/>
+                    </column>
+                    <column width="215px">
+                        <label/>
+                        <textField id="neOblagaemajaCastSVField" property="neOblagaemajaCastSV"  editable="false"/>
+                    </column>
+                    <column width="215px">
+                        <label/>
+                        <textField id="nacislenoField" property="nacisleno"  editable="false"/>
+                    </column>
+                </form>
+            </groupBox>
+            <!--<groupBox id="uderjaniaBox"
+                      caption="msg://kg.infosystems.buhproject.entity.documents/NacisleniyaIUderjaniya.uderjania">
+                <table id="uderjaniaTable" dataContainer="uderjaniaDc" width="100%" height="300px" editable="true">
+                    <actions>
+                        <action id="remove" type="remove"/>
+                        <action id="create" type="create"/>
+                    </actions>
+                    <columns>
+                        <column id="dataNacala" editable="true" resolution="DAY"/>
+                        <column id="dataOkoncania" editable="true" resolution="DAY"/>
+                        <column id="vidRasceta" editable="true"  caption="msg://kg.infosystems.buhproject.screen.documents.nacisleniezarplaty/vidUderjania"/>
+                        <column id="razmer" editable="true"/>
+                        <column id="rezul1tat" editable="true"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="uderjaniaTable.create"/>
+                        <button action="uderjaniaTable.remove"/>
+                    </buttonsPanel>
+                </table>
+                <form id="form2" dataContainer="nacisleniyaIUderjaniyaDc">
+                    <column width="300px">
+                        <label/>
+                    </column>
+                    <column width="300px">
+                        <label/>
+                    </column>
+                    <column width="300px">
+                        <label/>
+                    </column>
+                    <column width="300px">
+                        <textField id="uderjanoField" property="uderjano" editable="false"/>
+                    </column>
+                </form>
+            </groupBox>-->
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

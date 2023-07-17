@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="buh">
+        <sql>create schema accounts</sql>
+        <sql>create schema comps</sql>
+        <sql>create schema catalogs</sql>
+        <sql>create schema characteristics</sql>
+        <sql>create schema documents</sql>
+        <sql>create schema enumerations</sql>
+        <sql>create schema publications</sql>
+        <sql>create schema accumulations</sql>
+        <sql>create schema informations</sql>
+        <sql>create schema parts_catalogs</sql>
+        <sql>create schema parts_characteristics</sql>
+        <sql>create schema parts_documents</sql>
+        <sql>create schema globals</sql>
+    </changeSet>
+</databaseChangeLog>

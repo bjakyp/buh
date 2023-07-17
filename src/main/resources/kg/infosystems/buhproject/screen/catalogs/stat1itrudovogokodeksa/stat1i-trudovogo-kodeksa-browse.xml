@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://stat1iTrudovogoKodeksaBrowse.caption"
+        focusComponent="stat1iTrudovogoKodeksasTable">
+    <data readOnly="true">
+        <collection id="stat1iTrudovogoKodeksasDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.Stat1iTrudovogoKodeksa">
+            <fetchPlan extends="_base"/>
+            <loader id="stat1iTrudovogoKodeksasDl">
+                <query>
+                    <![CDATA[select e from Stat1iTrudovogoKodeksa e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="stat1iTrudovogoKodeksasTable" spacing="true">
+        <filter id="filter"
+                dataLoader="stat1iTrudovogoKodeksasDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="stat1iTrudovogoKodeksasTable"
+                    width="100%"
+                    dataContainer="stat1iTrudovogoKodeksasDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="naimenovanie"/>
+                <column id="osnovanie"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="stat1iTrudovogoKodeksasTable.create"/>
+                <button id="editBtn" action="stat1iTrudovogoKodeksasTable.edit"/>
+                <button id="removeBtn" action="stat1iTrudovogoKodeksasTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

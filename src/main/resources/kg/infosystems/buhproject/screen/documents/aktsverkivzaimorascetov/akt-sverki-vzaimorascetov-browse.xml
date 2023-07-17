@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://aktSverkiVzaimorascetovBrowse.caption"
+        focusComponent="aktSverkiVzaimorascetovsTable">
+    <data readOnly="true">
+        <collection id="aktSverkiVzaimorascetovsDc"
+                    class="kg.infosystems.buhproject.entity.documents.AktSverkiVzaimorascetov">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="kontragent" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="aktSverkiVzaimorascetovsDl">
+                <query>
+                    <![CDATA[select e from AktSverkiVzaimorascetov e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="aktSverkiVzaimorascetovsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="aktSverkiVzaimorascetovsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="aktSverkiVzaimorascetovsTable"
+                    width="100%"
+                    dataContainer="aktSverkiVzaimorascetovsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="data"/>
+                <column id="nomer"/>
+<!--                <column id="proveden"/>-->
+                <column id="organizacia"/>
+                <column id="vidFinansirovania"/>
+                <column id="kontragent"/>
+<!--                <column id="sverkaSoglasovana"/>-->
+<!--                <column id="nacaloPerioda"/>-->
+<!--                <column id="konecPerioda"/>-->
+<!--                <column id="sverkaPoSocFondu"/>-->
+<!--                <column id="isklucit1IzPredstavleniaDokumenta"/>-->
+<!--                <column id="sSapkojUtverzdau"/>-->
+<!--                <column id="ucityvat1Vzaimozacety"/>-->
+<!--                <column id="raznoglasie"/>-->
+<!--                <column id="ostatokNaNacalo"/>-->
+<!--                <column id="ostatokNaKonec"/>-->
+                <column id="kommentarij"/>
+                <column id="avtor"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="aktSverkiVzaimorascetovsTable.create"/>
+                <button id="editBtn" action="aktSverkiVzaimorascetovsTable.edit"/>
+                <button id="removeBtn" action="aktSverkiVzaimorascetovsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

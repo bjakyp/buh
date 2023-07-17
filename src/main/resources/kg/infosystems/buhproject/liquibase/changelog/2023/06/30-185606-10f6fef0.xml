@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="buh-project">
+        <addColumn schemaName="comps" tableName="STAVKI_PODOHODNOGO_NALOGA">
+            <column name="DATA_SOZDANIE" type="DATE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2" author="buh-project">
+        <addColumn schemaName="comps" tableName="TARIFY_PODOHODNOGO_NALOGA">
+            <column name="DATA_VSTUPLENIE_DEISTVIE" type="DATE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="3" author="buh-project">
+        <dropColumn columnName="data_sozdanie" schemaName="comps" tableName="tarify_podohodnogo_naloga"/>
+
+        <dropColumn columnName="kod" schemaName="comps" tableName="tarify_podohodnogo_naloga"/>
+
+        <dropColumn columnName="prim_test" schemaName="comps" tableName="tarify_podohodnogo_naloga"/>
+    </changeSet>
+    <changeSet id="4" author="buh-project">
+        <dropColumn columnName="data_vstuplenie_deistvie" schemaName="comps" tableName="stavki_podohodnogo_naloga"/>
+        <dropColumn columnName="prom_test" schemaName="comps" tableName="stavki_podohodnogo_naloga"/>
+    </changeSet>
+    <changeSet id="5" author="buh-project-enums-data">
+        <insert tableName="PROCENTY" schemaName="enumerations">
+            <column name="ID" value="bf375173-7268-8c58-88a7-3b650f3fcab6"/>
+            <column name="PROCENT" value="60"/>
+        </insert>
+        <insert tableName="PROCENTY" schemaName="enumerations">
+            <column name="ID" value="66fdcbe5-fb0a-84e6-d409-5bee8cfe07a0"/>
+            <column name="PROCENT" value="80"/>
+        </insert>
+        <insert tableName="PROCENTY" schemaName="enumerations">
+            <column name="ID" value="2129a77c-3fa2-e493-332b-0bcc5333ceb3"/>
+            <column name="PROCENT" value="100"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

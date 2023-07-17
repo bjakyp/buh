@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd" objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="buh-project">
+        <addColumn schemaName="documents" tableName="KadrovoePeremesenie">
+            <column name="KATEGORIA_RABOTNIKOV_ID" type="UUID"/>
+            <column name="KOLVO_IJDIVENCEV" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2" author="buh-project">
+        <addColumn schemaName="documents" tableName="PriemNaRabotu">
+            <column name="KATEGORIA_RABOTNIKOV_ID" type="UUID"/>
+            <column name="KOLVO_IJDIVENCEV" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="3" author="buh-project">
+        <addColumn schemaName="informations" tableName="SotrudnikiIr">
+            <column name="KATEGORIA_RABOTNIKOV_ID" type="UUID"/>
+            <column name="KOLVO_IJDIVENCEV" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="4" author="buh-project">
+        <createIndex indexName="IDX_KADROVOEPEREMESENIE_KATEGORIA_RABOTNIKOV" schemaName="documents" tableName="KadrovoePeremesenie">
+            <column name="KATEGORIA_RABOTNIKOV_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="KATEGORIA_RABOTNIKOV_ID" baseTableName="KadrovoePeremesenie"
+                                 baseTableSchemaName="documents" constraintName="FK_KADROVOEPEREMESENIE_ON_KATEGORIA_RABOTNIKOV"
+                                 referencedColumnNames="ID" referencedTableName="KATEGORIA_RABOTNIKOV" referencedTableSchemaName="comps"/>
+    </changeSet>
+    <changeSet id="5" author="buh-project">
+        <createIndex indexName="IDX_PRIEMNARABOTU_KATEGORIA_RABOTNIKOV" schemaName="documents" tableName="PriemNaRabotu">
+            <column name="KATEGORIA_RABOTNIKOV_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="KATEGORIA_RABOTNIKOV_ID" baseTableName="PriemNaRabotu" baseTableSchemaName="documents"
+                                 constraintName="FK_PRIEMNARABOTU_ON_KATEGORIA_RABOTNIKOV" referencedColumnNames="ID"
+                                 referencedTableName="KATEGORIA_RABOTNIKOV" referencedTableSchemaName="comps"/>
+    </changeSet>
+    <changeSet id="6" author="buh-project">
+        <addForeignKeyConstraint baseColumnNames="KATEGORIA_RABOTNIKOV_ID" baseTableName="SotrudnikiIr" baseTableSchemaName="informations"
+                                 constraintName="FK_SOTRUDNIKIIR_ON_KATEGORIA_RABOTNIKOV" referencedColumnNames="ID"
+                                 referencedTableName="KATEGORIA_RABOTNIKOV" referencedTableSchemaName="comps"/>
+    </changeSet>
+    <changeSet id="7" author="buh-project">
+        <dropColumn columnName="dop_vycet" schemaName="documents" tableName="priemnarabotu"/>
+    </changeSet>
+    <changeSet id="8" author="buh-project">
+        <dropNotNullConstraint columnDataType="uuid" columnName="STATUS_ID" schemaName="documents" tableName="PriemNaRabotu"/>
+    </changeSet>
+</databaseChangeLog>

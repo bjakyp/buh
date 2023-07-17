@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://peremesenieOSINMABrowse.caption"
+        focusComponent="peremesenieOSINMAsTable">
+    <data readOnly="true">
+        <collection id="peremesenieOSINMAsDc"
+                    class="kg.infosystems.buhproject.entity.documents.PeremesenieOSINMA">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="mOLOtpravitel1" fetchPlan="_instance_name"/>
+                <property name="podrazdelenieOtpravitel1" fetchPlan="_instance_name"/>
+                <property name="mOLPolucatel1" fetchPlan="_instance_name"/>
+                <property name="podrazdeleniePolucatel1" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="peremesenieOSINMAsDl">
+                <query>
+                    <![CDATA[select e from PeremesenieOSINMA e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="peremesenieOSINMAsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="peremesenieOSINMAsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="peremesenieOSINMAsTable"
+                    width="100%"
+                    dataContainer="peremesenieOSINMAsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="data"/>
+                <column id="nomer"/>
+<!--                <column id="proveden"/>-->
+                <column id="organizacia"/>
+                <column id="vidFinansirovania"/>
+                <column id="mOLOtpravitel1"/>
+                <column id="podrazdelenieOtpravitel1"/>
+                <column id="mOLPolucatel1"/>
+                <column id="podrazdeleniePolucatel1"/>
+                <column id="kommentarij"/>
+                <column id="avtor"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="peremesenieOSINMAsTable.create"/>
+                <button id="editBtn" action="peremesenieOSINMAsTable.edit"/>
+                <button id="removeBtn" action="peremesenieOSINMAsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

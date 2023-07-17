@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://sotrudnikiBrowse.caption"
+        focusComponent="sotrudnikisTable">
+    <data readOnly="true">
+        <collection id="sotrudnikisDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.Sotrudniki">
+            <fetchPlan extends="_base">
+                <property name="roditel1" fetchPlan="_instance_name"/>
+                <property name="fizLico" fetchPlan="_instance_name"/>
+                <property name="osnovnojBankovskijScet" fetchPlan="_base"/>
+                <property name="organizacia" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="sotrudnikisDl">
+                <query>
+                    <![CDATA[select e from Sotrudniki e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="sotrudnikisTable" spacing="true">
+        <filter id="filter"
+                dataLoader="sotrudnikisDl">
+            <properties include=".*"/>
+        </filter>
+        <treeTable id="sotrudnikisTable"
+                   width="100%"
+                   dataContainer="sotrudnikisDc"
+                   hierarchyProperty="roditel1">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="kod"/>
+                <column id="naimenovanie"/>
+                <column id="organizacia"/>
+                <column id="etoGruppa"/>
+                <column id="fizLico"/>
+                <column id="osnovnojBankovskijScet"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="sotrudnikisTable.create"/>
+                <button id="editBtn" action="sotrudnikisTable.edit"/>
+                <button id="removeBtn" action="sotrudnikisTable.remove"/>
+            </buttonsPanel>
+        </treeTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

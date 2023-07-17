@@ -1,0 +1,32 @@
+<fetchPlans xmlns="http://jmix.io/schema/core/fetch-plans">
+    <fetchPlan entity="BudgetInstitutionAccount" name="budgetInstitutionAccount-fetch-plan" extends="_base">
+        <property name="budgetInstitution" fetchPlan="_base"/>
+        <property name="accountType" fetchPlan="_base"/>
+        <property name="vedomClassifier" fetchPlan="_base"/>
+        <property name="functionClassifier" fetchPlan="_base"/>
+        <property name="budget" fetchPlan="_base"/>
+    </fetchPlan>
+
+    <fetchPlan entity="Organizacii" name="organizacii-fetch-plan" extends="_base"/>
+    <fetchPlan entity="Rok" name="rok-fetch-plan" extends="_base"/>
+
+    <fetchPlan entity="informations_Sotrudniki" name="sotrudniki-fetch-plan" extends="_base">
+        <property name="registrator" fetchPlan="_base"/>
+        <property name="organizacia" fetchPlan="_base"/>
+        <property name="sotrudnik" fetchPlan="_base"/>
+        <property name="podrazdelenie" fetchPlan="_base"/>
+        <property name="dolznost1" fetchPlan="_base"/>
+        <property name="grafikRaboty" fetchPlan="_base"/>
+        <property name="vidSobytia" fetchPlan="_base"/>
+    </fetchPlan>
+
+    <fetchPlan entity="Hozrascetnyj" name="hozrascetnyj-fetch-plan" extends="_base">
+        <property name="parent" fetchPlan="_base"/>
+    </fetchPlan>
+    <fetchPlan entity="NacisleniaNacisleniaIUderjania" name="nacisleniaNacisleniaIUderjania-fetch-plan" extends="_base">
+        <property name="sotrudnik" fetchPlan="_base"/>
+        <property name="podrazdelenie" fetchPlan="_base"/>
+        <property name="dolznost1" fetchPlan="_base"/>
+        <property name="grafikRaboty" fetchPlan="_base"/>
+    </fetchPlan>
+</fetchPlans>

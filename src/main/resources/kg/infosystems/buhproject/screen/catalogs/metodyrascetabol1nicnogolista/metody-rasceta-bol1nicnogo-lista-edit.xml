@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://metodyRascetaBol1nicnogoListaEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="metodyRascetaBol1nicnogoListaDc"
+                  class="kg.infosystems.buhproject.entity.catalogs.MetodyRascetaBol1nicnogoLista">
+            <fetchPlan extends="_base">
+                <property name="nepolnyeMesacy" fetchPlan="_instance_name"/>
+                <property name="vidRascetaOrganizacia" fetchPlan="_instance_name"/>
+                <property name="vidRascetaSF" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="metodyRascetaBol1nicnogoListaDc">
+            <column width="350px">
+                <textField id="naimenovanieField" property="naimenovanie"/>
+                <entityPicker id="nepolnyeMesacyField" property="nepolnyeMesacy">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+                <entityPicker id="vidRascetaOrganizaciaField" property="vidRascetaOrganizacia">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+                <entityPicker id="vidRascetaSFField" property="vidRascetaSF">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

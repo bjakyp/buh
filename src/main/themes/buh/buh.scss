@@ -1,0 +1,83 @@
+@import "../helium/helium";
+
+@mixin buh {
+    @include helium;
+
+    .jmix-drawer {
+        width: 400px;
+    }
+    .jmix-drawer.collapsed.expand-on-hover:hover {
+        width: 400px;
+    }
+    .peremesenie {
+        height: 35px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 6px
+    }
+    .lastValue1 {
+        color: #8A2BE2;
+        font-size: 200%;
+        margin-bottom: 7px
+    }
+    .sb {
+        color: mediumvioletred;
+    }
+    .vs {
+        color: darkred;
+    }
+    .button-green {
+        color: limegreen;
+        text-align: center;
+    }
+    .button-redik {
+        color: palevioletred;
+        text-align: center;
+    }
+    .button-red {
+        color: darkred;
+        text-align: center;
+    }
+    .button-redd {
+        color: orangered;
+        text-align: center;
+    }
+    .button-BeforeRedd {
+        color: lightpink;
+        text-align: center;
+    }
+    .button-deepskyblue {
+        color: deepskyblue;
+        text-align: center;
+    }
+    .button-royalblue {
+        color: royalblue;
+        text-align: center;
+    }
+    .demo > .v-label {
+        display: flex;
+        //background-color: #87CEEB;
+        background-color: #d3d3d3;
+        color: #111;
+        border-radius: 5px;
+        padding: 20px;
+        font-size: smaller;
+        text-align: center;
+        white-space: pre-wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /*
+    .nalogiPoZarplateTable {
+      background-color: lightyellow;
+    }
+
+    .nalogiPoZarplateTable {
+      td:nth-child(3), td:nth-child(4), td:nth-child(5),
+      td:nth-child(7), td:nth-child(8) {
+        display: block;
+      }
+    }
+    */
+}

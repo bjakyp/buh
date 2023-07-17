@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="Удержания СВ и ПН"
+        focusComponent="form">
+    <data>
+        <instance id="uderjaniaNacisleniaIUderjaniaDc"
+                  class="kg.infosystems.buhproject.entity.parts.documents.UderjaniaNacisleniaIUderjania">
+            <fetchPlan extends="_base">
+                <property name="nacisleniyaIUderjaniya" fetchPlan="_base"/>
+                <property name="kategoriaRabotnika" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="700"
+                width="1000"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="uderjaniaNacisleniaIUderjaniaDc" width="99%">
+                <column flex="2">
+                    <textField id="FIOField" editable="false" caption="ФИО"/>
+                    <entityPicker id="kategoriaRabotnikaField" property="kategoriaRabotnika" caption="Категория раб-ка">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+                <column flex="1">
+                    <textField id="nacislenoField" property="nacisleno" editable="false" caption="Начислено"/>
+                    <textField id="tipDohodaField" property="tipDohoda" align="MIDDLE_RIGHT" caption="Код дохода"/>
+                </column>
+                <column flex="1.7">
+                    <dateField id="dataNacalaField" property="dataNacala" resolution="DAY"/>
+                    <dateField id="dataOkoncaniaField" property="dataOkoncania" resolution="DAY"/>
+                </column>
+                <column flex="1.1">
+                    <textField id="normaDnejField" property="normaDnej" css="margin-left: -2px;" />
+                    <textField id="otrabotanoDnejField" property="otrabotanoDnej" css="margin-left: -2px;"/>
+                </column>
+            </form>
+            <tabSheet id="tabSheet">
+                <tab id="tab1" caption="Удержания СВ">
+                    <form id="form1" dataContainer="uderjaniaNacisleniaIUderjaniaDc" width="100%">
+                        <column width="100%">
+                            <label stylename="bold" value="Расчет страховой базы" css="margin-bottom: 3px; margin-top: 10px;"/>
+                            <label width="100%" css="border-top: 3px solid #32a1ce; margin-bottom: -10px; margin-top: -10px;"/>
+                            <textField id="nacislenieNeOblSVField" property="nacislenieNeOblSV"/>
+                            <textField id="nacislenieOblSVField" property="nacislenieOblSV" editable="false" stylename="borderless"/>
+                            <label stylename="bold" value="Расчет страховых взносов" css="margin-bottom: 3px; margin-top: 5px;"/>
+                            <label width="100%" css="border-top: 3px solid #32a1ce; margin-bottom: -10px; margin-top: -10px;"/>
+                            <label stylename="bold" value="СВ с работника" css="margin-bottom: 10px; text-align: center"/>
+                            <textField id="pfSRabotnikaField" property="pfSRabotnika" editable="false" caption="ПФ" stylename="borderless"/>
+                            <textField id="fomsSRabotnikaField" property="fomsSRabotnika" editable="false" caption="ФОМС"
+                                       stylename="borderless"/>
+                            <textField id="fotSRabotnikaField" property="fotSRabotnika" editable="false" caption="ФОТ"
+                                       stylename="borderless"/>
+                            <textField id="gnpfSRabotnikaField" property="gnpfSRabotnika" editable="false" caption="ГНПФ"
+                                       stylename="borderless"/>
+                            <textField id="itogoGNPFField" property="itogoSRabotnika" editable="false" caption="Итого"
+                                       stylename="borderless"/>
+                        </column>
+                        <column width="100%">
+                            <label/>
+                            <label width="102%" css="border-top: 3px solid #32a1ce; margin-bottom: -10px; margin-top: -10px; margin-left: -12px;"/>
+                            <textField stylename="borderless" editable="false"/>
+                            <textField id="dopFotField" property="dopFot"
+                                       caption="Доп. ФОТ" editable="false" stylename="borderless"/>
+                            <label/>
+                            <label width="102%" css="border-top: 3px solid #32a1ce; margin-bottom: -10px; margin-top: -10px; margin-left: -12px;"/>
+                            <label stylename="bold" value="СВ с работодателя" css="margin-bottom: 10px; text-align: center"/>
+                            <textField id="pfSRabotodatelemField" property="pfSRabotodatela" editable="false" caption="ПФ"
+                                       stylename="borderless"/>
+                            <textField id="fomsSRabotodatelaField" property="fomsSRabotodatela" editable="false" caption="ФОМС"
+                                       stylename="borderless"/>
+                            <textField id="fotSRabotodatelaField" property="fotSRabotodatela" editable="false" caption="ФОТ"
+                                       stylename="borderless"/>
+                            <textField stylename="borderless" editable="false"/>
+                            <textField id="itogoPFField" property="itogoSRabotodatela" editable="false" stylename="borderless"
+                                       caption="Итого"/>
+                        </column>
+                    </form>
+                </tab>
+                <tab id="tab2" caption="Удержания ПН">
+                    <form id="form2" dataContainer="uderjaniaNacisleniaIUderjaniaDc" width="100%">
+                        <column width="100%">
+                            <label stylename="bold" value="Подоходный налог" css="margin-bottom: 3px; margin-top: 10px;"/>
+                            <label width="100%" css="border-top: 3px solid #32a1ce; margin-bottom: -10px; margin-top: -10px;"/>
+                            <textField id="koefPersVucetaField" property="koefPersVuceta" caption="Коэф. персонального вычета"/>
+                            <textField id="kolicestvoIjdevensevField" property="kolicestvoIjdevensev" caption="Кол-во иждивенцев"/>
+                            <textField id="izVycetaNegosPFField" property="izVycetaNegosPF" caption="Негосуд. ПФ"/>
+                            <label stylename="bold" value="Расчет налоговой базы ПН" css="margin-bottom: 3px; margin-top: 5px;"/>
+                            <label width="100%" css="border-top: 3px solid #32a1ce; margin-bottom: -10px; margin-top: -10px;"/>
+                            <textField id="nacislenieNeOblPNField" property="nacislenieNeOblPN" caption="Доход не облагаемый ПН"/>
+                            <textField id="nacislenieOblPNField" property="nacislenieOblPN" caption="Доход облагаемый ПН" editable="false"
+                                       stylename="borderless"/>
+                            <label stylename="bold" value="Расчет подоходного налога" css="margin-bottom: 3px; margin-top: 5px;"/>
+                            <label width="100%" css="border-top: 3px solid #32a1ce; margin-bottom: -10px; margin-top: -10px;"/>
+                            <textField id="pnField" property="pn" caption="ПН" editable="false" stylename="borderless"/>
+                            <textField id="itogoPNField23" property="itogoPN" editable="false" stylename="borderless" caption="Итого ПН"/>
+                        </column>
+                        <column width="100%">
+                            <label/>
+                            <label width="102%" css="border-top: 3px solid #32a1ce; margin-bottom: -10px; margin-top: -10px; margin-left: -12px;"/>
+                            <textField id="personalnyjVycetField" property="personalnyjVycet" editable="false"
+                                       stylename="borderless" caption="Персональный вычет"/>
+                            <textField id="vycetyNaIjdivensevField" property="vycetyNaIjdivensev" editable="false"
+                                       stylename="borderless" caption="Вычеты на иждивенцев"/>
+                            <textField id="izVycetaPoGosSVField" property="itogoSRabotnika" caption="Гос. страхование"
+                                       editable="false" stylename="borderless"/>
+                            <label/>
+                            <label width="102%" css="border-top: 3px solid #32a1ce; margin-bottom: -10px; margin-top: -10px; margin-left: -12px;"/>
+                            <textField id="summaStandartnihVycetovField2" property="summaStandartnihVycetov"
+                                       caption="Стандартный вычет" editable="false" stylename="borderless"/>
+                            <textField id="dopMRDField" property="dopMRD" caption="Доп МРД"/>
+                            <label/>
+                            <label width="102%" css="border-top: 3px solid #32a1ce; margin-bottom: -10px; margin-top: -10px; margin-left: -12px;"/>
+                            <textField id="pnOtMrdField23" property="pnOtMrd" editable="false" caption="ПН от МРД"
+                                       stylename="borderless"/>
+                            <textField stylename="borderless" editable="false"/>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

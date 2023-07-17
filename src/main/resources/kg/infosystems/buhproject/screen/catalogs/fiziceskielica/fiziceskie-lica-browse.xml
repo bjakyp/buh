@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://fiziceskieLicaBrowse.caption"
+        focusComponent="fiziceskieLicasTable">
+    <data readOnly="true">
+        <collection id="fiziceskieLicasDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.FiziceskieLica">
+            <fetchPlan extends="_base">
+                <property name="roditel1" fetchPlan="_instance_name"/>
+                <property name="pol" fetchPlan="_instance_name"/>
+                <property name="grazdanstvo" fetchPlan="_instance_name"/>
+                <property name="nacional1nost1" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="fiziceskieLicasDl">
+                <query>
+                    <![CDATA[select e from FiziceskieLica e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="fiziceskieLicasTable" spacing="true">
+        <filter id="filter"
+                dataLoader="fiziceskieLicasDl">
+            <properties include=".*"/>
+        </filter>
+        <treeTable id="fiziceskieLicasTable"
+                   width="100%"
+                   dataContainer="fiziceskieLicasDc"
+                   hierarchyProperty="roditel1">
+            <actions>
+                <action id="edit" type="edit"/>
+            </actions>
+            <columns>
+                <column id="kod"/>
+                <column id="naimenovanie"/>
+                <column id="roditel1"/>
+                <column id="etoGruppa"/>
+                <column id="dataRozdenia"/>
+                <column id="pol"/>
+                <column id="mestoRozdenia"/>
+                <column id="grazdanstvo"/>
+                <column id="fIO"/>
+                <column id="iNN"/>
+                <column id="nacional1nost1"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="editBtn" action="fiziceskieLicasTable.edit"/>
+            </buttonsPanel>
+        </treeTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

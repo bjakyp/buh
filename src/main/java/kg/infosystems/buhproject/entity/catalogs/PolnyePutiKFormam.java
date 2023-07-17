@@ -1,0 +1,50 @@
+package kg.infosystems.buhproject.entity.catalogs;
+
+import io.jmix.core.annotation.*;
+import io.jmix.core.entity.annotation.*;
+import io.jmix.core.metamodel.annotation.*;
+import javax.persistence.*;
+import lombok.*;
+import java.time.LocalDateTime;
+import java.util.UUID;
+import java.math.BigDecimal;
+
+import kg.infosystems.buhproject.entity.templates.BaseEntity;
+
+@JmixEntity
+@Entity
+@Table(name = "PolnyePutiKFormam", schema = "catalogs")
+@Getter
+@Setter
+public class PolnyePutiKFormam {
+	@Column(name = "ID", nullable = false)
+	@Id
+	@JmixGeneratedValue
+    private UUID id;
+
+	@Column(name = "VERSIA_DANNYH")
+	@Version
+    private Integer versiaDannyh;
+
+	@DeletedBy
+	@Column(name = "DELETED_BY")
+    private String deletedBy;
+
+	@DeletedDate
+	@Column(name = "DELETED_DATE")
+    private LocalDateTime deletedDate;
+
+	@Column(name = "KOD", length = 9)
+    private String kod;
+
+	@Column(name = "NAIMENOVANIE", length = 150)
+    private String naimenovanie;
+
+	@Lob
+	@Column(name = "POLNYJ_PUT1_K_FORME")
+    private String polnyjPut1KForme;
+
+	@Column(name = "HES", length = 32)
+    private String hes;
+
+}

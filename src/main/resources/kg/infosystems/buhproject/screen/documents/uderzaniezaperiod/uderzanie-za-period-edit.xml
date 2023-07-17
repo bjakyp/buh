@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://uderzanieZaPeriodEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="uderzanieZaPeriodDc"
+                  class="kg.infosystems.buhproject.entity.documents.UderzanieZaPeriod">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="sotrudnik" fetchPlan="_instance_name"/>
+                <property name="vidRasceta" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="uderzania" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="uderzaniaDc" property="uderzania"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="uderzanieZaPeriodDc">
+                <column width="350px">
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data"/>
+<!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="sotrudnikField" property="sotrudnik">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+            </form>
+            <tabSheet id="tabSheet" height="600px">
+                <tab id="tab1" caption="Параметры удержания" spacing="true" margin="true" expand="uderzaniaBox">
+                    <form dataContainer="uderzanieZaPeriodDc">
+                        <column width="350px">
+                            <entityPicker id="vidRascetaField" property="vidRasceta">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <dateField id="dataNacalaField" property="dataNacala"/>
+                            <dateField id="dataOkoncaniaField" property="dataOkoncania"/>
+                            <textField id="summaDokumentaField" property="summaDokumenta"/>
+                        </column>
+                    </form>
+                    <groupBox id="uderzaniaBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/UderzanieZaPeriod.uderzania" expand="uderzaniaTable">
+                        <table id="uderzaniaTable" dataContainer="uderzaniaDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="rucnaaKorrektirovka" editable="true"/>
+                                <column id="periodRegistracii" editable="true"/>
+                                <column id="razmer" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="uderzaniaTable.create"/>
+<!--                                <button action="uderzaniaTable.edit"/>-->
+                                <button action="uderzaniaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="Дополнительно" spacing="true" margin="true">
+                    <form dataContainer="uderzanieZaPeriodDc">
+                        <column width="350px">
+                            <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                            <entityPicker id="avtorField" property="avtor">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

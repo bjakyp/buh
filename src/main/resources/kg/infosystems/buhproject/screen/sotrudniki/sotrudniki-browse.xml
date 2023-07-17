@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://sotrudnikiBrowse.caption"
+        focusComponent="sotrudnikisTable">
+    <data readOnly="true">
+        <collection id="sotrudnikisDc"
+                    class="kg.infosystems.buhproject.entity.registers.informations.Sotrudniki">
+            <fetchPlan extends="_base">
+                <property name="registrator" fetchPlan="_base"/>
+                <property name="organizacia" fetchPlan="_base"/>
+                <property name="sotrudnik" fetchPlan="_base"/>
+                <property name="podrazdelenie" fetchPlan="_base"/>
+                <property name="dolznost1" fetchPlan="_base"/>
+                <property name="grafikRaboty" fetchPlan="_base"/>
+                <property name="vidSobytia" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="sotrudnikisDl">
+                <query>
+                    <![CDATA[select e from informations_Sotrudniki e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="sotrudnikisTable" spacing="true">
+        <filter id="filter"
+                dataLoader="sotrudnikisDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="sotrudnikisTable"
+                    width="100%"
+                    dataContainer="sotrudnikisDc">
+            <actions>
+                <action id="view" type="view"/>
+                <action id="refresh" type="refresh"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="registrator"/>
+                <column id="period"/>
+                <column id="nomerStroki"/>
+                <column id="aktivnost1"/>
+                <column id="organizacia"/>
+                <column id="sotrudnik"/>
+                <column id="podrazdelenie"/>
+                <column id="dolznost1"/>
+                <column id="zanimaemyhStavok"/>
+                <column id="grafikRaboty"/>
+                <column id="vidSobytia"/>
+                <column id="ispytatel1nyjSrok"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="refreshBtn" action="sotrudnikisTable.refresh"/>
+                <button id="removeBtn" action="sotrudnikisTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

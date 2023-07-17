@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://planovyeNacisleniaNacaloBrowse.caption"
+        focusComponent="planovyeNacisleniaNacaloesTable">
+    <data readOnly="true">
+        <collection id="planovyeNacisleniaNacaloesDc"
+                    class="kg.infosystems.buhproject.entity.registers.informations.PlanovyeNacisleniaNacalo">
+            <fetchPlan extends="_base">
+                <property name="registrator" fetchPlan="_base"/>
+                <property name="organizacia" fetchPlan="_base"/>
+                <property name="sotrudnik" fetchPlan="_base"/>
+                <property name="vidRasceta" fetchPlan="_base"/>
+                <property name="podrazdelenie" fetchPlan="_base"/>
+                <property name="dolznost1" fetchPlan="_base"/>
+                <property name="grafikRaboty" fetchPlan="_base"/>
+                <property name="priemNaRabotu" fetchPlan="_base"/>
+                <property name="kadrovoePeremesenie" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="planovyeNacisleniaNacaloesDl">
+                <query>
+                    <![CDATA[select e from informations_PlanovyeNacisleniaNacalo e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="planovyeNacisleniaNacaloesTable" spacing="true">
+        <filter id="filter"
+                dataLoader="planovyeNacisleniaNacaloesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="planovyeNacisleniaNacaloesTable"
+                    width="100%"
+                    dataContainer="planovyeNacisleniaNacaloesDc">
+            <actions>
+                <action id="remove" type="remove"/>
+                <action id="refresh" type="refresh"/>
+                <action id="view" type="view"/>
+            </actions>
+            <columns>
+                <column id="aktivnost1" caption="msg://aktivnost1-planovyeNacisleniaNacaloes"/>
+                <column id="period" caption="msg://period-planovyeNacisleniaNacaloes"/>
+                <column id="organizacia" caption="msg://organizacia-planovyeNacisleniaNacaloes"/>
+                <column id="sotrudnik" caption="msg://sotrudnik-planovyeNacisleniaNacaloes"/>
+                <column id="vidRasceta" caption="msg://vidRasceta-planovyeNacisleniaNacaloes"/>
+                <column id="razmer" caption="msg://razmer-planovyeNacisleniaNacaloes"/>
+                <column id="osnovnoj" caption="msg://osnovnoj-planovyeNacisleniaNacaloes"/>
+                <column id="podrazdelenie" caption="msg://podrazdelenie-planovyeNacisleniaNacaloes"/>
+                <column id="dolznost1" caption="msg://dolznost1-planovyeNacisleniaNacaloes"/>
+                <column id="grafikRaboty" caption="msg://grafikRaboty-planovyeNacisleniaNacaloes"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="refreshBtn" action="planovyeNacisleniaNacaloesTable.refresh"/>
+                <button id="removeBtn" action="planovyeNacisleniaNacaloesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

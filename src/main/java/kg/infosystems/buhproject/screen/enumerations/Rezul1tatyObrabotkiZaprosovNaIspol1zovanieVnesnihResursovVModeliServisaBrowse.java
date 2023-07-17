@@ -1,0 +1,10 @@
+package kg.infosystems.buhproject.screen.enumerations;
+
+import io.jmix.ui.screen.*;
+import kg.infosystems.buhproject.entity.enumerations.Rezul1tatyObrabotkiZaprosovNaIspol1zovanieVnesnihResursovVModeliServisa;
+
+@UiController("Rezul1tatyObrabotkiZaprosovNaIspol1zovanieVnesnihResursovVModeliServisa.browse")
+@UiDescriptor("Rezul1tatyObrabotkiZaprosovNaIspol1zovanieVnesnihResursovVModeliServisa-browse.xml")
+@LookupComponent("enumsTable")
+public class Rezul1tatyObrabotkiZaprosovNaIspol1zovanieVnesnihResursovVModeliServisaBrowse extends StandardLookup<Rezul1tatyObrabotkiZaprosovNaIspol1zovanieVnesnihResursovVModeliServisa> {
+}

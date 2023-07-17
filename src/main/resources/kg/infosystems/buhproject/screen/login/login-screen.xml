@@ -1,0 +1,74 @@
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://caption">
+
+    <actions>
+        <action id="submit"
+                caption="msg://loginButton"
+                icon="CHECK"
+                shortcut="ENTER"/>
+        <action id="submitInfo"
+                caption="msg://loginScreen.loginInfo"
+                icon="CHECK"/>
+    </actions>
+    <layout stylename="jmix-login-main-layout">
+        <cssLayout stylename="login-top-headers">
+            <label id="MinfinTitle"
+                   stylename="top-login-Title"
+                   value="Министерство Финансов Кыргызской Республики"/>
+            <comboBox id="localesField"
+                      nullOptionVisible="false"
+                      stylename="jmix-login-locale"
+                      textInputAllowed="false"/>
+        </cssLayout>
+        <cssLayout stylename="loginContainer">
+            <label id="welcomeLabel"
+                   align="MIDDLE_CENTER"
+                   stylename="login-title"
+                   value="msg://welcomeLabel"/>
+            <vbox id="loginWrapper" stylename="loginBlock">
+                <vbox id="loginMainBox"
+                      align="MIDDLE_CENTER"
+                      margin="true"
+                      spacing="true"
+                      stylename="jmix-login-panel"
+                      width="AUTO">
+
+                    <vbox id="loginForm" spacing="true" stylename="jmix-login-form">
+                        <cssLayout id="loginCredentials" stylename="jmix-login-credentials">
+                            <textField id="usernameField"
+                                       htmlName="usernameField"
+                                       inputPrompt="msg://usernamePlaceholder"
+                                       stylename="jmix-login-username"/>
+                            <textField id="companyField"
+                                       inputPrompt="msg://loginScreen.companyField"
+                                       stylename="jmix-login-username"/>
+                            <passwordField id="passwordField"
+                                           autocomplete="true"
+                                           htmlName="passwordField"
+                                           inputPrompt="msg://passwordPlaceholder"
+                                           stylename="jmix-login-password"/>
+                        </cssLayout>
+                        <hbox id="rememberLocalesBox"
+                              stylename="jmix-login-remember-locales">
+                            <checkBox id="rememberMeCheckBox"
+                                      caption="msg://loginScreen.rememberMe"
+                                      stylename="jmix-login-remember-me"/>
+
+                        </hbox>
+
+                        <button id="loginButton"
+                                align="MIDDLE_CENTER"
+                                action="submit"
+                                stylename="jmix-login-submit-button"/>
+                        <button id="loginInfoButton"
+                                align="MIDDLE_CENTER"
+                                action="submitInfo"
+                                stylename="jmix-login-submit-button"/>
+                        <checkBox id="infoCheckBox"
+                                  caption="msg://loginScreen.infoCheckBox"/>
+                    </vbox>
+                </vbox>
+            </vbox>
+        </cssLayout>
+    </layout>
+</window>

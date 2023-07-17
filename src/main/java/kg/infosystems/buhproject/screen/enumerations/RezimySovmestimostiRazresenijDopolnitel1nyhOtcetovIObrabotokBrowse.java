@@ -1,0 +1,10 @@
+package kg.infosystems.buhproject.screen.enumerations;
+
+import io.jmix.ui.screen.*;
+import kg.infosystems.buhproject.entity.enumerations.RezimySovmestimostiRazresenijDopolnitel1nyhOtcetovIObrabotok;
+
+@UiController("RezimySovmestimostiRazresenijDopolnitel1nyhOtcetovIObrabotok.browse")
+@UiDescriptor("RezimySovmestimostiRazresenijDopolnitel1nyhOtcetovIObrabotok-browse.xml")
+@LookupComponent("enumsTable")
+public class RezimySovmestimostiRazresenijDopolnitel1nyhOtcetovIObrabotokBrowse extends StandardLookup<RezimySovmestimostiRazresenijDopolnitel1nyhOtcetovIObrabotok> {
+}

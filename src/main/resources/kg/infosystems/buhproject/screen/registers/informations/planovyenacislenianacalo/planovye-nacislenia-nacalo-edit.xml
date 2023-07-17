@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://planovyeNacisleniaNacaloEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="planovyeNacisleniaNacaloDc"
+                  class="kg.infosystems.buhproject.entity.registers.informations.PlanovyeNacisleniaNacalo">
+            <fetchPlan extends="_base">
+                <property name="registrator" fetchPlan="_base"/>
+                <property name="organizacia" fetchPlan="_base"/>
+                <property name="sotrudnik" fetchPlan="_base"/>
+                <property name="vidRasceta" fetchPlan="_base"/>
+                <property name="podrazdelenie" fetchPlan="_base"/>
+                <property name="dolznost1" fetchPlan="_base"/>
+                <property name="grafikRaboty" fetchPlan="_base"/>
+                <property name="priemNaRabotu" fetchPlan="_base"/>
+                <property name="kadrovoePeremesenie" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="planovyeNacisleniaNacaloDc">
+                <column width="350px">
+                    <entityPicker id="registratorField" property="registrator">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <dateField id="periodField" property="period"/>
+                    <textField id="nomerStrokiField" property="nomerStroki"/>
+                    <checkBox id="aktivnost1Field" property="aktivnost1"/>
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="sotrudnikField" property="sotrudnik">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="vidRascetaField" property="vidRasceta">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <textField id="razmerField" property="razmer"/>
+                    <checkBox id="osnovnojField" property="osnovnoj"/>
+                    <entityPicker id="podrazdelenieField" property="podrazdelenie">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="dolznost1Field" property="dolznost1">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="grafikRabotyField" property="grafikRaboty">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="priemNaRabotuField" property="priemNaRabotu">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="kadrovoePeremesenieField" property="kadrovoePeremesenie">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

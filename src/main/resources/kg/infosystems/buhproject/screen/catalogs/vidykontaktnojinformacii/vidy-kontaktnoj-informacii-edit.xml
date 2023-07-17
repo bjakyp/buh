@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://vidyKontaktnojInformaciiEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="vidyKontaktnojInformaciiDc"
+                  class="kg.infosystems.buhproject.entity.catalogs.VidyKontaktnojInformacii">
+            <fetchPlan extends="_base">
+                <property name="roditel1" fetchPlan="_instance_name"/>
+                <property name="tip" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="vidyKontaktnojInformaciiDc">
+                <column width="350px">
+                    <textField id="naimenovanieField" property="naimenovanie"/>
+                    <entityPicker id="roditel1Field" property="roditel1">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <checkBox id="etoGruppaField" property="etoGruppa"/>
+                    <checkBox id="tol1koNacional1nyjAdresField" property="tol1koNacional1nyjAdres"/>
+                    <textField id="vidRedaktirovaniaField" property="vidRedaktirovania"/>
+                    <textField id="vidPolaDrugoeField" property="vidPolaDrugoe"/>
+                    <checkBox id="vklucat1StranuVPredstavlenieField" property="vklucat1StranuVPredstavlenie"/>
+                    <checkBox id="zapretit1RedaktirovaniePol1zovatelemField"
+                              property="zapretit1RedaktirovaniePol1zovatelem"/>
+                    <checkBox id="ispol1zuetsaField" property="ispol1zuetsa"/>
+                    <checkBox id="moznoIzmenat1SposobRedaktirovaniaField" property="moznoIzmenat1SposobRedaktirovania"/>
+                    <checkBox id="obazatel1noeZapolnenieField" property="obazatel1noeZapolnenie"/>
+                    <checkBox id="proverat1Korrektnost1Field" property="proverat1Korrektnost1"/>
+                    <checkBox id="proverat1PoFIASField" property="proverat1PoFIAS"/>
+                    <checkBox id="razresit1VvodNeskol1kihZnacenijField" property="razresit1VvodNeskol1kihZnacenij"/>
+                    <checkBox id="udalit1RedaktirovanieTol1koVDialogeField"
+                              property="udalit1RedaktirovanieTol1koVDialoge"/>
+                    <textField id="rekvizitDopUporadocivaniaField" property="rekvizitDopUporadocivania"/>
+                    <checkBox id="skryvat1Neaktual1nyeAdresaField" property="skryvat1Neaktual1nyeAdresa"/>
+                    <checkBox id="telefonCDobavocnymNomeromField" property="telefonCDobavocnymNomerom"/>
+                    <entityPicker id="tipField" property="tip">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <checkBox id="ukazyvat1OKTMOField" property="ukazyvat1OKTMO"/>
+                    <checkBox id="hranit1IstoriuIzmenenijField" property="hranit1IstoriuIzmenenij"/>
+                    <checkBox id="mezdunarodnyjFormatAdresaField" property="mezdunarodnyjFormatAdresa"/>
+                    <textField id="imaPredopredelennogoVidaField" property="imaPredopredelennogoVida"/>
+                    <textField id="imaGruppyField" property="imaGruppy"/>
+                    <checkBox id="ispravlat1UstarevsieAdresaField" property="ispravlat1UstarevsieAdresa"/>
+                    <textField id="identifikatorDlaFormulField" property="identifikatorDlaFormul"/>
+                    <textField id="maskaNomeraTelefonaField" property="maskaNomeraTelefona"/>
+                    <checkBox id="vvodit1NomerPoMaskeField" property="vvodit1NomerPoMaske"/>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

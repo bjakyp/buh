@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd" objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="buh-project">
+        <addColumn schemaName="informations" tableName="PlanovyeNacisleniaNacaloIr">
+            <column name="KATEGORIA_RABOTNIKOV_ID" type="UUID"/>
+            <column name="KOLVO_IJDIVENCEV" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2" author="buh-project">
+        <addColumn schemaName="informations" tableName="PlanovyeNacisleniaOkoncanieIr">
+            <column name="KATEGORIA_RABOTNIKOV_ID" type="UUID"/>
+            <column name="KOLVO_IJDIVENCEV" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="3" author="buh-project">
+        <createIndex indexName="IDX_PLANOVYENACISLENIANACALOIR_KATEGORIA_RABOTNIKOV" schemaName="informations"
+                     tableName="PlanovyeNacisleniaNacaloIr">
+            <column name="KATEGORIA_RABOTNIKOV_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="KATEGORIA_RABOTNIKOV_ID" baseTableName="PlanovyeNacisleniaNacaloIr"
+                                 baseTableSchemaName="informations" constraintName="FK_PLANOVYENACISLENIANACALOIR_ON_KATEGORIA_RABOTNIKOV"
+                                 referencedColumnNames="ID" referencedTableName="KATEGORIA_RABOTNIKOV" referencedTableSchemaName="comps"/>
+    </changeSet>
+    <changeSet id="4" author="buh-project">
+        <createIndex indexName="IDX_PLANOVYENACISLENIAOKONCANIEIR_KATEGORIA_RABOTNIKOV" schemaName="informations"
+                     tableName="PlanovyeNacisleniaOkoncanieIr">
+            <column name="KATEGORIA_RABOTNIKOV_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="KATEGORIA_RABOTNIKOV_ID" baseTableName="PlanovyeNacisleniaOkoncanieIr"
+                                 baseTableSchemaName="informations"
+                                 constraintName="FK_PLANOVYENACISLENIAOKONCANIEIR_ON_KATEGORIA_RABOTNIKOV" referencedColumnNames="ID"
+                                 referencedTableName="KATEGORIA_RABOTNIKOV" referencedTableSchemaName="comps"/>
+    </changeSet>
+</databaseChangeLog>

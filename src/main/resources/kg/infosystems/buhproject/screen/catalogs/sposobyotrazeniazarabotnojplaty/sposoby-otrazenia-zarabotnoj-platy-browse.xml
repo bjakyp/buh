@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://sposobyOtrazeniaZarabotnojPlatyBrowse.caption"
+        focusComponent="sposobyOtrazeniaZarabotnojPlatiesTable">
+    <data readOnly="true">
+        <collection id="sposobyOtrazeniaZarabotnojPlatiesDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.SposobyOtrazeniaZarabotnojPlaty">
+            <fetchPlan extends="_base">
+                <property name="scetDt" fetchPlan="_instance_name"/>
+                <property name="scetDtSocFond" fetchPlan="_instance_name"/>
+                <property name="scetDtMedicinskoeStrahovanie" fetchPlan="_instance_name"/>
+                <property name="scetDtFondOplatyTruda" fetchPlan="_instance_name"/>
+                <property name="scetKt" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="sposobyOtrazeniaZarabotnojPlatiesDl">
+                <query>
+                    <![CDATA[select e from SposobyOtrazeniaZarabotnojPlaty e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="sposobyOtrazeniaZarabotnojPlatiesTable" spacing="true">
+        <filter id="filter"
+                dataLoader="sposobyOtrazeniaZarabotnojPlatiesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="sposobyOtrazeniaZarabotnojPlatiesTable"
+                    width="100%"
+                    dataContainer="sposobyOtrazeniaZarabotnojPlatiesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="naimenovanie"/>
+                <column id="scetDt.code" caption="Счет ДТ" captionProperty="scetDt.code"/>
+                <column id="scetDt" caption="Наименование ДТ"/>
+                <column id="scetKt.code" caption="Счет КТ" captionProperty="scetKt.code"/>
+                <column id="scetKt" caption="Наименование КТ"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="sposobyOtrazeniaZarabotnojPlatiesTable.create"/>
+                <button id="editBtn" action="sposobyOtrazeniaZarabotnojPlatiesTable.edit"/>
+                <button id="removeBtn" action="sposobyOtrazeniaZarabotnojPlatiesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

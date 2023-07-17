@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="buh-project-enums-data">
+        <insert tableName="FormatySohraneniaOtcetov" schemaName="enumerations">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="HTML"/>
+            <column name="SYNONYM_" value="Веб-страница (.html)"/>
+            <column name="ORDER_" value="1"/>
+        </insert>
+        <insert tableName="FormatySohraneniaOtcetov" schemaName="enumerations">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="HTML4"/>
+            <column name="SYNONYM_" value="Веб-страница версии 4 (.html)"/>
+            <column name="ORDER_" value="2"/>
+        </insert>
+        <insert tableName="FormatySohraneniaOtcetov" schemaName="enumerations">
+            <column name="ID" value="3"/>
+            <column name="NAME" value="XLS"/>
+            <column name="SYNONYM_" value="Лист Microsoft Excel 97-2003 (.xls)"/>
+            <column name="ORDER_" value="3"/>
+        </insert>
+        <insert tableName="FormatySohraneniaOtcetov" schemaName="enumerations">
+            <column name="ID" value="4"/>
+            <column name="NAME" value="XLSX"/>
+            <column name="SYNONYM_" value="Лист Microsoft Excel 2007 (.xlsx)"/>
+            <column name="ORDER_" value="4"/>
+        </insert>
+        <insert tableName="FormatySohraneniaOtcetov" schemaName="enumerations">
+            <column name="ID" value="5"/>
+            <column name="NAME" value="PDF"/>
+            <column name="SYNONYM_" value="Документ PDF (.pdf)"/>
+            <column name="ORDER_" value="5"/>
+        </insert>
+        <insert tableName="FormatySohraneniaOtcetov" schemaName="enumerations">
+            <column name="ID" value="6"/>
+            <column name="NAME" value="MXL"/>
+            <column name="SYNONYM_" value="Табличный документ (.mxl)"/>
+            <column name="ORDER_" value="6"/>
+        </insert>
+        <insert tableName="FormatySohraneniaOtcetov" schemaName="enumerations">
+            <column name="ID" value="7"/>
+            <column name="NAME" value="ODS"/>
+            <column name="SYNONYM_" value="Электронная таблица Open Document (.ods)"/>
+            <column name="ORDER_" value="7"/>
+        </insert>
+        <insert tableName="FormatySohraneniaOtcetov" schemaName="enumerations">
+            <column name="ID" value="8"/>
+            <column name="NAME" value="DOCX"/>
+            <column name="SYNONYM_" value="Документ Word 2007 (.docx)"/>
+            <column name="ORDER_" value="8"/>
+        </insert>
+        <insert tableName="FormatySohraneniaOtcetov" schemaName="enumerations">
+            <column name="ID" value="9"/>
+            <column name="NAME" value="TXT"/>
+            <column name="SYNONYM_" value="Текстовый документ UTF-8 (.txt)"/>
+            <column name="ORDER_" value="9"/>
+        </insert>
+        <insert tableName="FormatySohraneniaOtcetov" schemaName="enumerations">
+            <column name="ID" value="10"/>
+            <column name="NAME" value="ANSITXT"/>
+            <column name="SYNONYM_" value="Текстовый документ ANSI (.txt)"/>
+            <column name="ORDER_" value="10"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

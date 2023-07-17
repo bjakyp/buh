@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://tipOrganizaciiBrowse.caption"
+        focusComponent="tipOrganizaciisTable">
+    <data readOnly="true">
+        <collection id="tipOrganizaciisDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.TipOrganizacii">
+            <fetchPlan extends="_base"/>
+            <loader id="tipOrganizaciisDl">
+                <query>
+                    <![CDATA[select e from TipOrganizacii e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="tipOrganizaciisTable" spacing="true">
+        <filter id="filter"
+                dataLoader="tipOrganizaciisDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="tipOrganizaciisTable"
+                    width="100%"
+                    dataContainer="tipOrganizaciisDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="code"/>
+                <column id="name"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="tipOrganizaciisTable.create"/>
+                <button id="editBtn" action="tipOrganizaciisTable.edit"/>
+                <button id="removeBtn" action="tipOrganizaciisTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

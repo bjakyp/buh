@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://avansovyjOtcetEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="avansovyjOtcetDc"
+                  class="kg.infosystems.buhproject.entity.documents.AvansovyjOtcet">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="sotrudnik" fetchPlan="_instance_name"/>
+                <property name="scetRascetov" fetchPlan="_instance_name"/>
+                <property name="sklad" fetchPlan="_instance_name"/>
+                <property name="podrazdelenieOS" fetchPlan="_instance_name"/>
+                <property name="podrazdelenieNMA" fetchPlan="_instance_name"/>
+                <property name="podrazdelenieBibliotecnyhFondov" fetchPlan="_instance_name"/>
+                <property name="mOLBibliotecnyhFondov" fetchPlan="_instance_name"/>
+                <property name="sobytieSTovarami" fetchPlan="_instance_name"/>
+                <property name="dokumentOsnovanie" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="avansyRassifrovka" fetchPlan="_base">
+                    <property name="dokumentRassifrovki" fetchPlan="_instance_name"/>
+                </property>
+                <property name="tovary" fetchPlan="_base">
+                    <property name="kontragent" fetchPlan="_instance_name"/>
+                    <property name="nomenklatura" fetchPlan="_instance_name"/>
+                    <property name="scetUceta" fetchPlan="_instance_name"/>
+                    <property name="stat1a" fetchPlan="_instance_name"/>
+                    <property name="vidZadolzennosti" fetchPlan="_instance_name"/>
+                </property>
+                <property name="oplata" fetchPlan="_base">
+                    <property name="kontragent" fetchPlan="_instance_name"/>
+                    <property name="stat1a" fetchPlan="_instance_name"/>
+                    <property name="vidZadolzennosti" fetchPlan="_instance_name"/>
+                    <property name="scetRascetov" fetchPlan="_instance_name"/>
+                </property>
+                <property name="procee" fetchPlan="_base">
+                    <property name="kontragent" fetchPlan="_instance_name"/>
+                    <property name="nomenklatura" fetchPlan="_instance_name"/>
+                    <property name="scetUceta" fetchPlan="_instance_name"/>
+                    <property name="subkonto1" fetchPlan="_instance_name"/>
+                    <property name="subkonto2" fetchPlan="_instance_name"/>
+                    <property name="subkonto3" fetchPlan="_instance_name"/>
+                    <property name="stat1a" fetchPlan="_instance_name"/>
+                    <property name="vidZadolzennosti" fetchPlan="_instance_name"/>
+                </property>
+                <property name="vyplataZP" fetchPlan="_base">
+                    <property name="sotrudnik" fetchPlan="_instance_name"/>
+                </property>
+                <property name="os" fetchPlan="_base">
+                    <property name="osnovnoeSredstvo" fetchPlan="_instance_name"/>
+                    <property name="scetUceta" fetchPlan="_instance_name"/>
+                    <property name="stat1a" fetchPlan="_instance_name"/>
+                    <property name="vidZadolzennosti" fetchPlan="_instance_name"/>
+                </property>
+                <property name="nma" fetchPlan="_base">
+                    <property name="nematerial1nyjAktiv" fetchPlan="_instance_name"/>
+                    <property name="scetUceta" fetchPlan="_instance_name"/>
+                    <property name="stat1a" fetchPlan="_instance_name"/>
+                    <property name="vidZadolzennosti" fetchPlan="_instance_name"/>
+                </property>
+                <property name="bibliotecnyeFondy" fetchPlan="_base">
+                    <property name="izdanie" fetchPlan="_instance_name"/>
+                    <property name="scetUceta" fetchPlan="_instance_name"/>
+                    <property name="vidZadolzennosti" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="avansyRassifrovkaDc" property="avansyRassifrovka"/>
+            <collection id="tovaryDc" property="tovary"/>
+            <collection id="oplataDc" property="oplata"/>
+            <collection id="proceeDc" property="procee"/>
+            <collection id="vyplataZPDc" property="vyplataZP"/>
+            <collection id="osDc" property="os"/>
+            <collection id="nmaDc" property="nma"/>
+            <collection id="bibliotecnyeFondyDc" property="bibliotecnyeFondy"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="avansovyjOtcetDc">
+                <column width="350px">
+                    <entityPicker id="sotrudnikField" property="sotrudnik">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="scetRascetovField" property="scetRascetov">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+                <column width="350px">
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data"/>
+<!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="vidFinansirovaniaField" property="vidFinansirovania">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+<!--                    <textField id="summaDokumentaField" property="summaDokumenta"/>-->
+                    <entityPicker id="skladField" property="sklad">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+<!--                    <entityPicker id="dokumentOsnovanieField" property="dokumentOsnovanie">-->
+<!--                        <actions>-->
+<!--                            <action id="entityLookup" type="entity_lookup"/>-->
+<!--                            <action id="entityClear" type="entity_clear"/>-->
+<!--                        </actions>-->
+<!--                    </entityPicker>-->
+                </column>
+            </form>
+            <tabSheet id="tabSheet" height="600px">
+                <tab id="tab1" caption="Авансы" spacing="true" margin="true" expand="avansyRassifrovkaBox">
+                    <form dataContainer="avansovyjOtcetDc">
+                        <column width="350px">
+                            <textField id="ostatokNaNacaloField" property="ostatokNaNacalo"/>
+                        </column>
+                        <column width="350px">
+                            <textField id="izrashodovanoField" property="izrashodovano"/>
+                        </column>
+                        <column width="350px">
+                            <textField id="ostatokNaKonecField" property="ostatokNaKonec"/>
+                        </column>
+                    </form>
+                    <groupBox id="avansyRassifrovkaBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/AvansovyjOtcet.avansyRassifrovka" expand="avansyRassifrovkaTable">
+                        <table id="avansyRassifrovkaTable" dataContainer="avansyRassifrovkaDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="dokumentRassifrovki" editable="true"/>
+                                <column id="summa" editable="true"/>
+                                <column id="ostatok" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="avansyRassifrovkaTable.create"/>
+<!--                                <button action="avansyRassifrovkaTable.edit"/>-->
+                                <button action="avansyRassifrovkaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="Товары" spacing="true" margin="true" expand="tovaryBox">
+                    <form dataContainer="avansovyjOtcetDc">
+                        <column width="350px">
+                            <entityPicker id="sobytieSTovaramiField" property="sobytieSTovarami">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                    <groupBox id="tovaryBox" caption="msg://kg.infosystems.buhproject.entity.documents/AvansovyjOtcet.tovary" expand="tovaryTable">
+                        <table id="tovaryTable" dataContainer="tovaryDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="kontragent" editable="true"/>
+                                <column id="nomenklatura" editable="true"/>
+                                <column id="kolicestvo" editable="true"/>
+                                <column id="cena" editable="true"/>
+                                <column id="summa" editable="true"/>
+                                <column id="vhodasijDokument" editable="true"/>
+                                <column id="nomerVhodasegoDokumenta" editable="true"/>
+                                <column id="dataVhodasegoDokumenta" editable="true"/>
+                                <column id="scetUceta" editable="true"/>
+                                <column id="stat1a" editable="true"/>
+                                <column id="vidZadolzennosti" editable="true"/>
+                                <column id="soderzanie" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="tovaryTable.create"/>
+<!--                                <button action="tovaryTable.edit"/>-->
+                                <button action="tovaryTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab3" caption="Оплата" spacing="true" margin="true" expand="oplataBox">
+                    <groupBox id="oplataBox" caption="msg://kg.infosystems.buhproject.entity.documents/AvansovyjOtcet.oplata" expand="oplataTable">
+                        <table id="oplataTable" dataContainer="oplataDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="kontragent" editable="true"/>
+                                <column id="summa" editable="true"/>
+                                <column id="vhodasijDokument" editable="true"/>
+                                <column id="nomerVhodasegoDokumenta" editable="true"/>
+                                <column id="dataVhodasegoDokumenta" editable="true"/>
+                                <column id="stat1a" editable="true"/>
+                                <column id="vidZadolzennosti" editable="true"/>
+                                <column id="scetRascetov" editable="true"/>
+                                <column id="soderzanie" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="oplataTable.create"/>
+<!--                                <button action="oplataTable.edit"/>-->
+                                <button action="oplataTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab4" caption="Прочее" spacing="true" margin="true" expand="proceeBox">
+                    <groupBox id="proceeBox" caption="msg://kg.infosystems.buhproject.entity.documents/AvansovyjOtcet.procee" expand="proceeTable">
+                        <table id="proceeTable" dataContainer="proceeDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="kontragent" editable="true"/>
+                                <column id="nomenklatura" editable="true"/>
+                                <column id="summa" editable="true"/>
+                                <column id="vhodasijDokument" editable="true"/>
+                                <column id="nomerVhodasegoDokumenta" editable="true"/>
+                                <column id="dataVhodasegoDokumenta" editable="true"/>
+                                <column id="scetUceta" editable="true"/>
+                                <column id="subkonto1" editable="true"/>
+                                <column id="subkonto2" editable="true"/>
+                                <column id="subkonto3" editable="true"/>
+                                <column id="stat1a" editable="true"/>
+                                <column id="vidZadolzennosti" editable="true"/>
+                                <column id="soderzanie" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="proceeTable.create"/>
+<!--                                <button action="proceeTable.edit"/>-->
+                                <button action="proceeTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab5" caption="Выплата ЗП" spacing="true" margin="true" expand="vyplataZPBox">
+                    <form dataContainer="avansovyjOtcetDc">
+                        <column width="350px">
+                            <checkBox id="poVedomostiField" property="poVedomosti"/>
+                        </column>
+                    </form>
+                    <groupBox id="vyplataZPBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/AvansovyjOtcet.vyplataZP" expand="vyplataZPTable">
+                        <table id="vyplataZPTable" dataContainer="vyplataZPDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="vedomost1" editable="true"/>
+                                <column id="sotrudnik" editable="true"/>
+                                <column id="summa" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="vyplataZPTable.create"/>
+<!--                                <button action="vyplataZPTable.edit"/>-->
+                                <button action="vyplataZPTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab6" caption="ОС" spacing="true" margin="true" expand="osBox">
+                    <form dataContainer="avansovyjOtcetDc">
+                        <column width="350px">
+                            <entityPicker id="podrazdelenieOSField" property="podrazdelenieOS">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                    <groupBox id="osBox" caption="msg://kg.infosystems.buhproject.entity.documents/AvansovyjOtcet.os" expand="osTable">
+                        <table id="osTable" dataContainer="osDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="osnovnoeSredstvo" editable="true"/>
+                                <column id="vhodasijDokument" editable="true"/>
+                                <column id="nomerVhodasegoDokumenta" editable="true"/>
+                                <column id="dataVhodasegoDokumenta" editable="true"/>
+                                <column id="summa" editable="true"/>
+                                <column id="scetUceta" editable="true"/>
+                                <column id="stat1a" editable="true"/>
+                                <column id="vidZadolzennosti" editable="true"/>
+                                <column id="soderzanie" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="osTable.create"/>
+<!--                                <button action="osTable.edit"/>-->
+                                <button action="osTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab7" caption="НМА" spacing="true" margin="true" expand="nmaBox">
+                    <form dataContainer="avansovyjOtcetDc">
+                        <column width="350px">
+                            <entityPicker id="podrazdelenieNMAField" property="podrazdelenieNMA">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                    <groupBox id="nmaBox" caption="msg://kg.infosystems.buhproject.entity.documents/AvansovyjOtcet.nma" expand="nmaTable">
+                        <table id="nmaTable" dataContainer="nmaDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="nematerial1nyjAktiv" editable="true"/>
+                                <column id="summa" editable="true"/>
+                                <column id="vhodasijDokument" editable="true"/>
+                                <column id="nomerVhodasegoDokumenta" editable="true"/>
+                                <column id="dataVhodasegoDokumenta" editable="true"/>
+                                <column id="scetUceta" editable="true"/>
+                                <column id="stat1a" editable="true"/>
+                                <column id="vidZadolzennosti" editable="true"/>
+                                <column id="soderzanie" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="nmaTable.create"/>
+<!--                                <button action="nmaTable.edit"/>-->
+                                <button action="nmaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab8" caption="Библиотечные фонды" spacing="true" margin="true" expand="bibliotecnyeFondyBox">
+                    <form dataContainer="avansovyjOtcetDc">
+                        <column width="350px">
+                            <entityPicker id="podrazdelenieBibliotecnyhFondovField" property="podrazdelenieBibliotecnyhFondov">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <entityPicker id="mOLBibliotecnyhFondovField" property="mOLBibliotecnyhFondov">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                    <groupBox id="bibliotecnyeFondyBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/AvansovyjOtcet.bibliotecnyeFondy" expand="bibliotecnyeFondyTable">
+                        <table id="bibliotecnyeFondyTable" dataContainer="bibliotecnyeFondyDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="izdanie" editable="true"/>
+                                <column id="kolicestvo" editable="true"/>
+                                <column id="cena" editable="true"/>
+                                <column id="summa" editable="true"/>
+                                <column id="scetUceta" editable="true"/>
+                                <column id="vidZadolzennosti" editable="true"/>
+                                <column id="vhodasijDokument" editable="true"/>
+                                <column id="nomerVhodasegoDokumenta" editable="true"/>
+                                <column id="dataVhodasegoDokumenta" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="bibliotecnyeFondyTable.create"/>
+<!--                                <button action="bibliotecnyeFondyTable.edit"/>-->
+                                <button action="bibliotecnyeFondyTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab9" caption="Дополнительно" spacing="true" margin="true" expand="">
+                    <form dataContainer="avansovyjOtcetDc">
+                        <column width="350px">
+                            <textField id="kolicestvoListovVPrilozeniiField" property="kolicestvoListovVPrilozenii"/>
+                            <textField id="kolicestvoDokumentovVPrilozeniiField" property="kolicestvoDokumentovVPrilozenii"/>
+                            <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                            <entityPicker id="avtorField" property="avtor">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://employeesEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="employeesDc"
+                  class="kg.infosystems.buhproject.entity.parts.documents.Employees">
+            <fetchPlan extends="_base">
+                <property name="doljnost" fetchPlan="_base"/>
+                <property name="podrazdelenie" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="66%"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="employeesDc">
+                <column width="50%">
+                    <textField id="fullnameField" property="fullname"/>
+                    <entityPicker id="doljnostField" property="doljnost">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="podrazdelenieField" property="podrazdelenie">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <textField id="doljnostnoyOkladField" property="doljnostnoyOklad"/>
+                    <textField id="zaVyslugiLetPercentField" property="zaVyslugiLetPercent"/>
+                    <textField id="nadbavkaZaVysokogoriePercentField" property="nadbavkaZaVysokogoriePercent"/>
+                    <textField id="klasnyiChinField" property="klasnyiChin"/>
+                    <textField id="nadbavkaZaSlojnost1PercentField" property="nadbavkaZaSlojnost1Percent"
+                               caption="msg://nadbavkaZaSlojnost1Percent"/>
+                    <textField id="secretnost1PercentField" property="secretnost1Percent" caption="msg://secretnost1Percent"/>
+                    <textField id="vrednost1PercentField" property="vrednost1Percent" caption="msg://vrednost1Percent"/>
+                    <textField id="uchenayaStepenField" property="uchenayaStepen"/>
+                    <textField id="rayonniyKoefficentPercentField" property="rayonniyKoefficentPercent"
+                               caption="msg://rayonniyKoefficentPercent"/>
+                    <textField id="itogoNadbavkiIDoplatyField" property="itogoNadbavkiIDoplaty" caption="msg://itogoNadbavkiIDoplaty"
+                               editable="false" stylename="borderless"/>
+                    <textField id="otpusknoyField" property="otpusknoy" editable="false" stylename="borderless"/>
+                    <textField id="zarplata13Field" property="zarplata13" editable="false" stylename="borderless"/>
+                    <textField id="kompensacionnyeZaPervyiMesacField" property="kompensacionnyeZaPervyiMesac"
+                               caption="Компенсационные за первый месяц"/>
+                    <textField id="stavkaSocFotPercentField" property="stavkaSocFotPercent" caption="Ставка Соц Фонд в процентах"/>
+                    <textArea id="primechanieField" property="primechanie"/>
+                </column>
+                <column width="50%">
+                    <textField id="stavkaField" property="stavka" editable="false" stylename="borderless"/>
+                    <textField id="koefficentKratnostiField" property="koefficentKratnosti" editable="false" stylename="borderless"/>
+                    <label/>
+                    <label/>
+                    <textField id="zaVyslugiLetField" property="zaVyslugiLet" editable="false" stylename="borderless"/>
+                    <textField id="nadbavkaZaVysokogorieField" property="nadbavkaZaVysokogorie" editable="false" stylename="borderless"/>
+                    <label/>
+                    <textField id="nadbavkaZaSlojnost1Field" property="nadbavkaZaSlojnost1" editable="false" stylename="borderless"/>
+                    <textField id="secretnost1Field" property="secretnost1" editable="false" stylename="borderless"/>
+                    <textField id="vrednost1Field" property="vrednost1" editable="false" stylename="borderless"/>
+                    <textField id="mesacnayaZarplataNaRabotnikaField" property="mesacnayaZarplataNaRabotnika"
+                               caption="Месячная зарплата на работника" editable="false" stylename="borderless"/>
+                    <textField id="rayonniyKoefficentField" property="rayonniyKoefficent" editable="false" stylename="borderless"/>
+                    <textField id="vsegoZaFOTzaMesyacField" property="vsegoZaFOTzaMesyac" editable="false" stylename="borderless"/>
+                    <textField id="lechebnoePosobieKOtpuskuField" property="lechebnoePosobieKOtpusku" editable="false" stylename="borderless"/>
+                    <textField id="godovoyFOTField" property="godovoyFOT" editable="false" stylename="borderless"/>
+                    <textField id="kompensacionnyeZaOdinnadcatyiMesacField" property="kompensacionnyeZaOdinnadcatyiMesac"
+                               caption="Компенсационные за одиннадцатый месяц" editable="false" stylename="borderless"/>
+                    <textField id="otchislenieVSocFondField" property="otchislenieVSocFond" editable="false" stylename="borderless"/>
+                    <textField id="srednemesacnayaZPField" property="srednemesacnayaZP" caption="Среднемесячная зарплата"
+                               editable="false" stylename="borderless"/>
+                    <textField id="godovoyFOTzaVychetomSFKRField" property="godovoyFOTzaVychetomSFKR" editable="false"
+                               stylename="borderless"/>
+
+                </column>
+
+
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

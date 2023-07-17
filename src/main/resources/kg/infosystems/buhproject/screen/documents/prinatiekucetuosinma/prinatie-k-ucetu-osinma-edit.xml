@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://prinatieKUcetuOSINMAEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="prinatieKUcetuOSINMADc"
+                  class="kg.infosystems.buhproject.entity.documents.PrinatieKUcetuOSINMA">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="vidOperacii" fetchPlan="_instance_name"/>
+                <property name="sobytieOS" fetchPlan="_instance_name"/>
+                <property name="kontragent" fetchPlan="_instance_name"/>
+                <property name="sposobPostuplenia" fetchPlan="_instance_name"/>
+                <property name="scetUceta" fetchPlan="_instance_name"/>
+                <property name="nomenklatura" fetchPlan="_instance_name"/>
+                <property name="sklad" fetchPlan="_instance_name"/>
+                <property name="ob2ektStroitel1stva" fetchPlan="_instance_name"/>
+                <property name="dokumentOsnovanie" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="os" fetchPlan="_base">
+                    <property name="osnovnoeSredstvo" fetchPlan="_instance_name"/>
+                    <property name="scetUceta" fetchPlan="_instance_name"/>
+                    <property name="mOL" fetchPlan="_instance_name"/>
+                    <property name="podrazdelenie" fetchPlan="_instance_name"/>
+                    <property name="sposobNacisleniaAmortizacii" fetchPlan="_instance_name"/>
+                    <property name="sposobOtrazeniaRashodovPoAmortizacii" fetchPlan="_instance_name"/>
+                    <property name="grafikAmortizacii" fetchPlan="_instance_name"/>
+                </property>
+                <property name="nma" fetchPlan="_base">
+                    <property name="nematerial1nyjAktiv" fetchPlan="_instance_name"/>
+                    <property name="scetUceta" fetchPlan="_instance_name"/>
+                    <property name="mOL" fetchPlan="_instance_name"/>
+                    <property name="podrazdelenie" fetchPlan="_instance_name"/>
+                    <property name="sposobNacisleniaAmortizacii" fetchPlan="_instance_name"/>
+                    <property name="sposobOtrazeniaRashodovPoAmortizacii" fetchPlan="_instance_name"/>
+                    <property name="grafikAmortizacii" fetchPlan="_instance_name"/>
+                </property>
+                <property name="komissia" fetchPlan="_base">
+                    <property name="fizLico" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="osDc" property="os"/>
+            <collection id="nmaDc" property="nma"/>
+            <collection id="komissiaDc" property="komissia"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="prinatieKUcetuOSINMADc">
+                <column width="350px">
+                    <entityPicker id="vidOperaciiField" property="vidOperacii">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="sobytieOSField" property="sobytieOS">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="kontragentField" property="kontragent">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="sposobPostupleniaField" property="sposobPostuplenia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="scetUcetaField" property="scetUceta">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="nomenklaturaField" property="nomenklatura">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="ob2ektStroitel1stvaField" property="ob2ektStroitel1stva">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <checkBox id="skryt1Stoimost1Field" property="skryt1Stoimost1"/>
+                </column>
+                <column width="350px">
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data"/>
+<!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="vidFinansirovaniaField" property="vidFinansirovania">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="skladField" property="sklad">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+
+                    <entityPicker id="dokumentOsnovanieField" property="dokumentOsnovanie">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+
+<!--                    <textField id="summaDokumentaField" property="summaDokumenta"/>-->
+<!--                    <textField id="kolicestvoSpisyvaemogoTovaraField" property="kolicestvoSpisyvaemogoTovara"/>-->
+
+                </column>
+            </form>
+            <tabSheet id="tabsheet" height="600px">
+                <tab id="tab1" caption="Основные средства" spacing="true" margin="true" expand="osBox">
+                    <groupBox id="osBox" caption="msg://kg.infosystems.buhproject.entity.documents/PrinatieKUcetuOSINMA.os" expand="osTable">
+                        <table id="osTable" dataContainer="osDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+
+                                <column id="osnovnoeSredstvo" editable="true"/>
+                                <column id="inventarnyjNomer" editable="true"/>
+
+                                <column id="pervonacal1naaStoimost1" editable="true"/>
+                                <column id="stoimost1DlaRascetaAmortizacii" editable="true"/>
+
+                                <column id="scetUceta" editable="true"/>
+
+                                <column id="mOL" editable="true"/>
+                                <column id="podrazdelenie" editable="true"/>
+
+                                <column id="srokSluzby" editable="true"/>
+                                <column id="procentGodovojAmortizacii" editable="true"/>
+
+                                <column id="sposobNacisleniaAmortizacii" editable="true"/>
+                                <column id="sposobOtrazeniaRashodovPoAmortizacii" editable="true"/>
+
+                                <column id="grafikAmortizacii" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="osTable.create"/>
+<!--                                <button action="osTable.edit"/>-->
+                                <button action="osTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="НМА" spacing="true" margin="true" expand="nmaBox">
+                    <groupBox id="nmaBox" caption="msg://kg.infosystems.buhproject.entity.documents/PrinatieKUcetuOSINMA.nma" expand="nmaTable">
+                        <table id="nmaTable" dataContainer="nmaDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+
+                                <column id="nematerial1nyjAktiv" editable="true"/>
+                                <column id="inventarnyjNomer" editable="true"/>
+
+                                <column id="pervonacal1naaStoimost1" editable="true"/>
+                                <column id="stoimost1DlaRascetaAmortizacii" editable="true"/>
+
+                                <column id="scetUceta" editable="true"/>
+
+                                <column id="mOL" editable="true"/>
+                                <column id="podrazdelenie" editable="true"/>
+
+                                <column id="srokSluzby" editable="true"/>
+                                <column id="procentGodovojAmortizacii" editable="true"/>
+
+                                <column id="sposobNacisleniaAmortizacii" editable="true"/>
+                                <column id="sposobOtrazeniaRashodovPoAmortizacii" editable="true"/>
+
+                                <column id="grafikAmortizacii" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="nmaTable.create"/>
+<!--                                <button action="nmaTable.edit"/>-->
+                                <button action="nmaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab3" caption="" spacing="true" margin="true" expand="komissiaBox">
+                    <groupBox id="komissiaBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/PrinatieKUcetuOSINMA.komissia" expand="komissiaTable">
+                        <table id="komissiaTable" dataContainer="komissiaDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="fizLico"/>
+                                <column id="predsedatel1"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="komissiaTable.create"/>
+<!--                                <button action="komissiaTable.edit"/>-->
+                                <button action="komissiaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab4" caption="" spacing="true" margin="true" expand="">
+                    <form dataContainer="prinatieKUcetuOSINMADc">
+                        <column width="350px">
+                            <textField id="naOsnovaniiField" property="naOsnovanii"/>
+                            <textField id="nomerOsnovaniaField" property="nomerOsnovania"/>
+                            <dateField id="dataOsnovaniaField" property="dataOsnovania"/>
+
+                            <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                            <entityPicker id="avtorField" property="avtor">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

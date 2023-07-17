@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="buh-project-enums-data">
+        <insert tableName="TipyKontaktnojInformacii" schemaName="enumerations">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="Адрес"/>
+            <column name="SYNONYM_" value="Адрес"/>
+            <column name="ORDER_" value="1"/>
+        </insert>
+        <insert tableName="TipyKontaktnojInformacii" schemaName="enumerations">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="Телефон"/>
+            <column name="SYNONYM_" value="Телефон"/>
+            <column name="ORDER_" value="2"/>
+        </insert>
+        <insert tableName="TipyKontaktnojInformacii" schemaName="enumerations">
+            <column name="ID" value="3"/>
+            <column name="NAME" value="АдресЭлектроннойПочты"/>
+            <column name="SYNONYM_" value="Адрес электронной почты"/>
+            <column name="ORDER_" value="3"/>
+        </insert>
+        <insert tableName="TipyKontaktnojInformacii" schemaName="enumerations">
+            <column name="ID" value="4"/>
+            <column name="NAME" value="Skype"/>
+            <column name="SYNONYM_" value="Skype"/>
+            <column name="ORDER_" value="4"/>
+        </insert>
+        <insert tableName="TipyKontaktnojInformacii" schemaName="enumerations">
+            <column name="ID" value="5"/>
+            <column name="NAME" value="ВебСтраница"/>
+            <column name="SYNONYM_" value="Веб страница"/>
+            <column name="ORDER_" value="5"/>
+        </insert>
+        <insert tableName="TipyKontaktnojInformacii" schemaName="enumerations">
+            <column name="ID" value="6"/>
+            <column name="NAME" value="Факс"/>
+            <column name="SYNONYM_" value="Факс"/>
+            <column name="ORDER_" value="6"/>
+        </insert>
+        <insert tableName="TipyKontaktnojInformacii" schemaName="enumerations">
+            <column name="ID" value="7"/>
+            <column name="NAME" value="Другое"/>
+            <column name="SYNONYM_" value="Другое"/>
+            <column name="ORDER_" value="7"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

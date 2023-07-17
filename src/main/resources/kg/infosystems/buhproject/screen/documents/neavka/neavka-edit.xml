@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://neavkaEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="neavkaDc"
+                  class="kg.infosystems.buhproject.entity.documents.Neavka">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="sotrudniki" fetchPlan="_base">
+                    <property name="sotrudnik" fetchPlan="_instance_name"/>
+                    <property name="grafikRaboty" fetchPlan="_instance_name"/>
+                    <property name="vidRasceta" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="sotrudnikiDc" property="sotrudniki"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="neavkaDc">
+                <column width="350px">
+                    <textField id="nomerField" property="nomer" required="true"/>
+                    <dateField id="dataField" property="data" required="true"/>
+                    <!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <dateField id="dataDeistviaId"
+                               caption="msg:///dataDeistviaId.caption"
+                               dateFormat="MM/yyyy"
+                               property="dataDeistvia" required="true"/>
+                </column>
+            </form>
+            <tabSheet id="tabSheet" width="100%" height="600px">
+                <tab id="tab1" caption="Содрудники" spacing="true" margin="true" expand="sotrudnikiBox">
+                    <groupBox id="sotrudnikiBox" caption="msg://kg.infosystems.buhproject.entity.documents/Neavka.sotrudniki"
+                              expand="sotrudnikiTable">
+                        <table id="sotrudnikiTable" dataContainer="sotrudnikiDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="tabelNomer"/>
+                                <column id="sotrudnik" editable="true" required="true"/>
+                                <column id="casov" editable="true" required="true"/>
+                                <column id="dataOtsutstvia" editable="true" required="true"/>
+                                <column id="pricina" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="sotrudnikiTable.create"/>
+                                <button action="sotrudnikiTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="Дополнительно" spacing="true" margin="true">
+                    <form dataContainer="neavkaDc">
+                        <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                        <entityPicker id="avtorField" property="avtor">
+                            <actions>
+                                <action id="entityLookup" type="entity_lookup"/>
+                                <action id="entityClear" type="entity_clear"/>
+                            </actions>
+                        </entityPicker>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

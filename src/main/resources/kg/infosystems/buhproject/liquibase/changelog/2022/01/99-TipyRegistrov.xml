@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="buh-project-enums-data">
+        <insert tableName="TipyRegistrov" schemaName="enumerations">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="РегистрНакопления"/>
+            <column name="SYNONYM_" value="Регистр накопления"/>
+            <column name="ORDER_" value="1"/>
+        </insert>
+        <insert tableName="TipyRegistrov" schemaName="enumerations">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="РегистрСведений"/>
+            <column name="SYNONYM_" value="Регистр сведений"/>
+            <column name="ORDER_" value="2"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

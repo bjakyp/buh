@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://avansovyjOtcetBrowse.caption"
+        focusComponent="avansovyjOtcetsTable">
+    <data readOnly="true">
+        <collection id="avansovyjOtcetsDc"
+                    class="kg.infosystems.buhproject.entity.documents.AvansovyjOtcet">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="sotrudnik" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="avansovyjOtcetsDl">
+                <query>
+                    <![CDATA[select e from AvansovyjOtcet e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="avansovyjOtcetsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="avansovyjOtcetsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="avansovyjOtcetsTable"
+                    width="100%"
+                    dataContainer="avansovyjOtcetsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="data"/>
+                <column id="nomer"/>
+<!--                <column id="proveden"/>-->
+                <column id="organizacia"/>
+                <column id="vidFinansirovania"/>
+                <column id="sotrudnik"/>
+                <column id="summaDokumenta"/>
+<!--                <column id="kolicestvoListovVPrilozenii"/>-->
+<!--                <column id="kolicestvoDokumentovVPrilozenii"/>-->
+<!--                <column id="poVedomosti"/>-->
+<!--                <column id="ostatokNaNacalo"/>-->
+<!--                <column id="izrashodovano"/>-->
+<!--                <column id="ostatokNaKonec"/>-->
+                <column id="kommentarij"/>
+                <column id="avtor"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="avansovyjOtcetsTable.create"/>
+                <button id="editBtn" action="avansovyjOtcetsTable.edit"/>
+                <button id="removeBtn" action="avansovyjOtcetsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

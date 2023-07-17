@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://aktSverkiVzaimorascetovEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="aktSverkiVzaimorascetovDc"
+                  class="kg.infosystems.buhproject.entity.documents.AktSverkiVzaimorascetov">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="kontragent" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="poDannymOrganizacii" fetchPlan="_base">
+                    <property name="dokumentSverki" fetchPlan="_instance_name"/>
+                </property>
+                <property name="poDannymKontragenta" fetchPlan="_base">
+                    <property name="dokumentSverki" fetchPlan="_instance_name"/>
+                </property>
+                <property name="spisokScetov" fetchPlan="_base">
+                    <property name="scetUceta" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="poDannymOrganizaciiDc" property="poDannymOrganizacii"/>
+            <collection id="poDannymKontragentaDc" property="poDannymKontragenta"/>
+            <collection id="spisokScetovDc" property="spisokScetov"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="aktSverkiVzaimorascetovDc">
+                <column width="350px">
+                    <checkBox id="sverkaSoglasovanaField" property="sverkaSoglasovana"/>
+                    <entityPicker id="kontragentField" property="kontragent">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <dateField id="nacaloPeriodaField" property="nacaloPerioda"/>
+                    <dateField id="konecPeriodaField" property="konecPerioda"/>
+                    <checkBox id="sverkaPoSocFonduField" property="sverkaPoSocFondu"/>
+                </column>
+                <column width="350px">
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data"/>
+<!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="vidFinansirovaniaField" property="vidFinansirovania">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+<!--                    <textField id="ostatokNaNacaloField" property="ostatokNaNacalo"/>-->
+<!--                    <textField id="ostatokNaKonecField" property="ostatokNaKonec"/>-->
+                </column>
+            </form>
+            <tabSheet id="tabSheet" height="600px">
+                <tab id="tab1" caption="По данным организации" spacing="true" margin="true" expand="poDannymOrganizaciiBox">
+                    <groupBox id="poDannymOrganizaciiBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/AktSverkiVzaimorascetov.poDannymOrganizacii" expand="poDannymOrganizaciiTable">
+                        <table id="poDannymOrganizaciiTable" dataContainer="poDannymOrganizaciiDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="data" editable="true"/>
+                                <column id="dokumentSverki" editable="true"/>
+                                <column id="summaDt" editable="true"/>
+                                <column id="summaKt" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="poDannymOrganizaciiTable.create"/>
+<!--                                <button action="poDannymOrganizaciiTable.edit"/>-->
+                                <button action="poDannymOrganizaciiTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="По данным контрагента" spacing="true" margin="true" expand="poDannymKontragentaBox">
+                    <groupBox id="poDannymKontragentaBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/AktSverkiVzaimorascetov.poDannymKontragenta" expand="poDannymKontragentaTable">
+                        <table id="poDannymKontragentaTable" dataContainer="poDannymKontragentaDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="data" editable="true"/>
+                                <column id="dokumentSverki" editable="true"/>
+                                <column id="summaDt" editable="true"/>
+                                <column id="summaKt" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="poDannymKontragentaTable.create"/>
+<!--                                <button action="poDannymKontragentaTable.edit"/>-->
+                                <button action="poDannymKontragentaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab3" caption="Счета учета" spacing="true" margin="true" expand="spisokScetovBox">
+                    <groupBox id="spisokScetovBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/AktSverkiVzaimorascetov.spisokScetov" expand="spisokScetovTable">
+                        <table id="spisokScetovTable" dataContainer="spisokScetovDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="scetUceta" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="spisokScetovTable.create"/>
+<!--                                <button action="spisokScetovTable.edit"/>-->
+                                <button action="spisokScetovTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab4" caption="Дополнительно" spacing="true" margin="true">
+                    <form dataContainer="aktSverkiVzaimorascetovDc">
+                        <checkBox id="isklucit1IzPredstavleniaDokumentaField" property="isklucit1IzPredstavleniaDokumenta"/>
+                        <checkBox id="sSapkojUtverzdauField" property="sSapkojUtverzdau"/>
+                        <checkBox id="ucityvat1VzaimozacetyField" property="ucityvat1Vzaimozacety"/>
+                        <textArea id="raznoglasieField" property="raznoglasie" rows="5"/>
+                        <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                        <entityPicker id="avtorField" property="avtor">
+                            <actions>
+                                <action id="entityLookup" type="entity_lookup"/>
+                                <action id="entityClear" type="entity_clear"/>
+                            </actions>
+                        </entityPicker>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

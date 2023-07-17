@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://statnoeRaspisanieBrowse.caption"
+        focusComponent="statnoeRaspisaniesTable">
+    <data readOnly="true">
+        <collection id="statnoeRaspisaniesDc"
+                    class="kg.infosystems.buhproject.entity.registers.informations.StatnoeRaspisanie">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="podrazdelenie" fetchPlan="_instance_name"/>
+                <property name="dolznost1" fetchPlan="_instance_name"/>
+                <property name="vidNacislenia" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="statnoeRaspisaniesDl">
+                <query>
+                    <![CDATA[select e from informations_StatnoeRaspisanie e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="statnoeRaspisaniesTable" spacing="true">
+        <filter id="filter"
+                dataLoader="statnoeRaspisaniesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="statnoeRaspisaniesTable"
+                    width="100%"
+                    dataContainer="statnoeRaspisaniesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <group>
+                    <column id="organizacia.naimenovanie"
+                            caption="msg://kg.infosystems.buhproject.entity.registers.informations/StatnoeRaspisanie.organizacia"/>
+                    <column id="podrazdelenie.naimenovanie"
+                            caption="msg://kg.infosystems.buhproject.entity.registers.informations/StatnoeRaspisanie.podrazdelenie"/>
+                </group>
+                <column id="dolznost1"/>
+                <column id="period"/>
+                <column id="kolicestvoStavok"/>
+                <column id="bazoviyOklad"/>
+                <column id="coefficentKratnosti"/>
+                <column id="summa"/>
+                <column id="vidNacislenia"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="statnoeRaspisaniesTable.create"/>
+                <button id="editBtn" action="statnoeRaspisaniesTable.edit"/>
+                <button id="removeBtn" action="statnoeRaspisaniesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

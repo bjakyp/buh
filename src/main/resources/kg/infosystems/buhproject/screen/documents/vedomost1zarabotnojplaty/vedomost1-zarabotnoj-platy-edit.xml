@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://vedomost1ZarabotnojPlatyEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="vedomost1ZarabotnojPlatyDc"
+                  class="kg.infosystems.buhproject.entity.documents.Vedomost1ZarabotnojPlaty">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="bankovskijScet" fetchPlan="_instance_name"/>
+                <property name="bankovskijScetZPProekta" fetchPlan="_instance_name"/>
+                <property name="podrazdelenie" fetchPlan="_instance_name"/>
+                <property name="kassa" fetchPlan="_instance_name"/>
+                <property name="poradokOkruglenia" fetchPlan="_instance_name"/>
+                <property name="sotrudnik" fetchPlan="_instance_name"/>
+                <property name="scetRascetov" fetchPlan="_instance_name"/>
+                <property name="vidOperaciiRKO" fetchPlan="_instance_name"/>
+                <property name="vidOperaciiPPI" fetchPlan="_instance_name"/>
+                <property name="kontragent" fetchPlan="_instance_name"/>
+                <property name="bankovskijScetKontragenta" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="zarplata" fetchPlan="_base">
+                    <property name="sotrudnik" fetchPlan="_instance_name"/>
+                    <property name="podrazdelenie" fetchPlan="_instance_name"/>
+                    <property name="bankovskijScet" fetchPlan="_instance_name"/>
+                    <property name="kartScet" fetchPlan="_instance_name"/>
+                </property>
+                <property name="raspredelenie" fetchPlan="_base"/>
+                <property name="tablicaVyplat" fetchPlan="_base"/>
+                <property name="itogiPoStat1am" fetchPlan="_base">
+                    <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                    <property name="stat1a" fetchPlan="_instance_name"/>
+                </property>
+                <property name="itogiPoVidamFinansirovania" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="zarplataDc" property="zarplata"/>
+            <collection id="raspredelenieDc" property="raspredelenie"/>
+            <collection id="tablicaVyplatDc" property="tablicaVyplat"/>
+            <collection id="itogiPoStat1amDc" property="itogiPoStat1am"/>
+            <collection id="itogiPoVidamFinansirovaniaDc" property="itogiPoVidamFinansirovania"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="vedomost1ZarabotnojPlatyDc">
+                <column width="350px">
+                    <dateField id="periodRegistraciiField" property="periodRegistracii"/>
+                    <entityPicker id="podrazdelenieField" property="podrazdelenie">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <textField id="vidVedomostiField" property="vidVedomosti"/>
+                    <textField id="vidDokumentaVyplatyField" property="vidDokumentaVyplaty"/>
+                    <entityPicker id="sotrudnikField" property="sotrudnik">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="scetRascetovField" property="scetRascetov">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="vidOperaciiRKOField" property="vidOperaciiRKO">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="vidOperaciiPPIField" property="vidOperaciiPPI">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="kontragentField" property="kontragent">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="bankovskijScetKontragentaField" property="bankovskijScetKontragenta">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+
+                    <entityPicker id="poradokOkrugleniaField" property="poradokOkruglenia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+                <column width="350px">
+                    <hbox>
+                        <textField id="nomerField" property="nomer" dataContainer="vedomost1ZarabotnojPlatyDc"/>
+                        <dateField id="dataField" property="data" dataContainer="vedomost1ZarabotnojPlatyDc"/>
+                    </hbox>
+<!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="bankovskijScetField" property="bankovskijScet">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="bankovskijScetZPProektaField" property="bankovskijScetZPProekta">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="kassaField" property="kassa">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+
+                    <textField id="summaDokumentaField" property="summaDokumenta"/>
+                </column>
+            </form>
+            <tabSheet id="tabSheet" width="95%" height="600px">
+                <tab caption="Зарплата" id="tab_1" spacing="true" margin="true" expand="hb1">
+                    <hbox id="hb1" width="100%" spacing="true">
+                        <groupBox id="zarplataBox"
+                                  caption="msg://kg.infosystems.buhproject.entity.documents/Vedomost1ZarabotnojPlaty.zarplata" expand="zarplataTable" height="100%">
+                            <table id="zarplataTable" dataContainer="zarplataDc" width="100%" editable="true">
+                                <actions>
+                                    <action id="create" type="create"/>
+<!--                                    <action id="edit" type="edit"/>-->
+                                    <action id="remove" type="remove"/>
+                                </actions>
+                                <columns>
+                                    <column id="nomerStroki"/>
+                                    <column id="rucnaaKorrektirovka" editable="true"/>
+                                    <column id="sotrudnik" editable="true"/>
+                                    <column id="podrazdelenie" editable="true"/>
+
+                                    <column id="bankovskijScet" editable="true"/>
+                                    <column id="summaPoBankovskomuScetu" editable="true"/>
+
+                                    <column id="kartScet" editable="true"/>
+                                    <column id="summaPoKartScetu" editable="true"/>
+
+                                    <column id="summaPoKasse" editable="true"/>
+                                    <!--                                <column id="klucSvazi"/>-->
+                                </columns>
+                                <buttonsPanel>
+                                    <button action="zarplataTable.create"/>
+<!--                                    <button action="zarplataTable.edit"/>-->
+                                    <button action="zarplataTable.remove"/>
+                                </buttonsPanel>
+                            </table>
+                        </groupBox>
+                        <groupBox id="raspredelenieBox"
+                                  caption="msg://kg.infosystems.buhproject.entity.documents/Vedomost1ZarabotnojPlaty.raspredelenie" expand="raspredelenieTable" height="100%">
+                            <table id="raspredelenieTable" dataContainer="raspredelenieDc" width="100%" editable="true">
+                                <actions>
+                                    <action id="create" type="create"/>
+<!--                                    <action id="edit" type="edit"/>-->
+                                    <action id="remove" type="remove"/>
+                                </actions>
+                                <columns>
+                                    <!--                                <column id="nomerStroki"/>-->
+                                    <column id="vidFinansirovania" editable="true"/>
+                                    <column id="stat1a" editable="true"/>
+                                    <column id="scetUceta" editable="true"/>
+                                    <column id="summa" editable="true"/>
+                                    <!--                                <column id="klucSvazi"/>-->
+                                </columns>
+                                <buttonsPanel>
+                                    <button action="raspredelenieTable.create"/>
+<!--                                    <button action="raspredelenieTable.edit"/>-->
+                                    <button action="raspredelenieTable.remove"/>
+                                </buttonsPanel>
+                            </table>
+                        </groupBox>
+                    </hbox>
+                </tab>
+                <tab caption="Итоги по статьям" id="tab_2" spacing="true" margin="true" expand="hb2">
+                    <hbox id="hb2" width="100%" spacing="true">
+                        <groupBox id="itogiPoStat1amBox"
+                                  caption="msg://kg.infosystems.buhproject.entity.documents/Vedomost1ZarabotnojPlaty.itogiPoStat1am" expand="itogiPoStat1amTable" height="100%">
+                            <table id="itogiPoStat1amTable" dataContainer="itogiPoStat1amDc" width="100%" editable="true">
+                                <actions>
+                                    <action id="create" type="create"/>
+<!--                                    <action id="edit" type="edit"/>-->
+                                    <action id="remove" type="remove"/>
+                                </actions>
+                                <columns>
+                                    <!--                                <column id="nomerStroki"/>-->
+                                    <column id="vidFinansirovania" editable="true"/>
+                                    <column id="stat1a" editable="true"/>
+                                    <column id="summa" editable="true"/>
+                                </columns>
+                                <buttonsPanel>
+                                    <button action="itogiPoStat1amTable.create"/>
+<!--                                    <button action="itogiPoStat1amTable.edit"/>-->
+                                    <button action="itogiPoStat1amTable.remove"/>
+                                </buttonsPanel>
+                            </table>
+                        </groupBox>
+                        <groupBox id="itogiPoVidamFinansirovaniaBox"
+                                  caption="msg://kg.infosystems.buhproject.entity.documents/Vedomost1ZarabotnojPlaty.itogiPoVidamFinansirovania" expand="itogiPoVidamFinansirovaniaTable" height="100%">
+                            <table id="itogiPoVidamFinansirovaniaTable" dataContainer="itogiPoVidamFinansirovaniaDc" width="100%" editable="true">
+                                <actions>
+                                    <action id="create" type="create"/>
+<!--                                    <action id="edit" type="edit"/>-->
+                                    <action id="remove" type="remove"/>
+                                </actions>
+                                <columns>
+                                    <!--                                <column id="nomerStroki"/>-->
+                                    <column id="vidFinansirovania" editable="true"/>
+                                    <column id="summa" editable="true"/>
+                                </columns>
+                                <buttonsPanel>
+                                    <button action="itogiPoVidamFinansirovaniaTable.create"/>
+<!--                                    <button action="itogiPoVidamFinansirovaniaTable.edit"/>-->
+                                    <button action="itogiPoVidamFinansirovaniaTable.remove"/>
+                                </buttonsPanel>
+                            </table>
+                        </groupBox>
+                    </hbox>
+                </tab>
+                <tab caption="Документы выплаты" id="tab_3" spacing="true" margin="true" expand="tablicaVyplatBox">
+                    <groupBox id="tablicaVyplatBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/Vedomost1ZarabotnojPlaty.tablicaVyplat" expand="tablicaVyplatTable">
+                        <table id="tablicaVyplatTable" dataContainer="tablicaVyplatDc" width="100%">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <action id="edit" type="edit"/>
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="naimenovanie"/>
+                                <column id="summa"/>
+                                <column id="summaOstatok"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="tablicaVyplatTable.create"/>
+                                <button action="tablicaVyplatTable.edit"/>
+                                <button action="tablicaVyplatTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab caption="Дополнительно" id="tab_4" spacing="true" margin="true">
+                    <form dataContainer="vedomost1ZarabotnojPlatyDc">
+                        <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                        <entityPicker id="avtorField" property="avtor">
+                            <actions>
+                                <action id="entityLookup" type="entity_lookup"/>
+                                <action id="entityClear" type="entity_clear"/>
+                            </actions>
+                        </entityPicker>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

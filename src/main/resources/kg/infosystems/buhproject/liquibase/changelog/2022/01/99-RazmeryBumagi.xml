@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="buh-project-enums-data">
+        <insert tableName="RazmeryBumagi" schemaName="enumerations">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="НеЗадано"/>
+            <column name="SYNONYM_" value="Не задано"/>
+            <column name="ORDER_" value="1"/>
+        </insert>
+        <insert tableName="RazmeryBumagi" schemaName="enumerations">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="A3"/>
+            <column name="SYNONYM_" value="A3"/>
+            <column name="ORDER_" value="2"/>
+        </insert>
+        <insert tableName="RazmeryBumagi" schemaName="enumerations">
+            <column name="ID" value="3"/>
+            <column name="NAME" value="A4"/>
+            <column name="SYNONYM_" value="A4"/>
+            <column name="ORDER_" value="3"/>
+        </insert>
+        <insert tableName="RazmeryBumagi" schemaName="enumerations">
+            <column name="ID" value="4"/>
+            <column name="NAME" value="A5"/>
+            <column name="SYNONYM_" value="A5"/>
+            <column name="ORDER_" value="4"/>
+        </insert>
+        <insert tableName="RazmeryBumagi" schemaName="enumerations">
+            <column name="ID" value="5"/>
+            <column name="NAME" value="B4"/>
+            <column name="SYNONYM_" value="B4"/>
+            <column name="ORDER_" value="5"/>
+        </insert>
+        <insert tableName="RazmeryBumagi" schemaName="enumerations">
+            <column name="ID" value="6"/>
+            <column name="NAME" value="B5"/>
+            <column name="SYNONYM_" value="B5"/>
+            <column name="ORDER_" value="6"/>
+        </insert>
+        <insert tableName="RazmeryBumagi" schemaName="enumerations">
+            <column name="ID" value="7"/>
+            <column name="NAME" value="B6"/>
+            <column name="SYNONYM_" value="B6"/>
+            <column name="ORDER_" value="7"/>
+        </insert>
+        <insert tableName="RazmeryBumagi" schemaName="enumerations">
+            <column name="ID" value="8"/>
+            <column name="NAME" value="C4"/>
+            <column name="SYNONYM_" value="C4"/>
+            <column name="ORDER_" value="8"/>
+        </insert>
+        <insert tableName="RazmeryBumagi" schemaName="enumerations">
+            <column name="ID" value="9"/>
+            <column name="NAME" value="C5"/>
+            <column name="SYNONYM_" value="C5"/>
+            <column name="ORDER_" value="9"/>
+        </insert>
+        <insert tableName="RazmeryBumagi" schemaName="enumerations">
+            <column name="ID" value="10"/>
+            <column name="NAME" value="C6"/>
+            <column name="SYNONYM_" value="C6"/>
+            <column name="ORDER_" value="10"/>
+        </insert>
+        <insert tableName="RazmeryBumagi" schemaName="enumerations">
+            <column name="ID" value="11"/>
+            <column name="NAME" value="USExecutive"/>
+            <column name="SYNONYM_" value="US Executive"/>
+            <column name="ORDER_" value="11"/>
+        </insert>
+        <insert tableName="RazmeryBumagi" schemaName="enumerations">
+            <column name="ID" value="12"/>
+            <column name="NAME" value="USLegal"/>
+            <column name="SYNONYM_" value="US Legal"/>
+            <column name="ORDER_" value="12"/>
+        </insert>
+        <insert tableName="RazmeryBumagi" schemaName="enumerations">
+            <column name="ID" value="13"/>
+            <column name="NAME" value="USLetter"/>
+            <column name="SYNONYM_" value="US Letter"/>
+            <column name="ORDER_" value="13"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://sposobyOtrazeniaZarabotnojPlatyEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="sposobyOtrazeniaZarabotnojPlatyDc"
+                  class="kg.infosystems.buhproject.entity.catalogs.SposobyOtrazeniaZarabotnojPlaty">
+            <fetchPlan extends="_base">
+                <property name="scetDt" fetchPlan="_instance_name"/>
+                <property name="scetDtSocFond" fetchPlan="_instance_name"/>
+                <property name="scetDtMedicinskoeStrahovanie" fetchPlan="_instance_name"/>
+                <property name="scetDtFondOplatyTruda" fetchPlan="_instance_name"/>
+                <property name="scetKt" fetchPlan="_instance_name"/>
+                <property name="stat1aZatrat" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="sposobyOtrazeniaZarabotnojPlatyDc">
+            <column width="350px">
+                <textField id="naimenovanieField" property="naimenovanie"/>
+                <entityPicker id="scetDtField" property="scetDt" caption="Счет ДТ" required="true">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+                <entityPicker id="scetKtField" property="scetKt" caption="Счет КТ" required="true">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+                <entityPicker id="stat1aZatratField" property="stat1aZatrat" caption="Статья затрат" required="true">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+            </column>
+            <column width="350px">
+                <textField stylename="borderless"/>
+                <textField stylename="borderless"/>
+                <textField stylename="borderless" id="scetDtNaimenovanieField"/>
+                <textField stylename="borderless" id="scetKtNaimenovanieField"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

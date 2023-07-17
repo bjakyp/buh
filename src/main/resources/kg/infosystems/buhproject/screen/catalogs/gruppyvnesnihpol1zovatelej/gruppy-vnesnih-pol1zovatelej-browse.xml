@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://gruppyVnesnihPol1zovatelejBrowse.caption"
+        focusComponent="gruppyVnesnihPol1zovatelejsTable">
+    <data readOnly="true">
+        <collection id="gruppyVnesnihPol1zovatelejsDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.GruppyVnesnihPol1zovatelej">
+            <fetchPlan extends="_base">
+                <property name="roditel1" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="gruppyVnesnihPol1zovatelejsDl">
+                <query>
+                    <![CDATA[select e from GruppyVnesnihPol1zovatelej e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="gruppyVnesnihPol1zovatelejsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="gruppyVnesnihPol1zovatelejsDl">
+            <properties include=".*"/>
+        </filter>
+        <treeTable id="gruppyVnesnihPol1zovatelejsTable"
+                   width="100%"
+                   dataContainer="gruppyVnesnihPol1zovatelejsDc"
+                   hierarchyProperty="roditel1">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="naimenovanie"/>
+                <column id="roditel1"/>
+                <column id="kommentarij"/>
+                <column id="vseOb2ektyAvtorizacii"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="gruppyVnesnihPol1zovatelejsTable.create"/>
+                <button id="editBtn" action="gruppyVnesnihPol1zovatelejsTable.edit"/>
+                <button id="removeBtn" action="gruppyVnesnihPol1zovatelejsTable.remove"/>
+            </buttonsPanel>
+        </treeTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

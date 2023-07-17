@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://otcetyPoSocial1nomuFonduBrowse.caption"
+        focusComponent="otcetyPoSocial1nomuFondusTable">
+    <data readOnly="true">
+        <collection id="otcetyPoSocial1nomuFondusDc"
+                    class="kg.infosystems.buhproject.entity.documents.OtcetyPoSocial1nomuFondu">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="otcetyPoSocial1nomuFondusDl">
+                <query>
+                    <![CDATA[select e from OtcetyPoSocial1nomuFondu e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="otcetyPoSocial1nomuFondusTable" spacing="true">
+        <filter id="filter"
+                dataLoader="otcetyPoSocial1nomuFondusDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="otcetyPoSocial1nomuFondusTable"
+                    width="100%"
+                    dataContainer="otcetyPoSocial1nomuFondusDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="data"/>
+                <column id="nomer"/>
+<!--                <column id="proveden"/>-->
+                <column id="organizacia"/>
+<!--                <column id="dataSdaciOtceta"/>-->
+<!--                <column id="okruglenie"/>-->
+<!--                <column id="obazatel1stvaPoStrahovymVznosam"/>-->
+<!--                <column id="obazatel1stvaPoPensionnomuFondu"/>-->
+<!--                <column id="pereplataPoStrahovymVznosam"/>-->
+<!--                <column id="pereplataPoPensionnomuFondu"/>-->
+                <column id="kommentarij"/>
+                <column id="avtor"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="otcetyPoSocial1nomuFondusTable.create"/>
+                <button id="editBtn" action="otcetyPoSocial1nomuFondusTable.edit"/>
+                <button id="removeBtn" action="otcetyPoSocial1nomuFondusTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

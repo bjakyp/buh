@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://izmenenieStatusovIDopolnitel1nyhVycetovEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="izmenenieStatusovIDopolnitel1nyhVycetovDc"
+                  class="kg.infosystems.buhproject.entity.documents.IzmenenieStatusovIDopolnitel1nyhVycetov">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="sotrudniki" fetchPlan="_base">
+                    <property name="sotrudnik" fetchPlan="_instance_name"/>
+                    <property name="status" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="sotrudnikiDc" property="sotrudniki"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="tabSheet">
+        <form id="form" dataContainer="izmenenieStatusovIDopolnitel1nyhVycetovDc">
+            <column width="350px">
+                <textField id="nomerField" property="nomer"/>
+                <dateField id="dataField" property="data"/>
+<!--                <checkBox id="provedenField" property="proveden"/>-->
+                <entityPicker id="organizaciaField" property="organizacia">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+            </column>
+        </form>
+        <tabSheet id="tabSheet" width="100%">
+            <tab caption="Сотрудники" id="tab_1" spacing="true" margin="true" expand="sotrudnikiBox">
+                <groupBox id="sotrudnikiBox"
+                          caption="msg://kg.infosystems.buhproject.entity.documents/IzmenenieStatusovIDopolnitel1nyhVycetov.sotrudniki" expand="sotrudnikiTable">
+                    <table id="sotrudnikiTable" dataContainer="sotrudnikiDc" width="100%" editable="true">
+                        <actions>
+                            <action id="create" type="create"/>
+<!--                            <action id="edit" type="edit"/>-->
+                            <action id="remove" type="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="nomerStroki"/>
+                            <column id="sotrudnik" editable="true"/>
+                            <column id="status" editable="true"/>
+                            <column id="dopolnitel1nyjVycet" editable="true"/>
+                        </columns>
+                        <buttonsPanel>
+                            <button action="sotrudnikiTable.create"/>
+<!--                            <button action="sotrudnikiTable.edit"/>-->
+                            <button action="sotrudnikiTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </tab>
+            <tab caption="Дополнительно" id="tab_2" spacing="true" margin="true">
+                <form dataContainer="izmenenieStatusovIDopolnitel1nyhVycetovDc">
+                    <column width="350px">
+                        <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                        <entityPicker id="avtorField" property="avtor">
+                            <actions>
+                                <action id="entityLookup" type="entity_lookup"/>
+                                <action id="entityClear" type="entity_clear"/>
+                            </actions>
+                        </entityPicker>
+                    </column>
+                </form>
+            </tab>
+        </tabSheet>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

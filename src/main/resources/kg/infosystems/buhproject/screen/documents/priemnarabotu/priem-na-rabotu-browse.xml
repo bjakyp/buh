@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://priemNaRabotuBrowse.caption"
+        focusComponent="priemNaRabotusTable">
+    <data readOnly="true">
+        <collection id="priemNaRabotusDc"
+                    class="kg.infosystems.buhproject.entity.documents.PriemNaRabotu">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="sotrudnik" fetchPlan="_instance_name"/>
+                <property name="podrazdelenie" fetchPlan="_instance_name"/>
+                <property name="dolznost1" fetchPlan="_instance_name"/>
+                <property name="grafikRaboty" fetchPlan="_instance_name"/>
+                <property name="status" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="nacislenia" fetchPlan="_base">
+                    <property name="vidRasceta" fetchPlan="_instance_name"/>
+                </property>
+                <property name="kategoriaRabotnikov" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="priemNaRabotusDl">
+                <query>
+                    <![CDATA[select e from PriemNaRabotu e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="priemNaRabotusTable" spacing="true">
+        <filter id="filter"
+                dataLoader="priemNaRabotusDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="priemNaRabotusTable"
+                    width="100%"
+                    dataContainer="priemNaRabotusDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="remove" type="itemTracking" caption="Исключить" icon="font-icon:REMOVE"/>
+                <action id="provesti" type="itemTracking" icon="DIALOG_OK"/>
+                <action id="otmenit1Provedenie" icon="BOOK" type="itemTracking"/>
+                <action id="reportAction" icon="PRINT" type="itemTracking"/>
+                <action id="editAction" icon="EDIT_ACTION" type="itemTracking" caption="Изменить"/>
+                <action id="refresh" type="refresh"/>
+                <action id="view" type="view"/>
+            </actions>
+            <columns>
+                <column id="data"/>
+                <column id="nomer"/>
+                <column id="sotrudnik"/>
+                <column id="podrazdelenie"/>
+                <column id="dolznost1"/>
+                <column id="period"/>
+                <column id="dataOkoncaniaRaboty"/>
+                <column id="kommentarij"/>
+                <column id="kategoriaRabotnikov"/>
+                <column id="avtor"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="priemNaRabotusTable.create"/>
+                <button id="editBtn" action="priemNaRabotusTable.editAction"/>
+                <button id="removeBtn" action="priemNaRabotusTable.remove"/>
+                <button id="provestiBtn" action="priemNaRabotusTable.provesti"/>
+                <button id="otmenit1ProvedenieBtn" action="priemNaRabotusTable.otmenit1Provedenie"/>
+                <comboBox id="reportTemplates" nullOptionVisible="false" nullName="Печать"/>
+                <button id="reportBtn" action="priemNaRabotusTable.reportAction"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

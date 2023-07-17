@@ -1,0 +1,10 @@
+package kg.infosystems.buhproject.screen.enumerations;
+
+import io.jmix.ui.screen.*;
+import kg.infosystems.buhproject.entity.enumerations.PricinyOtkluceniaDopolnitel1nyhOtcetovIObrabotokVModeliServisa;
+
+@UiController("PricinyOtkluceniaDopolnitel1nyhOtcetovIObrabotokVModeliServisa.browse")
+@UiDescriptor("PricinyOtkluceniaDopolnitel1nyhOtcetovIObrabotokVModeliServisa-browse.xml")
+@LookupComponent("enumsTable")
+public class PricinyOtkluceniaDopolnitel1nyhOtcetovIObrabotokVModeliServisaBrowse extends StandardLookup<PricinyOtkluceniaDopolnitel1nyhOtcetovIObrabotokVModeliServisa> {
+}

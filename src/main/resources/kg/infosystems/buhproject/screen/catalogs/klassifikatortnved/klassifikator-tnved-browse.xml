@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://klassifikatorTNVEDBrowse.caption"
+        focusComponent="klassifikatorTNVEDsTable">
+    <data readOnly="true">
+        <collection id="klassifikatorTNVEDsDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.KlassifikatorTNVED">
+            <fetchPlan extends="_base">
+                <property name="edinicaIzmerenia" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="klassifikatorTNVEDsDl">
+                <query>
+                    <![CDATA[select e from KlassifikatorTNVED e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="klassifikatorTNVEDsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="klassifikatorTNVEDsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="klassifikatorTNVEDsTable"
+                    width="100%"
+                    dataContainer="klassifikatorTNVEDsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="kod"/>
+                <column id="naimenovanie"/>
+                <column id="naimenovaniePolnoe"/>
+                <column id="edinicaIzmerenia"/>
+                <column id="syr1evoj"/>
+                <column id="dataNacalaDejstvia"/>
+                <column id="dataOkoncaniaDejstvia"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="klassifikatorTNVEDsTable.create"/>
+                <button id="editBtn" action="klassifikatorTNVEDsTable.edit"/>
+                <button id="removeBtn" action="klassifikatorTNVEDsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://predel1naaCislennost1Browse.caption"
+        focusComponent="predel1naaCislennost1sTable">
+    <data readOnly="true">
+        <collection id="predel1naaCislennost1sDc"
+                    class="kg.infosystems.buhproject.entity.documents.Predel1naaCislennost1">
+            <fetchPlan extends="_base">
+                <property name="parent" fetchPlan="_base"/>
+                <property name="organizacia" fetchPlan="_base"/>
+                <property name="tumf" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="predel1naaCislennost1sDl">
+                <query>
+                    <![CDATA[select e from Predel1naaCislennost1 e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="predel1naaCislennost1sTable" spacing="true">
+        <filter id="filter"
+                dataLoader="predel1naaCislennost1sDl">
+            <properties include=".*"/>
+        </filter>
+        <groupBox orientation="horizontal" spacing="true">
+            <textField id="aupTotalField" editable="false" datatype="int"
+                       caption="msg://kg.infosystems.buhproject.entity.documents/Predel1naaCislennost1.aup"/>
+            <textField id="osnovnoyPersonalTotalField" datatype="int" editable="false"
+                       caption="msg://kg.infosystems.buhproject.entity.documents/Predel1naaCislennost1.osnovnoyPersonal"/>
+            <textField id="topAndMopTotalField" editable="false" datatype="int"
+                       caption="msg://kg.infosystems.buhproject.entity.documents/Predel1naaCislennost1.topAndMop"/>
+            <textField id="vsegoTotalField" datatype="int" editable="false"
+                       caption="msg://kg.infosystems.buhproject.entity.documents/Predel1naaCislennost1.vsego"/>
+        </groupBox>
+        <treeTable id="predel1naaCislennost1sTable"
+                   width="100%"
+                   dataContainer="predel1naaCislennost1sDc" hierarchyProperty="parent" editable="true">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="organizacia"/>
+                <column id="aup" editable="true"/>
+                <column id="osnovnoyPersonal" editable="true"/>
+                <column id="topAndMop" editable="true"/>
+                <column id="vsego"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="predel1naaCislennost1sTable.create"/>
+                <button id="editBtn" action="predel1naaCislennost1sTable.edit"/>
+                <button id="removeBtn" action="predel1naaCislennost1sTable.remove"/>
+            </buttonsPanel>
+        </treeTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

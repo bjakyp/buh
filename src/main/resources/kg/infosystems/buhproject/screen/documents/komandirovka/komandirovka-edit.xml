@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://komandirovkaEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="komandirovkaDc"
+                  class="kg.infosystems.buhproject.entity.documents.Komandirovka">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="strana" fetchPlan="_instance_name"/>
+                <property name="gorod" fetchPlan="_instance_name"/>
+                <property name="podrazdelenie" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="sotrudniki" fetchPlan="_base">
+                    <property name="sotrudnik" fetchPlan="_instance_name"/>
+                    <property name="podrazdelenie" fetchPlan="_instance_name"/>
+                    <property name="dolznost1" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="sotrudnikiDc" property="sotrudniki"/>
+        </instance>
+        <collection id="stranyDc" class="kg.infosystems.buhproject.entity.catalogs.StranyMira">
+            <fetchPlan extends="_base"/>
+            <loader id="countriesDl">
+                <query>
+                    <![CDATA[select e from StranyMira e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="gorodaDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.Goroda">
+            <fetchPlan extends="_base"/>
+            <loader id="gorodaDl">
+                <query>
+                    <![CDATA[select e from Goroda e]]>
+                    <condition>
+                        <and>
+                            <c:jpql>
+                                <c:where>e.strana = :strana</c:where>
+                            </c:jpql>
+                        </and>
+                    </condition>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="komandirovkaDc">
+                <column width="350px">
+                    <entityComboBox id="stranaField"
+                                    dataContainer="komandirovkaDc"
+                                    property="strana"
+                                    optionsContainer="stranyDc"
+                                    filterMode="CONTAINS"/>
+                    <entityComboBox id="gorodField"
+                                    property="gorod"
+                                    optionsContainer="gorodaDc"
+                                    filterMode="CONTAINS"
+                                    required="true"
+                                    dataContainer="komandirovkaDc"/>
+                    <dateField id="dataNacalaField" property="dataNacala" resolution="DAY"/>
+                    <dateField id="dataOkoncaniaField" property="dataOkoncania" resolution="DAY"/>
+                    <textField id="kolicestvoDnejField" property="kolicestvoDnej" required="true"/>
+                </column>
+                <column width="350px">
+                    <textField id="nomerField" property="nomer" required="true"/>
+                    <dateField id="dataField" property="data" resolution="DAY"/>
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <checkBox id="oplataPoSrednemuZarabotkuField" property="oplataPoSrednemuZarabotku"/>
+                    <!--                    <textField id="summaDokumentaField" property="summaDokumenta"/>-->
+                </column>
+                <column width="350px">
+                    <entityPicker id="vidNacisleniiField" property="vidNacislenii" required="true"/>
+                </column>
+            </form>
+            <tabSheet id="tabSheet" width="100%" height="600px">
+                <tab id="tab1" caption="Работники" expand="sotrudnikiBox">
+                    <groupBox id="sotrudnikiBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/Komandirovka.sotrudniki" expand="sotrudnikiTable">
+                        <table id="sotrudnikiTable" dataContainer="sotrudnikiDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="sotrudnik" caption="Работник" editable="true"/>
+                                <column id="podrazdelenie" editable="true"/>
+                                <column id="dolznost1" editable="true"/>
+                                <column id="sutocnye" editable="true" required="true"/>
+                                <column id="prozivanie" editable="true" required="true"/>
+                                <column id="proezdnye" editable="true" required="true"/>
+                                <column id="summaVsego" caption="Сумма" required="true"/>
+                                <column id="zadanie" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="sotrudnikiTable.create"/>
+                                <!--                                <button action="sotrudnikiTable.edit"/>-->
+                                <button action="sotrudnikiTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="Документы">
+                </tab>
+                <tab id="tab3" caption="Дополнительно">
+                    <form dataContainer="komandirovkaDc">
+                        <column width="350px">
+                            <textField id="soderzanieOVyplateField" property="soderzanieOVyplate"/>
+                            <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                            <entityPicker id="avtorField" property="avtor">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

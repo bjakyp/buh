@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://nomenklaturaBrowse.caption"
+        focusComponent="nomenklaturasTable">
+    <data readOnly="true">
+        <collection id="nomenklaturasDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.Nomenklatura">
+            <fetchPlan extends="_base">
+                <property name="roditel1" fetchPlan="_instance_name"/>
+                <property name="edinicaIzmerenia" fetchPlan="_instance_name"/>
+                <property name="fajlKartinki" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="nomenklaturasDl">
+                <query>
+                    <![CDATA[select e from Nomenklatura e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="nomenklaturasTable" spacing="true">
+        <filter id="filter"
+                dataLoader="nomenklaturasDl">
+            <properties include=".*"/>
+        </filter>
+        <treeTable id="nomenklaturasTable"
+                   width="100%"
+                   dataContainer="nomenklaturasDc"
+                   hierarchyProperty="roditel1">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="kod"/>
+                <column id="naimenovanie"/>
+                <column id="roditel1"/>
+                <column id="etoGruppa"/>
+                <column id="naimenovaniePolnoe"/>
+                <column id="edinicaIzmerenia"/>
+                <column id="usluga"/>
+                <column id="fajlKartinki"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="nomenklaturasTable.create"/>
+                <button id="editBtn" action="nomenklaturasTable.edit"/>
+                <button id="removeBtn" action="nomenklaturasTable.remove"/>
+            </buttonsPanel>
+        </treeTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

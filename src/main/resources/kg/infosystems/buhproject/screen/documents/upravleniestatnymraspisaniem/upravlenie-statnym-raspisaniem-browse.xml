@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://upravlenieStatnymRaspisaniemBrowse.caption"
+        focusComponent="upravlenieStatnymRaspisaniemsTable">
+    <data readOnly="true">
+        <collection id="upravlenieStatnymRaspisaniemsDc"
+                    class="kg.infosystems.buhproject.entity.documents.UpravlenieStatnymRaspisaniem">
+            <fetchPlan extends="_base">
+                <property name="organizacii" fetchPlan="_base"/>
+                <property name="status" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="upravlenieStatnymRaspisaniemsDl">
+                <query>
+                    <![CDATA[select e from UpravlenieStatnymRaspisaniem e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="upravlenieStatnymRaspisaniemsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="upravlenieStatnymRaspisaniemsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="upravlenieStatnymRaspisaniemsTable"
+                    width="100%"
+                    dataContainer="upravlenieStatnymRaspisaniemsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="sendToStatnoeRaspisanie" type="itemTracking"/>
+                <action id="reply" type="itemTracking"/>
+                <action id="finish" type="itemTracking"/>
+            </actions>
+            <columns>
+                <column id="documentDate"/>
+                <column id="period"/>
+                <column id="organizacii"/>
+                <column id="status"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="upravlenieStatnymRaspisaniemsTable.create"/>
+                <button id="editBtn" action="upravlenieStatnymRaspisaniemsTable.edit"/>
+                <button id="removeBtn" action="upravlenieStatnymRaspisaniemsTable.remove"/>
+                <button id="upravlenieStatnymRaspisaniemsTableItemTrackingBtn"
+                        action="upravlenieStatnymRaspisaniemsTable.sendToStatnoeRaspisanie"
+                        icon="font-icon:CHEVRON_RIGHT" caption="Отправить на штатное расписание"/>
+                <button id="replyDocBtn" action="upravlenieStatnymRaspisaniemsTable.reply"
+                        icon="font-icon:REPLY" caption="На доработку"/>
+                <button id="finishDocBtn" action="upravlenieStatnymRaspisaniemsTable.finish"
+                        icon="font-icon:STOP_CIRCLE" caption="Завершить"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

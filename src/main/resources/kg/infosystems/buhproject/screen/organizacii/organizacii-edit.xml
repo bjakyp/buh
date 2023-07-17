@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://organizaciiEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="organizaciiDc"
+                  class="kg.infosystems.buhproject.entity.catalogs.Organizacii">
+            <fetchPlan extends="_base">
+                <property name="osnovnojBankovskijScet" fetchPlan="_base"/>
+                <property name="osnovnaaKassa" fetchPlan="_base"/>
+                <property name="gNS" fetchPlan="_base"/>
+                <property name="kodPravovojFormy" fetchPlan="_base"/>
+                <property name="fajlLogotip" fetchPlan="_base"/>
+                <property name="fajlFaksimil1naaPecat1" fetchPlan="_base"/>
+                <property name="rajonnoeOtdelenieKaznacejstva" fetchPlan="_base"/>
+                <property name="kontaktnaaInformacia" fetchPlan="_base"/>
+                <property name="registrasionnyiNomerSf" fetchPlan="_base"/>
+                <property name="podohodnyiNalog_" fetchPlan="_base"/>
+                <property name="stavkaProfsoyuza" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="kontaktnaaInformaciaDc" property="kontaktnaaInformacia"/>
+            <collection id="registrasionnyiNomerSfDc" property="registrasionnyiNomerSf"/>
+            <collection id="podohodnyiNalog_Dc" property="podohodnyiNalog_"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <tabSheet height="100%" width="100%">
+                <tab caption="Основная информация" id="tab_0" spacing="true">
+                    <form id="form" dataContainer="organizaciiDc">
+                        <column width="350px">
+                            <label/>
+                            <textField id="kodField" property="kod"/>
+                            <textField id="naimenovanieField" property="naimenovanie"/>
+                            <textField id="iNNField" property="iNN"/>
+                            <dateField id="dataRegistraciiField" property="dataRegistracii"/>
+                            <entityPicker id="osnovnojBankovskijScetField" property="osnovnojBankovskijScet">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <textField id="kodPoOKPOField" property="kodPoOKPO"/>
+                            <entityPicker id="osnovnaaKassaField" property="osnovnaaKassa">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <textField id="naimenovaniePolnoeField" property="naimenovaniePolnoe"/>
+                            <entityPicker id="gNSField" property="gNS">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <textField id="regNomerSocFondaBudzetField" property="regNomerSocFondaBudzet"/>
+                            <textField id="regNomerSocFondaSpecScetField" property="regNomerSocFondaSpecScet"/>
+                        </column>
+                        <column width="350px">
+                            <label/>
+                            <textField id="kodGKEDField" property="kodGKED"/>
+                            <textField id="naimenovanieGKEDField" property="naimenovanieGKED"/>
+                            <textField id="organUpravleniaField" property="organUpravlenia"/>
+                            <entityPicker id="kodPravovojFormyField" property="kodPravovojFormy">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <textField id="prefiksField" property="prefiks"/>
+                            <entityPicker id="fajlLogotipField" property="fajlLogotip">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <entityPicker id="fajlFaksimil1naaPecat1Field" property="fajlFaksimil1naaPecat1">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <textField id="sOATOField" property="sOATO"/>
+                            <entityPicker id="rajonnoeOtdelenieKaznacejstvaField" property="rajonnoeOtdelenieKaznacejstva">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <textField id="kodVVedomstvennomKlassifikatoreField" property="kodVVedomstvennomKlassifikatore"/>
+                            <textField id="kodVFunkcional1nomKlassifikatoreField" property="kodVFunkcional1nomKlassifikatore"/>
+                        </column>
+                    </form>
+                </tab>
+                <tab caption="Контактная информация" id="tab_1" spacing="true">
+                    <groupBox id="kontaktnaaInformaciaBox"
+                              caption="msg://kg.infosystems.buhproject.entity.catalogs/Organizacii.kontaktnaaInformacia">
+                        <table id="kontaktnaaInformaciaTable" dataContainer="kontaktnaaInformaciaDc" width="100%" height="100%">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <action id="edit" type="edit"/>
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="predstavlenie"/>
+                                <column id="znaceniaPolej"/>
+                                <column id="strana"/>
+                                <column id="region"/>
+                                <column id="gorod"/>
+                                <column id="adresEP"/>
+                                <column id="domennoeImaServera"/>
+                                <column id="nomerTelefona"/>
+                                <column id="nomerTelefonaBezKodov"/>
+                                <column id="dejstvuetS"/>
+                                <column id="znacenie"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="kontaktnaaInformaciaTable.create"/>
+                                <button action="kontaktnaaInformaciaTable.edit"/>
+                                <button action="kontaktnaaInformaciaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab caption="Подоходный налог" id="tab_2" spacing="true">
+                    <groupBox id="podohodnyiNalog_Box"
+                              caption="msg://kg.infosystems.buhproject.entity.catalogs/Organizacii.podohodnyiNalog_">
+                        <table id="podohodnyiNalog_Table" dataContainer="podohodnyiNalog_Dc" width="800" height="500">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <action id="edit" type="edit"/>
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="stavkiPodohodnogoNaloga_"/>
+                                <column id="dataVstuplenieDeistvie"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="podohodnyiNalog_Table.create"/>
+                                <button action="podohodnyiNalog_Table.edit"/>
+                                <button action="podohodnyiNalog_Table.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab caption="Ставка профсоюза" id="tab_3" spacing="true">
+                    <form id="stavkaProfsoyuzaForm" dataContainer="organizaciiDc">
+                        <column width="350px">
+                            <dateField id="dataNachalaDeistvia" property="stavkaProfsoyuza.dataNachalaDeistvia" resolution="DAY"/>
+                            <entityPicker id="vidyUderzanij" property="stavkaProfsoyuza.vidyUderzanij"/>
+                            <textField id="stavka" property="stavkaProfsoyuza.stavka"/>
+                        </column>
+                    </form>
+                </tab>
+                <tab caption="Регистрационные номер СФ" id="tab_4" spacing="true">
+                    <groupBox id="registrasionnyiNomerSfBox"
+                              caption="msg://kg.infosystems.buhproject.entity.catalogs/Organizacii.registrasionnyiNomerSf">
+                        <table id="registrasionnyiNomerSfTable" dataContainer="registrasionnyiNomerSfDc" width="100%" height="100%">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <action id="edit" type="edit"/>
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="kodRayonaSf"/>
+                                <column id="sostoanie"/>
+                                <column id="vidTarifa"/>
+                                <column id="registrasionnyiNomer"/>
+                                <column id="dataRegistrasii"/>
+                                <column id="kommentarij"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="registrasionnyiNomerSfTable.create"/>
+                                <button action="registrasionnyiNomerSfTable.edit"/>
+                                <button action="registrasionnyiNomerSfTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

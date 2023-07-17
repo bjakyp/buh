@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="buh-project-enums-data">
+        <insert tableName="KodyPravovojFormy" schemaName="enumerations">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="ОсОО"/>
+            <column name="SYNONYM_" value="ОсОО"/>
+            <column name="ORDER_" value="1"/>
+        </insert>
+        <insert tableName="KodyPravovojFormy" schemaName="enumerations">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="ОО"/>
+            <column name="SYNONYM_" value="ОО"/>
+            <column name="ORDER_" value="2"/>
+        </insert>
+        <insert tableName="KodyPravovojFormy" schemaName="enumerations">
+            <column name="ID" value="3"/>
+            <column name="NAME" value="ОАО"/>
+            <column name="SYNONYM_" value="ОАО"/>
+            <column name="ORDER_" value="3"/>
+        </insert>
+        <insert tableName="KodyPravovojFormy" schemaName="enumerations">
+            <column name="ID" value="4"/>
+            <column name="NAME" value="ЗАО"/>
+            <column name="SYNONYM_" value="ЗАО"/>
+            <column name="ORDER_" value="4"/>
+        </insert>
+        <insert tableName="KodyPravovojFormy" schemaName="enumerations">
+            <column name="ID" value="5"/>
+            <column name="NAME" value="ГП"/>
+            <column name="SYNONYM_" value="ГП"/>
+            <column name="ORDER_" value="5"/>
+        </insert>
+        <insert tableName="KodyPravovojFormy" schemaName="enumerations">
+            <column name="ID" value="6"/>
+            <column name="NAME" value="МКП"/>
+            <column name="SYNONYM_" value="МКП"/>
+            <column name="ORDER_" value="6"/>
+        </insert>
+        <insert tableName="KodyPravovojFormy" schemaName="enumerations">
+            <column name="ID" value="7"/>
+            <column name="NAME" value="ОсДО"/>
+            <column name="SYNONYM_" value="ОсДО"/>
+            <column name="ORDER_" value="7"/>
+        </insert>
+        <insert tableName="KodyPravovojFormy" schemaName="enumerations">
+            <column name="ID" value="8"/>
+            <column name="NAME" value="ОФ"/>
+            <column name="SYNONYM_" value="ОФ"/>
+            <column name="ORDER_" value="8"/>
+        </insert>
+        <insert tableName="KodyPravovojFormy" schemaName="enumerations">
+            <column name="ID" value="9"/>
+            <column name="NAME" value="ТСЖ"/>
+            <column name="SYNONYM_" value="ТСЖ"/>
+            <column name="ORDER_" value="9"/>
+        </insert>
+        <insert tableName="KodyPravovojFormy" schemaName="enumerations">
+            <column name="ID" value="10"/>
+            <column name="NAME" value="ИП"/>
+            <column name="SYNONYM_" value="ИП"/>
+            <column name="ORDER_" value="10"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

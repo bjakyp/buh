@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="buh-project-enums-data">
+        <insert tableName="SostoaniaMigraciiPrilozenia" schemaName="enumerations">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="Выполняется"/>
+            <column name="SYNONYM_" value="Выполняется"/>
+            <column name="ORDER_" value="1"/>
+        </insert>
+        <insert tableName="SostoaniaMigraciiPrilozenia" schemaName="enumerations">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="ЗавершенаСОшибкой"/>
+            <column name="SYNONYM_" value="Завершена с ошибкой"/>
+            <column name="ORDER_" value="2"/>
+        </insert>
+        <insert tableName="SostoaniaMigraciiPrilozenia" schemaName="enumerations">
+            <column name="ID" value="3"/>
+            <column name="NAME" value="ЗавершенаУспешно"/>
+            <column name="SYNONYM_" value="Завершена успешно"/>
+            <column name="ORDER_" value="3"/>
+        </insert>
+        <insert tableName="SostoaniaMigraciiPrilozenia" schemaName="enumerations">
+            <column name="ID" value="4"/>
+            <column name="NAME" value="ОжиданиеЗагрузки"/>
+            <column name="SYNONYM_" value="Ожидание загрузки"/>
+            <column name="ORDER_" value="4"/>
+        </insert>
+        <insert tableName="SostoaniaMigraciiPrilozenia" schemaName="enumerations">
+            <column name="ID" value="5"/>
+            <column name="NAME" value="ОжиданиеОбновления"/>
+            <column name="SYNONYM_" value="Ожидание обновления"/>
+            <column name="ORDER_" value="5"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

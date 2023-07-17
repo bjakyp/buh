@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://fiziceskieLicaEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="fiziceskieLicaDc"
+                  class="kg.infosystems.buhproject.entity.catalogs.FiziceskieLica">
+            <fetchPlan extends="_base">
+                <property name="roditel1" fetchPlan="_instance_name"/>
+                <property name="pol" fetchPlan="_instance_name"/>
+                <property name="grazdanstvo" fetchPlan="_instance_name"/>
+                <property name="nacional1nost1" fetchPlan="_instance_name"/>
+                <property name="osnovnojBankovskijScet" fetchPlan="_instance_name"/>
+                <property name="kontaktnaaInformacia" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="kontaktnaaInformaciaDc" property="kontaktnaaInformacia"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <tabSheet>
+                <tab id="tab1" caption="msg://osnovnye">
+                    <form id="form" dataContainer="fiziceskieLicaDc">
+                        <column width="350px">
+                            <label stylename="borderless"/>
+                            <textField id="kodField" property="kod"/>
+                            <textField id="iNNField" property="iNN" required="true" editable="false"/>
+                            <dateField id="dataRozdeniaField" property="dataRozdenia" editable="false"/>
+                            <entityPicker id="polField" property="pol" editable="false"/>
+                            <entityPicker id="nacional1nost1Field" property="nacional1nost1">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <label stylename="borderless"/>
+                        </column>
+                        <column>
+                            <label stylename="borderless"/>
+                            <textField stylename="borderless"/>
+                            <button caption="Поиск" id="searchBtn"/>
+                            <textField stylename="borderless"/>
+                            <textField stylename="borderless"/>
+                            <textField stylename="borderless" id="nacionalnost1Label"/>
+                            <label stylename="borderless"/>
+                        </column>
+                    </form>
+                </tab>
+                <tab id="tab2" caption="msg://fio">
+                    <form id="form2" dataContainer="fiziceskieLicaDc">
+                        <column width="350px">
+                            <label stylename="borderless"/>
+                            <textField id="firsNameField" property="firsName" caption="msg://firsName" editable="false"/>
+                            <textField id="nameField" property="name" caption="msg://name" editable="false"/>
+                            <textField id="lastNameField" property="lastName" caption="msg://lastName" editable="false"/>
+                            <label stylename="borderless"/>
+                        </column>
+                    </form>
+                </tab>
+                <tab id="tab3" caption="msg://adrespropiski">
+                    <form id="form3" dataContainer="fiziceskieLicaDc">
+                        <column width="350px">
+                            <label stylename="borderless"/>
+                            <textField id="mestoRozdeniaField" property="mestoRozdenia"/>
+                            <entityPicker id="grazdanstvoField" property="grazdanstvo">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <label stylename="borderless"/>
+                        </column>
+                    </form>
+                </tab>
+                <tab id="tab4" caption="msg://pasportnyeDannye">
+                    <form id="form4" dataContainer="fiziceskieLicaDc">
+                        <column width="350px">
+                            <label stylename="borderless"/>
+                            <textField property="passportNumber" caption="msg://passportNumber"/>
+                            <textField property="passportSeries" caption="msg://passportSeries"/>
+                            <textField property="issuedDate" caption="msg://issuedDate" />
+                            <textField property="expiredDate" caption="msg://expire dDate"/>
+                            <textField property="passportAuthority" caption="msg://passportAuthority"/>
+                            <textField property="addressLocalityCode" caption="msg://addressLocalityCode"/>
+                            <textField property="passportNumberAC" caption="msg://passportNumberAC"/>
+                            <label stylename="borderless"/>
+                        </column>
+                    </form>
+                </tab>
+                <tab id="tab5" caption="msg://kg.infosystems.buhproject.entity.catalogs/FiziceskieLica.kontaktnaaInformacia">
+                    <groupBox id="kontaktnaaInformaciaBox"
+                              caption="msg://kg.infosystems.buhproject.entity.catalogs/FiziceskieLica.kontaktnaaInformacia">
+                        <table id="kontaktnaaInformaciaTable" dataContainer="kontaktnaaInformaciaDc" width="100%"
+                               height="200px" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="predstavlenie" editable="true"/>
+                                <column id="znaceniaPolej" editable="true"/>
+                                <column id="strana" editable="true"/>
+                                <column id="region" editable="true"/>
+                                <column id="gorod" editable="true"/>
+                                <column id="adresEP" editable="true"/>
+                                <column id="domennoeImaServera" editable="true"/>
+                                <column id="nomerTelefona" editable="true"/>
+                                <column id="nomerTelefonaBezKodov" editable="true"/>
+                                <column id="znacenie" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="kontaktnaaInformaciaTable.create"/>
+                                <button action="kontaktnaaInformaciaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

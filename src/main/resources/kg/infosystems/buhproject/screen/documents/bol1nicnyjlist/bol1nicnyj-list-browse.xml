@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://bol1nicnyjListBrowse.caption"
+        focusComponent="bol1nicnyjListsTable">
+    <data readOnly="true">
+        <collection id="bol1nicnyjListsDc"
+                    class="kg.infosystems.buhproject.entity.documents.Bol1nicnyjList">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="sotrudnik" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="bol1nicnyjListsDl">
+                <query>
+                    <![CDATA[select e from Bol1nicnyjList e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="bol1nicnyjListsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="bol1nicnyjListsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="bol1nicnyjListsTable"
+                    width="100%"
+                    dataContainer="bol1nicnyjListsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="reportRunAction" icon="PRINT" type="itemTracking"/>
+                <action id="provesti" type="itemTracking" icon="DIALOG_OK"/>
+                <action id="otmenit1Provedenie" icon="BOOK" type="itemTracking"/>
+                <action id="refresh" type="refresh"/>
+            </actions>
+            <columns>
+                <column id="data"/>
+                <column id="nomer"/>
+                <!--                <column id="proveden"/>-->
+                <column id="organizacia"/>
+                <column id="sotrudnik"/>
+                <column id="vidPosobii"/>
+                <column id="metodyRascetaPosobii"/>
+                <!--                <column id="kolicestvoLetStaza"/>-->
+                <!--                <column id="dataNacala"/>-->
+                <!--                <column id="dataOkoncania"/>-->
+                <!--                <column id="dnej"/>-->
+                <!--                <column id="dnejOrganizacii"/>-->
+                <!--                <column id="dnejZaScetSF"/>-->
+                <!--                <column id="kommentarij"/>-->
+                <!--                <column id="avtor"/>-->
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="bol1nicnyjListsTable.create"/>
+                <button id="editBtn" action="bol1nicnyjListsTable.edit"/>
+                <button id="removeBtn" action="bol1nicnyjListsTable.remove"/>
+                <button id="provestiBtn" action="bol1nicnyjListsTable.provesti"/>
+                <button id="otmenit1ProvedenieBtn" action="bol1nicnyjListsTable.otmenit1Provedenie"/>
+                <comboBox id="reportTemplates" nullOptionVisible="false" nullName="Печать"/>
+                <button id="reportRunBtn" action="bol1nicnyjListsTable.reportRunAction"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,71 @@
+before_script:
+    - export JAVA_HOME=/home/gitlab-runner/.sdkman/candidates/java/current
+
+stages: # List of stages for jobs, and their order of execution
+    - build
+    - deploy
+
+build-staging: # This job runs in the build stage, which runs first.
+    stage: build
+    only:
+        - staging
+    script:
+        - ./gradlew bootJar
+    cache:
+        key: "$CI_COMMIT_REF_NAME"
+        policy: push
+        paths:
+            - build
+            - .gradle
+
+deploy-staging: # This job runs in the deploy stage.
+    stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
+    only:
+        - staging
+    script:
+        - ./deploy.sh
+    cache:
+        key: "$CI_COMMIT_REF_NAME"
+        policy: pull
+        paths:
+            - build
+            - .gradle
+    #    artifacts:
+    #        paths:
+    #            - build/libs/*.jar
+    environment:
+        name: staging
+        url: http://10.200.24.105:8888
+
+build-master:
+    tags:
+        - master
+    stage: build
+    only:
+        - master
+    script:
+        - ./gradlew bootJar
+    cache:
+        key: "$CI_COMMIT_REF_NAME"
+        policy: push
+        paths:
+            - build
+            - .gradle
+
+deploy-master:
+    tags:
+        - master
+    stage: deploy
+    only:
+        - master
+    script:
+        - ./deploy.sh
+    cache:
+        key: "$CI_COMMIT_REF_NAME"
+        policy: pull
+        paths:
+            - build
+            - .gradle
+    environment:
+        name: minfin
+        url: http://buh.okmot.kg

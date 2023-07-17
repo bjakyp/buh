@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://vidyUderzanijEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="vidyUderzanijDc"
+                  class="kg.infosystems.buhproject.entity.compensations.VidyUderzanij">
+            <fetchPlan extends="_base">
+                <property name="vidyFinansirovania" fetchPlan="_instance_name"/>
+                <property name="sposobyRasceta" fetchPlan="_instance_name"/>
+                <property name="kategoriiRascetov" fetchPlan="_instance_name"/>
+                <property name="scetUceta" fetchPlan="_instance_name"/>
+                <property name="stat1a" fetchPlan="_instance_name"/>
+                <property name="sposobyOtrazeniaZarabotnojPlaty" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="vidyUderzanijDc">
+                <column width="350px">
+                    <textField id="codeField" property="code"/>
+                    <textField id="descriptionField" property="description"/>
+                    <entityPicker id="vidyFinansirovaniaField" property="vidyFinansirovania">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="sposobyRascetaField" property="sposobyRasceta">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <textArea id="opisanieField" property="opisanie" rows="5"/>
+<!--                    <checkBox id="trebuetsaRascetBazyField" property="trebuetsaRascetBazy"/>-->
+<!--                    <checkBox id="trebuetsaRascetVremeniField" property="trebuetsaRascetVremeni"/>-->
+<!--                    <entityPicker id="kategoriiRascetovField" property="kategoriiRascetov">-->
+<!--                        <actions>-->
+<!--                            <action id="entityLookup" type="entity_lookup"/>-->
+<!--                            <action id="entityClear" type="entity_clear"/>-->
+<!--                        </actions>-->
+<!--                    </entityPicker>-->
+                    <textField id="poradokField" property="poradok" caption="Порядок расчета"/>
+                    <checkBox id="rascetZaMinusomPNField" property="rascetZaMinusomPN"/>
+                    <checkBox id="rascetZaMinusomSFField" property="rascetZaMinusomSF"/>
+<!--                    <entityPicker id="scetUcetaField" property="scetUceta">-->
+<!--                        <actions>-->
+<!--                            <action id="entityLookup" type="entity_lookup"/>-->
+<!--                            <action id="entityClear" type="entity_clear"/>-->
+<!--                        </actions>-->
+<!--                    </entityPicker>-->
+<!--                    <entityPicker id="stat1aField" property="stat1a">-->
+<!--                        <actions>-->
+<!--                            <action id="entityLookup" type="entity_lookup"/>-->
+<!--                            <action id="entityClear" type="entity_clear"/>-->
+<!--                        </actions>-->
+<!--                    </entityPicker>-->
+                    <entityPicker id="sposobyOtrazeniaZarabotnojPlatyField" property="sposobyOtrazeniaZarabotnojPlaty">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

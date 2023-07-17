@@ -1,0 +1,77 @@
+@import "../helium/helium-defaults";
+
+.jmix-login-main-layout {
+    background-image: url("LoginBG.png") !important;
+    background-repeat: no-repeat !important;
+}
+.jmix-login-main-layout .jmix-login-panel {
+    border:0 !important;
+    box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.08) !important;
+    border-radius: 4px !important;
+}
+.jmix-login-main-layout .jmix-login-submit-button {
+    background: linear-gradient(180deg, rgba(0, 173, 181, 0.85) 0%, #00ADB5 50.24%, rgba(0, 173, 181, 0.85) 100%) !important;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24) !important;
+    border-radius: 33px !important;
+    border:0 !important;
+}
+.jmix-login-main-layout .v-expand{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.jmix-login-main-layout .v-expand > div {
+    height:auto !important;
+}
+.jmix-login-main-layout .v-slot-loginContainer {
+    flex:1;
+    display:flex !important;
+    align-items: center;
+}
+.jmix-login-main-layout .login-title {
+    font-weight: 700;
+    font-size: 24px !important;
+    line-height: 34px;
+    text-align: center;
+    color: #FFFFFF;
+    padding-bottom: 24px;
+    width:100%;
+}
+.jmix-login-main-layout .login-top-headers {
+    margin-top:16px;
+    width: 900px;
+    display: flex;
+    justify-content: space-between;
+}
+.jmix-login-main-layout .top-login-Title {
+    background-image: url("gerb.png") !important;
+    background-repeat: no-repeat !important;
+    height: 75px;
+    padding-left: 90px;
+    font-weight: 400;
+    font-size: 18px !important;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+    background-position: 0 0;
+    width: 344px;
+    white-space: normal !important;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+.jmix-login-main-layout .jmix-login-locale {
+    height: 44px !important;
+    border: 1px solid #ffffff;
+    width:120px !important;
+    margin-top:12px;
+}
+.jmix-login-main-layout .jmix-login-locale input.v-filterselect-input {
+    color:#fff;
+    padding-bottom: 10px !important;
+}
+.jmix-login-main-layout .v-filterselect-button::before {
+    color:#fff !important;
+}

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="buh-project">
+        <addColumn schemaName="documents" tableName="UDERJANIA_PN">
+            <column name="DOP_MRD" type="DECIMAL(15, 2)"/>
+            <column name="KOEF_PERS_VYCETA" type="DECIMAL(15, 2)"/>
+            <column name="NACISLENIE_OBL_PN" type="DECIMAL(15, 2)"/>
+            <column name="NACISLENO" type="DECIMAL(15, 2)"/>
+            <column name="PN" type="DECIMAL(15, 2)"/>
+            <column name="TIP_DOHODA" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2" author="buh-project">
+        <addColumn schemaName="documents" tableName="NACISLENIYA_I_UDERJANIYA">
+            <column name="GNPF" type="DECIMAL(15, 2)"/>
+            <column name="ITOGO_PN" type="DECIMAL(15, 2)"/>
+            <column name="ITOGO_SV" type="DECIMAL(15, 2)"/>
+            <column name="PROCIE" type="DECIMAL(15, 2)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="3" author="buh-project">
+        <addColumn schemaName="documents" tableName="UDERJANIA_NACISLENIA_I_UDERJANIA">
+            <column name="ITOGO_S_RABOTNIKA" type="DECIMAL(15, 2)"/>
+            <column name="ITOGO_S_RABOTODATELA" type="DECIMAL(15, 2)"/>
+            <column name="PF_S_RABOTODATELA" type="DECIMAL(15, 2)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="4" author="buh-project">
+        <dropColumn columnName="data_nacala" schemaName="documents" tableName="uderjania_pn"/>
+
+        <dropColumn columnName="data_okoncania" schemaName="documents" tableName="uderjania_pn"/>
+
+        <dropColumn columnName="itogo_posle_sv_i_pn" schemaName="documents" tableName="uderjania_pn"/>
+
+        <dropColumn columnName="norma_dnej" schemaName="documents" tableName="uderjania_pn"/>
+
+        <dropColumn columnName="otrabotano_dnej" schemaName="documents" tableName="uderjania_pn"/>
+    </changeSet>
+    <changeSet id="5" author="buh-project">
+        <dropColumn columnName="dolznost1_id" schemaName="documents" tableName="uderjania_nacislenia_i_uderjania"/>
+
+        <dropColumn columnName="grafik_raboty_id" schemaName="documents" tableName="uderjania_nacislenia_i_uderjania"/>
+
+        <dropColumn columnName="itogo_gnpf" schemaName="documents" tableName="uderjania_nacislenia_i_uderjania"/>
+
+        <dropColumn columnName="itogo_pf" schemaName="documents" tableName="uderjania_nacislenia_i_uderjania"/>
+
+        <dropColumn columnName="pf_s_rabotodatelem" schemaName="documents"
+                    tableName="uderjania_nacislenia_i_uderjania"/>
+
+        <dropColumn columnName="podrazdelenie_id" schemaName="documents" tableName="uderjania_nacislenia_i_uderjania"/>
+
+        <dropColumn columnName="sotrudnik_id" schemaName="documents" tableName="uderjania_nacislenia_i_uderjania"/>
+    </changeSet>
+    <changeSet id="6" author="buh-project">
+        <modifyDataType columnName="FOMS_S_RABOTNIKA" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_NACISLENIA_I_UDERJANIA"/>
+    </changeSet>
+    <changeSet id="7" author="buh-project">
+        <modifyDataType columnName="FOMS_S_RABOTODATELA" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_NACISLENIA_I_UDERJANIA"/>
+    </changeSet>
+    <changeSet id="8" author="buh-project">
+        <modifyDataType columnName="FOT_S_RABOTNIKA" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_NACISLENIA_I_UDERJANIA"/>
+    </changeSet>
+    <changeSet id="9" author="buh-project">
+        <modifyDataType columnName="FOT_S_RABOTODATELA" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_NACISLENIA_I_UDERJANIA"/>
+    </changeSet>
+    <changeSet id="10" author="buh-project">
+        <modifyDataType columnName="GNPF_S_RABOTNIKA" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_NACISLENIA_I_UDERJANIA"/>
+    </changeSet>
+    <changeSet id="11" author="buh-project">
+        <modifyDataType columnName="ITOGO_PN" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_PN"/>
+    </changeSet>
+    <changeSet id="12" author="buh-project">
+        <modifyDataType columnName="IZ_VYCETA_NEGOS_PF" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_PN"/>
+    </changeSet>
+    <changeSet id="13" author="buh-project">
+        <modifyDataType columnName="IZ_VYCETA_PO_GOS_SV" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_PN"/>
+    </changeSet>
+    <changeSet id="14" author="buh-project">
+        <modifyDataType columnName="KOLICESTVO_IJDEVENSEV" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_PN"/>
+    </changeSet>
+    <changeSet id="15" author="buh-project">
+        <modifyDataType columnName="NACISLENIE_NE_OBL_PN" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_PN"/>
+    </changeSet>
+    <changeSet id="16" author="buh-project">
+        <modifyDataType columnName="NACISLENIE_NE_OBL_SV" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_NACISLENIA_I_UDERJANIA"/>
+    </changeSet>
+    <changeSet id="17" author="buh-project">
+        <modifyDataType columnName="NACISLENIE_OBL_SV" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_NACISLENIA_I_UDERJANIA"/>
+    </changeSet>
+    <changeSet id="18" author="buh-project">
+        <modifyDataType columnName="NALOGOVAJA_BAZA_PN" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_PN"/>
+    </changeSet>
+    <changeSet id="19" author="buh-project">
+        <modifyDataType columnName="PEN_FS_RABOTNIKA" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_NACISLENIA_I_UDERJANIA"/>
+    </changeSet>
+    <changeSet id="20" author="buh-project">
+        <modifyDataType columnName="PEN_FS_RABOTODATELA" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_NACISLENIA_I_UDERJANIA"/>
+    </changeSet>
+    <changeSet id="21" author="buh-project">
+        <modifyDataType columnName="PERSONALNYJ_VYCET" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_PN"/>
+    </changeSet>
+    <changeSet id="22" author="buh-project">
+        <modifyDataType columnName="PF_S_RABOTNIKA" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_NACISLENIA_I_UDERJANIA"/>
+    </changeSet>
+    <changeSet id="23" author="buh-project">
+        <modifyDataType columnName="PN_OT_MRD" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_PN"/>
+    </changeSet>
+    <changeSet id="24" author="buh-project">
+        <modifyDataType columnName="SUMMA_STANDARTNIH_VYCETOV" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_NACISLENIA_I_UDERJANIA"/>
+    </changeSet>
+    <changeSet id="25" author="buh-project">
+        <modifyDataType columnName="SUMMA_STANDARTNIH_VYCETOV" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_PN"/>
+    </changeSet>
+    <changeSet id="26" author="buh-project">
+        <modifyDataType columnName="VYCETY_NA_IJDIVENSEV" newDataType="DECIMAL(15, 2)" schemaName="documents"
+                        tableName="UDERJANIA_PN"/>
+    </changeSet>
+</databaseChangeLog>

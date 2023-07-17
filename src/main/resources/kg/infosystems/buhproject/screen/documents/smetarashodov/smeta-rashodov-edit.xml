@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://smetaRashodovEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="smetaRashodovDc"
+                  class="kg.infosystems.buhproject.entity.documents.SmetaRashodov">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="kontragent" fetchPlan="_instance_name"/>
+                <property name="bankovskijScet" fetchPlan="_instance_name"/>
+                <property name="edinicaOtceta" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="gruppyStatej" fetchPlan="_base">
+                    <property name="stat1a" fetchPlan="_instance_name"/>
+                </property>
+                <property name="elementyStatej" fetchPlan="_base">
+                    <property name="gruppaStat1i" fetchPlan="_instance_name"/>
+                    <property name="stat1a" fetchPlan="_instance_name"/>
+                </property>
+                <property name="dohody" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="gruppyStatejDc" property="gruppyStatej"/>
+            <collection id="elementyStatejDc" property="elementyStatej"/>
+            <collection id="dohodyDc" property="dohody"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="smetaRashodovDc">
+                <column width="350px">
+                    <entityPicker id="kontragentField" property="kontragent">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <checkBox id="poMesacamField" property="poMesacam"/>
+                    <checkBox id="korrektirovkaBudzetaField" property="korrektirovkaBudzeta"/>
+                    <entityPicker id="edinicaOtcetaField" property="edinicaOtceta">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+                <column width="350px">
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data"/>
+                    <!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="vidFinansirovaniaField" property="vidFinansirovania">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="bankovskijScetField" property="bankovskijScet">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+            </form>
+            <tabSheet id="tabSheet" height="600px">
+                <tab id="tab1" caption="Доходы" spacing="true" margin="true" expand="dohodyBox">
+                    <groupBox id="dohodyBox" caption="msg://kg.infosystems.buhproject.entity.documents/SmetaRashodov.dohody" expand="dohodyTable">
+                        <table id="dohodyTable" dataContainer="dohodyDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="stat1a" editable="true"/>
+                                <column id="anvar1" editable="true"/>
+                                <column id="fevral1" editable="true"/>
+                                <column id="mart" editable="true"/>
+                                <column id="kvartal1" editable="true"/>
+                                <column id="aprel1" editable="true"/>
+                                <column id="maj" editable="true"/>
+                                <column id="iun1" editable="true"/>
+                                <column id="kvartal2" editable="true"/>
+                                <column id="iul1" editable="true"/>
+                                <column id="avgust" editable="true"/>
+                                <column id="sentabr1" editable="true"/>
+                                <column id="kvartal3" editable="true"/>
+                                <column id="oktabr1" editable="true"/>
+                                <column id="noabr1" editable="true"/>
+                                <column id="dekabr1" editable="true"/>
+                                <column id="kvartal4" editable="true"/>
+                                <column id="summaZaGod" editable="true"/>
+                                <column id="soderzanie" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="dohodyTable.create"/>
+<!--                                <button action="dohodyTable.edit"/>-->
+                                <button action="dohodyTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="Группы статей" spacing="true" margin="true" expand="gruppyStatejBox">
+                    <groupBox id="gruppyStatejBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/SmetaRashodov.gruppyStatej" expand="gruppyStatejTable">
+                        <table id="gruppyStatejTable" dataContainer="gruppyStatejDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="stat1a" editable="true"/>
+                                <column id="anvar1" editable="true"/>
+                                <column id="fevral1" editable="true"/>
+                                <column id="mart" editable="true"/>
+                                <column id="kvartal1" editable="true"/>
+                                <column id="aprel1" editable="true"/>
+                                <column id="maj" editable="true"/>
+                                <column id="iun1" editable="true"/>
+                                <column id="kvartal2" editable="true"/>
+                                <column id="iul1" editable="true"/>
+                                <column id="avgust" editable="true"/>
+                                <column id="sentabr1" editable="true"/>
+                                <column id="kvartal3" editable="true"/>
+                                <column id="oktabr1" editable="true"/>
+                                <column id="noabr1" editable="true"/>
+                                <column id="dekabr1" editable="true"/>
+                                <column id="kvartal4" editable="true"/>
+                                <column id="summaZaGod" editable="true"/>
+                                <column id="soderzanie" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="gruppyStatejTable.create"/>
+                                <!--                                <button action="gruppyStatejTable.edit"/>-->
+                                <button action="gruppyStatejTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab3" caption="" spacing="true" margin="true" expand="elementyStatejBox">
+                    <groupBox id="elementyStatejBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/SmetaRashodov.elementyStatej" expand="elementyStatejTable">
+                        <table id="elementyStatejTable" dataContainer="elementyStatejDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="stat1a" editable="true"/>
+                                <column id="anvar1" editable="true"/>
+                                <column id="fevral1" editable="true"/>
+                                <column id="mart" editable="true"/>
+                                <column id="kvartal1" editable="true"/>
+                                <column id="aprel1" editable="true"/>
+                                <column id="maj" editable="true"/>
+                                <column id="iun1" editable="true"/>
+                                <column id="kvartal2" editable="true"/>
+                                <column id="iul1" editable="true"/>
+                                <column id="avgust" editable="true"/>
+                                <column id="sentabr1" editable="true"/>
+                                <column id="kvartal3" editable="true"/>
+                                <column id="oktabr1" editable="true"/>
+                                <column id="noabr1" editable="true"/>
+                                <column id="dekabr1" editable="true"/>
+                                <column id="kvartal4" editable="true"/>
+                                <column id="summaZaGod" editable="true"/>
+                                <column id="soderzanie" editable="true"/>
+<!--                                <column id="gruppaStat1i"/>-->
+                            </columns>
+                            <buttonsPanel>
+                                <button action="elementyStatejTable.create"/>
+                                <!--                                <button action="elementyStatejTable.edit"/>-->
+                                <button action="elementyStatejTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab4" caption="" spacing="true" margin="true">
+                    <form dataContainer="smetaRashodovDc">
+                        <column width="350px">
+                            <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                            <entityPicker id="avtorField" property="avtor">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

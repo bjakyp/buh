@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://programmyBrowse.caption"
+        focusComponent="programmiesTable">
+    <data readOnly="true">
+        <collection id="programmiesDc"
+                    class="kg.infosystems.buhproject.entity.globals.Programmy">
+            <fetchPlan extends="_base">
+                <property name="parent" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="programmiesDl">
+                <query>
+                    <![CDATA[select e from Programmy e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="programmiesTable" spacing="true">
+        <filter id="filter"
+                dataLoader="programmiesDl">
+            <properties include=".*"/>
+        </filter>
+        <treeTable id="programmiesTable"
+                    width="100%"
+                    dataContainer="programmiesDc"
+                    hierarchyProperty="parent">
+            <columns>
+                <column id="code" sort="ASCENDING"/>
+                <column id="name"/>
+                <column id="shortName"/>
+                <column id="active"/>
+            </columns>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+            </buttonsPanel>
+        </treeTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

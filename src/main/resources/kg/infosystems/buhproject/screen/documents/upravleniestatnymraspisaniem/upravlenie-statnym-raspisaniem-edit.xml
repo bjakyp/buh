@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://upravlenieStatnymRaspisaniemEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="upravlenieStatnymRaspisaniemDc"
+                  class="kg.infosystems.buhproject.entity.documents.UpravlenieStatnymRaspisaniem">
+            <fetchPlan extends="_base">
+                <property name="organizacii" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="upravlenieStatnymRaspisaniemDl"/>
+            <collection property="employees" id="employeesDc"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="upravlenieStatnymRaspisaniemDc">
+                <column width="350px">
+                    <dateField id="documentDateField" property="documentDate"/>
+                    <comboBox id="periodField" property="period"/>
+                </column>
+                <column width="350px">
+                    <entityPicker id="organizaciiField" property="organizacii"/>
+                </column>
+            </form>
+            <tabSheet id="tabSheet">
+                <tab id="tab1">
+                    <label css="bottom-top: 15px;"/>
+                    <table id="employeesTable" dataContainer="employeesDc" width="100%" height="AUTO" editable="true">
+                        <actions>
+                            <action id="create" type="create"/>
+                            <action id="remove" type="remove"/>
+                            <action id="bulkEdit" type="bulkEdit"/>
+                            <action id="edit" type="edit"/>
+                        </actions>
+                        <buttonsPanel>
+                            <button id="employeesTableCreateBtn" action="employeesTable.create"/>
+                            <button id="employeesEditBtn" action="employeesTable.edit"/>
+                            <button id="employeesRemoveBtn" action="employeesTable.remove"/>
+                            <button id="employeesBulkEditBtn" action="employeesTable.bulkEdit"/>
+                        </buttonsPanel>
+                        <columns>
+                            <column id="fullname"/>
+                            <column id="doljnost"/>
+                            <column id="doljnostnoyOklad"/>
+                            <column id="itogoNadbavkiIDoplaty" caption="msg://itogoNadbavkiIDoplaty"/>
+                            <column id="vsegoZaFOTzaMesyac" caption="msg://Итого фонд  месячной заработной платы"/>
+                            <column id="godovoyFOTzaVychetomSFKR" caption="msg://godovoyFOTzaVychetomSFKR"/>
+                        </columns>
+                    </table>
+                </tab>
+                <tab id="tab2">
+                    <cssLayout id="cssLayout1" css="display: grid; grid-gap: 2px; border: 2px; background-color: #fff;
+                               grid-template-columns: 12% 13% 7% 5% 9% 9% 6% 5% 6% 5% 4% 4% 13.4%; grid-auto-rows: 47px; "
+                               stylename="demo"
+                               height ="AUTO"
+                               width="100%">
+                        <label value="ФИО работника" css="grid-column: 1; grid-row: 1 / 5; text-align: center; display: flex;
+                        justify-content: center; align-items: center;"/>
+
+                        <label value="Подразделение" css="grid-column: 2; grid-row: 1 / 4;"/>
+                        <label value="Должность" css="grid-column: 2; grid-row: 4;"/>
+
+                        <label value="Ставка" css="grid-column: 3; grid-row: 1 / 4;"/>
+                        <label value="Коэффициент кратности" css="grid-column: 3; grid-row: 4;"/>
+
+                        <label value="Должностой оклад" css="grid-column: 4; grid-row: 1 / 5; writing-mode: vertical-rl;"/>
+
+                        <label value="Надбавки и доплаты" css="grid-column: 5 / 10; grid-row: 1;"/>
+                        <label value="В процентах" css="grid-column: 5 / 8; grid-row: 2;"/>
+                        <label value="Фиксированный" css="grid-column: 8 / 10; grid-row: 2;"/>
+                        <label value="Выслуга лет" css="grid-column: 5; grid-row: 3;"/>
+                        <label value="Премия" css="grid-column: 6; grid-row: 3;"/>
+                        <label value="Секретность" css="grid-column: 7; grid-row: 3;"/>
+                        <label value="Классный чин" css="grid-column: 8; grid-row: 3;"/>
+                        <label value="Надбавка за высокогорье" css="grid-column: 5; grid-row: 4;"/>
+                        <label value="Вредность" css="grid-column: 6; grid-row: 4;"/>
+                        <label value="Районный коэффициент" css="grid-column: 7; grid-row: 4;"/>
+                        <label value="Ученая степень" css="grid-column: 8; grid-row: 4;"/>
+                        <label value="Отпускной" css="grid-column: 9; grid-row: 3 / 5;"/>
+
+                        <label value="Фот за год без СФКР" css="grid-column: 10; grid-row: 1 / 5; writing-mode: vertical-rl;"/>
+                        <label value="ФОТ за месяц" css="grid-column: 11; grid-row: 1 / 5; writing-mode: vertical-rl;"/>
+                        <label value="ФОТ за год" css="grid-column: 12; grid-row: 1 / 5; writing-mode: vertical-rl;"/>
+                        <label value="Примечание" css="grid-column: 13; grid-row: 1 / 5; text-align: center; vertical-align: center"/>
+                    </cssLayout>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

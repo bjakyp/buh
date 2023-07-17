@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://dvizenieBibliotecnyhFondovEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="dvizenieBibliotecnyhFondovDc"
+                  class="kg.infosystems.buhproject.entity.documents.DvizenieBibliotecnyhFondov">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="vidOperacii" fetchPlan="_instance_name"/>
+                <property name="sobytie" fetchPlan="_instance_name"/>
+                <property name="kontragent" fetchPlan="_instance_name"/>
+                <property name="stat1a" fetchPlan="_instance_name"/>
+                <property name="mOLOtpravitel1" fetchPlan="_instance_name"/>
+                <property name="podrazdelenieOtpravitel1" fetchPlan="_instance_name"/>
+                <property name="mOLPolucatel1" fetchPlan="_instance_name"/>
+                <property name="podrazdeleniePolucatel1" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="bibliotecnyeFondy" fetchPlan="_base">
+                    <property name="izdanie" fetchPlan="_instance_name"/>
+                    <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                    <property name="scetUceta" fetchPlan="_instance_name"/>
+                    <property name="korrespondiruusijScet" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="bibliotecnyeFondyDc" property="bibliotecnyeFondy"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="dvizenieBibliotecnyhFondovDc">
+                <column width="350px">
+                    <entityPicker id="vidOperaciiField" property="vidOperacii">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="sobytieField" property="sobytie">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="kontragentField" property="kontragent">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="mOLOtpravitel1Field" property="mOLOtpravitel1">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="podrazdelenieOtpravitel1Field" property="podrazdelenieOtpravitel1">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="mOLPolucatel1Field" property="mOLPolucatel1">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="podrazdeleniePolucatel1Field" property="podrazdeleniePolucatel1">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="stat1aField" property="stat1a">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+                <column width="350px">
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data"/>
+<!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="vidFinansirovaniaField" property="vidFinansirovania">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+<!--                    <textField id="summaDokumentaField" property="summaDokumenta"/>-->
+                </column>
+            </form>
+            <tabSheet id="tabSheet" height="600px">
+                <tab id="tab1" caption="Библиотечные фонды" spacing="true" margin="true" expand="bibliotecnyeFondyBox">
+                    <groupBox id="bibliotecnyeFondyBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/DvizenieBibliotecnyhFondov.bibliotecnyeFondy" expand="bibliotecnyeFondyTable">
+                        <table id="bibliotecnyeFondyTable" dataContainer="bibliotecnyeFondyDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="izdanie" editable="true"/>
+                                <column id="vidFinansirovania" editable="true"/>
+                                <column id="scetUceta" editable="true"/>
+                                <column id="korrespondiruusijScet" editable="true"/>
+                                <column id="kolicestvo" editable="true"/>
+                                <column id="cena" editable="true"/>
+                                <column id="summa" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="bibliotecnyeFondyTable.create"/>
+<!--                                <button action="bibliotecnyeFondyTable.edit"/>-->
+                                <button action="bibliotecnyeFondyTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="" spacing="true" margin="true">
+                    <form dataContainer="dvizenieBibliotecnyhFondovDc">
+                        <column width="350px">
+                            <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                            <entityPicker id="avtorField" property="avtor">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

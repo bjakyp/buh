@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://sobytiaOSBrowse.caption"
+        focusComponent="sobytiaOsesTable">
+    <data readOnly="true">
+        <collection id="sobytiaOsesDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.SobytiaOS">
+            <fetchPlan extends="_base">
+                <property name="vidSobytia" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="sobytiaOsesDl">
+                <query>
+                    <![CDATA[select e from SobytiaOS e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="sobytiaOsesTable" spacing="true">
+        <filter id="filter"
+                dataLoader="sobytiaOsesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="sobytiaOsesTable"
+                    width="100%"
+                    dataContainer="sobytiaOsesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="naimenovanie"/>
+                <column id="vidSobytia"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="sobytiaOsesTable.create"/>
+                <button id="editBtn" action="sobytiaOsesTable.edit"/>
+                <button id="removeBtn" action="sobytiaOsesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

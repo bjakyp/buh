@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://multipleEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="multipleDc"
+                  class="kg.infosystems.buhproject.entity.one.Multiple">
+            <fetchPlan extends="_base"/>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="multipleDc">
+            <column width="350px">
+                <textField id="typeField" property="type"/>
+                <checkBox id="boolField" property="bool"/>
+                <textField id="numberField" property="number"/>
+                <dateField id="dateField" property="date"/>
+                <textField id="stringField" property="string"/>
+                <textField id="tableField" property="table"/>
+                <maskedField id="rowField" mask="hhhhhhhh-hhhh-hhhh-hhhh-hhhhhhhhhhhh" property="row"/>
+                <textField id="rowLongField" property="rowLong"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

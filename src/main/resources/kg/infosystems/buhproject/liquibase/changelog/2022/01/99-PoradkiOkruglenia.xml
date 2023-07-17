@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="buh-project-enums-data">
+        <insert tableName="PoradkiOkruglenia" schemaName="enumerations">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="Окр0_01"/>
+            <column name="SYNONYM_" value="0.01"/>
+            <column name="ORDER_" value="1"/>
+        </insert>
+        <insert tableName="PoradkiOkruglenia" schemaName="enumerations">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="Окр0_05"/>
+            <column name="SYNONYM_" value="0.05"/>
+            <column name="ORDER_" value="2"/>
+        </insert>
+        <insert tableName="PoradkiOkruglenia" schemaName="enumerations">
+            <column name="ID" value="3"/>
+            <column name="NAME" value="Окр0_1"/>
+            <column name="SYNONYM_" value="0.1"/>
+            <column name="ORDER_" value="3"/>
+        </insert>
+        <insert tableName="PoradkiOkruglenia" schemaName="enumerations">
+            <column name="ID" value="4"/>
+            <column name="NAME" value="Окр0_5"/>
+            <column name="SYNONYM_" value="0.5"/>
+            <column name="ORDER_" value="4"/>
+        </insert>
+        <insert tableName="PoradkiOkruglenia" schemaName="enumerations">
+            <column name="ID" value="5"/>
+            <column name="NAME" value="Окр1"/>
+            <column name="SYNONYM_" value="1"/>
+            <column name="ORDER_" value="5"/>
+        </insert>
+        <insert tableName="PoradkiOkruglenia" schemaName="enumerations">
+            <column name="ID" value="6"/>
+            <column name="NAME" value="Окр5"/>
+            <column name="SYNONYM_" value="5"/>
+            <column name="ORDER_" value="6"/>
+        </insert>
+        <insert tableName="PoradkiOkruglenia" schemaName="enumerations">
+            <column name="ID" value="7"/>
+            <column name="NAME" value="Окр10"/>
+            <column name="SYNONYM_" value="10"/>
+            <column name="ORDER_" value="7"/>
+        </insert>
+        <insert tableName="PoradkiOkruglenia" schemaName="enumerations">
+            <column name="ID" value="8"/>
+            <column name="NAME" value="Окр50"/>
+            <column name="SYNONYM_" value="50"/>
+            <column name="ORDER_" value="8"/>
+        </insert>
+        <insert tableName="PoradkiOkruglenia" schemaName="enumerations">
+            <column name="ID" value="9"/>
+            <column name="NAME" value="Окр100"/>
+            <column name="SYNONYM_" value="100"/>
+            <column name="ORDER_" value="9"/>
+        </insert>
+        <insert tableName="PoradkiOkruglenia" schemaName="enumerations">
+            <column name="ID" value="10"/>
+            <column name="NAME" value="ОтсечениеДробнойЧасти"/>
+            <column name="SYNONYM_" value="Отсечение дробной части"/>
+            <column name="ORDER_" value="10"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg:///stavkiStrahovyhVznosovEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="stavkiStrahovyhVznosovDc"
+                  class="kg.infosystems.buhproject.entity.documents.StavkiStrahovyhVznosov">
+            <fetchPlan extends="_base">
+                <property name="kategoriaRabotnikov_" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="stavkiStrahovyhVznosovDc">
+            <column width="350px">
+                <entityPicker id="kategoriaRabotnikov_Field" property="kategoriaRabotnikov_"
+                              caption="msg:///kategoriaRabotnikov_Field.caption">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+                <textField id="pfRabotodatelField" property="pfRabotodatel"/>
+                <textField id="pfRabotnikField" property="pfRabotnik"/>
+                <textField id="fomsRabotadatelField" property="fomsRabotadatel"/>
+                <textField id="fomsRabotnikField" property="fomsRabotnik"/>
+                <textField id="fotRabotodatelField" property="fotRabotodatel"/>
+                <textField id="fotRabotnikField" property="fotRabotnik"/>
+                <textField id="gnpfRabotnikField" property="gnpfRabotnik"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

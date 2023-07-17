@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="buh-project">
+        <createTable schemaName="parts_catalogs" tableName="STAVKA_PROFSOYUZA">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_STAVKA_PROFSOYUZA"/>
+            </column>
+            <column name="DATA_NACHALA_DEISTVIA" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VID_UDERZANIA_ID" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="STAVKA" type="DECIMAL(19, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="buh-project">
+        <addColumn schemaName="catalogs" tableName="Organizacii">
+            <column name="STAVKA_PROFSOYUZA_ID" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="3" author="buh-project">
+        <createIndex indexName="IDX_ORGANIZACII_STAVKA_PROFSOYUZA" schemaName="catalogs" tableName="Organizacii">
+            <column name="STAVKA_PROFSOYUZA_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="STAVKA_PROFSOYUZA_ID" baseTableName="Organizacii"
+                                 baseTableSchemaName="catalogs" constraintName="FK_ORGANIZACII_ON_STAVKA_PROFSOYUZA"
+                                 referencedColumnNames="ID" referencedTableName="STAVKA_PROFSOYUZA"
+                                 referencedTableSchemaName="parts_catalogs"/>
+    </changeSet>
+    <changeSet id="4" author="buh-project">
+        <createIndex indexName="IDX_STAVKA_PROFSOYUZA_VID_UDERZANIA" schemaName="parts_catalogs"
+                     tableName="STAVKA_PROFSOYUZA">
+            <column name="VID_UDERZANIA_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="VID_UDERZANIA_ID" baseTableName="STAVKA_PROFSOYUZA"
+                                 baseTableSchemaName="parts_catalogs"
+                                 constraintName="FK_STAVKA_PROFSOYUZA_ON_VID_UDERZANIA" referencedColumnNames="ID"
+                                 referencedTableName="VidyUderzanij" referencedTableSchemaName="comps"/>
+    </changeSet>
+</databaseChangeLog>

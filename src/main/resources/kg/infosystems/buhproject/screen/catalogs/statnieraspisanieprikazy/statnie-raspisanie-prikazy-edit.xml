@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://statnieRaspisaniePrikazyEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="statnieRaspisaniePrikazyDc"
+                  class="kg.infosystems.buhproject.entity.catalogs.StatnieRaspisaniePrikazy">
+            <fetchPlan extends="_base">
+                <property name="organizasia" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+        <collection id="dolznostisDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.Dolznosti">
+            <fetchPlan extends="_base"/>
+            <loader id="dolznostisDl">
+                <query>
+                    <![CDATA[select e from Dolznosti e order by e.naimenovanie]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="vidyNacislenijsDc"
+                    class="kg.infosystems.buhproject.entity.compensations.VidyNacislenij">
+            <fetchPlan extends="_base">
+                <property name="vidBudjeta" fetchPlan="_instance_name"/>
+                <property name="sposobRasceta" fetchPlan="_instance_name"/>
+                <property name="sposobyOtrazeniaZarabotnojPlaty" fetchPlan="_instance_name"/>
+                <property name="kategoriiRascetov" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="vidyNacislenijsDl">
+                <query>
+                    <![CDATA[select e from VidyNacislenij e order by e.description]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="bazoviyOkladsDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.BazoviyOklad">
+            <fetchPlan extends="_base">
+                <property name="tipOrganizacii" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="bazoviyOkladsDl">
+                <query>
+                    <![CDATA[select e from BazoviyOklad e order by e.name]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="organizaciisDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.Organizacii">
+            <fetchPlan extends="_base">
+                <property name="osnovnojBankovskijScet" fetchPlan="_instance_name"/>
+                <property name="osnovnaaKassa" fetchPlan="_instance_name"/>
+                <property name="gNS" fetchPlan="_instance_name"/>
+                <property name="kodPravovojFormy" fetchPlan="_instance_name"/>
+                <property name="fajlLogotip" fetchPlan="_instance_name"/>
+                <property name="fajlFaksimil1naaPecat1" fetchPlan="_instance_name"/>
+                <property name="rajonnoeOtdelenieKaznacejstva" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="organizaciisDl">
+                <query>
+                    <![CDATA[select e from Organizacii e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="podrazdeleniaOrganizacijsDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.PodrazdeleniaOrganizacij">
+            <fetchPlan extends="_base">
+                <property name="vladelec" fetchPlan="_instance_name"/>
+                <property name="roditel1" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="podrazdeleniaOrganizacijsDl">
+                <query>
+                    <![CDATA[select e from PodrazdeleniaOrganizacij e where e.vladelec = :vladelec  order by e.poradok]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="statnoeRaspisaniesDc"
+                    class="kg.infosystems.buhproject.entity.registers.informations.StatnoeRaspisanie">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_base"/>
+                <property name="podrazdelenie" fetchPlan="_base"/>
+                <property name="dolznost1" fetchPlan="_base"/>
+                <property name="vidNacislenia" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="statnoeRaspisaniesDl">
+                <query>
+                    <![CDATA[select e from informations_StatnoeRaspisanie e where e.organizacia = :organizacia and e.podrazdelenie = :podrazdelenie and e.period = :period]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="statnieRaspisaniePrikazyDc">
+            <column width="350px">
+                <entityPicker id="organizasiaField" property="organizasia" required="true" caption="msg://organizasia">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+                <dateField id="periodField" property="period" required="true" caption="msg://dataINacaloDeistviya"/>
+            </column>
+            <column width="350px">
+                <textField id="nomerField" property="nomer" caption="msg://nomer" required="true"/>
+                <dateField id="dateField" property="date" caption="msg://date" required="true"/>
+            </column>
+            <column width="350px">
+                <textField id="iNNField" property="iNN" caption="msg://iNN"/>
+            </column>
+        </form>
+
+
+        <hbox width="100%">
+            <vbox width="60%">
+                <label/>
+                <treeTable id="podrazdeleniaOrganizacijsTable"
+                           width="100%"
+                           height="700px"
+                           dataContainer="podrazdeleniaOrganizacijsDc"
+                           hierarchyProperty="roditel1">
+                    <actions>
+                        <action id="remove" type="remove"/>
+                        <action id="createSon" caption="Добавить к этому подразделению"/>
+                    </actions>
+                    <columns>
+                        <column id="naimenovanie" caption="msg://naimenovaniePodrazdelenia"/>
+                    </columns>
+                    <buttonsPanel id="buttonsPanel1"
+                                  alwaysVisible="true">
+                        <button id="createBtn1" caption="Добавить" icon="CREATE_ACTION" css="background-color: #6e14e3; color: white"/>
+                    </buttonsPanel>
+                </treeTable>
+            </vbox>
+            <vbox width="140%" css="margin-left: -40%;">
+                <!--                    <filter id="filter" css="margin-bottom: 12px;"-->
+                <!--                            dataLoader="statnoeRaspisaniesDl">-->
+                <!--                        <properties include=".*"/>-->
+                <!--                    </filter>-->
+<!--                <label value="msg://dannyepodrazdelenia" align="BOTTOM_CENTER" css="color: green; font-size: 20px"/>-->
+                <label/>
+                <table id="statnoeRaspisaniesTable"
+                       width="100% "
+                       height="700px"
+                       dataContainer="statnoeRaspisaniesDc"
+                       editable="true">
+                    <actions>
+                        <action id="add" type="add"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns >
+                        <column id="dolznost1" caption="Должность" editable="true" optionsContainer="dolznostisDc" required="true"/>
+                        <column id="kolicestvoStavok" editable="true" width="100" caption="msg://kolicestvoEdinis" required="true"/>
+                    </columns>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <!--                        <button id="createBtn" caption="msg://create" icon="CREATE_ACTION" css="background-color: #9370DB; color: white"/>-->
+                        <button id="addBtn" action="statnoeRaspisaniesTable.add" css="background-color: #6e14e3; color: white"/>
+                        <button id="removeBtn" action="statnoeRaspisaniesTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </vbox>
+        </hbox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

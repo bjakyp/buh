@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://pol1zovateliBrowse.caption"
+        focusComponent="pol1zovatelisTable">
+    <data readOnly="true">
+        <collection id="pol1zovatelisDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.Pol1zovateli">
+            <fetchPlan extends="_base">
+                <property name="svojstvaPol1zovatelaIB" fetchPlan="_base"/>
+                <property name="fotografia" fetchPlan="_base"/>
+                <property name="dopolnitel1nyeRekvizity" fetchPlan="_base"/>
+                <property name="kontaktnaaInformacia" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="pol1zovatelisDl">
+                <query>
+                    <![CDATA[select e from Pol1zovateli e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="pol1zovatelisTable" spacing="true">
+        <filter id="filter"
+                dataLoader="pol1zovatelisDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="pol1zovatelisTable"
+                    width="100%"
+                    dataContainer="pol1zovatelisDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="naimenovanie"/>
+                <column id="nedejstvitelen"/>
+                <column id="podrazdelenie"/>
+                <column id="fiziceskoeLico"/>
+                <column id="kommentarij"/>
+                <column id="sluzebnyj"/>
+                <column id="podgotovlen"/>
+                <column id="identifikatorPol1zovatelaIB"/>
+                <column id="identifikatorPol1zovatelaServisa"/>
+                <column id="svojstvaPol1zovatelaIB"/>
+                <column id="fotografia"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="pol1zovatelisTableCreateBtn" action="pol1zovatelisTable.create"/>
+                <button id="pol1zovatelisTableEditBtn" action="pol1zovatelisTable.edit"/>
+                <button id="pol1zovatelisTableRemoveBtn" action="pol1zovatelisTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

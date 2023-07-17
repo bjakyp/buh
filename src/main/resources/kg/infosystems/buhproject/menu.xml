@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/ui/menu">
+    <menu id="menu_globals" insertBefore="administration" caption="msg:///menu_config.menu_globals">
+        <item screen="Rok.browse" caption="msg://kg.infosystems.buhproject.screen.globals.rok/rokBrowse.menu"/>
+        <item screen="EconomClassifier.browse"
+              caption="msg://kg.infosystems.buhproject.screen.globals.economclassifier/economClassifierBrowse.menu"/>
+        <item screen="VedomClassifier.browse"
+              caption="msg://kg.infosystems.buhproject.screen.globals.vedomclassifier/vedomClassifierBrowse.menu"/>
+        <item screen="FunctionClassifer.browse"
+              caption="msg://kg.infosystems.buhproject.screen.globals.functionclassifer/functionClassiferBrowse.menu"/>
+        <item screen="IstocnikiFinansirovania.browse"
+              caption="msg://kg.infosystems.buhproject.screen.globals/istocnikiFinansirovaniaBrowse.menu"/>
+        <item screen="Programmy.browse" caption="msg://kg.infosystems.buhproject.entity.globals/programmyBrowse.menu"/>
+        <item screen="AccountType.browse" caption="msg://kg.infosystems.buhproject.screen.globals.accounttype/accountTypeBrowse.menu"/>
+        <item screen="Budget.browse" caption="msg://kg.infosystems.buhproject.screen.globals.budget/budgetBrowse.menu"/>
+        <item screen="BugdetInstitution.browse"
+              caption="msg://kg.infosystems.buhproject.screen.globals.bugdetinstitution/bugdetInstitutionBrowse.menu"/>
+        <item screen="BugdetInstitutionAccount.browse"
+              caption="msg://kg.infosystems.buhproject.screen.globals.bugdetinstitutionaccount/bugdetInstitutionAccountBrowse.menu"/>
+        <item screen="TarifyPodohodnogoNaloga.browse"
+              caption="msg://kg.infosystems.buhproject.screen.tarifypodohodnogonaloga/tarifyPodohodnogoNalogaBrowse.menu"/>
+    </menu>
+    <menu id="menu_bud" caption="Бюджет" insertBefore="administration">
+        <menu id="menu_bud_bud" caption="Бюджет">
+            <item screen="SmetaRashodov.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.smetarashodov/smetaRashodovBrowse.menu"/>
+            <item screen="CentralizovannaaOplata.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.centralizovannaaoplata/centralizovannaaOplataBrowse.menu"/>
+        </menu>
+        <menu id="menu_bud_cats" caption="Справочники и настройки">
+            <item screen="VidyFinansirovania.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.vidyfinansirovania/vidyFinansirovaniaBrowse.menu"/>
+            <item screen="informations_RabotnikiKaznacejstva.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.registers.informations.rabotnikikaznacejstva/rabotnikiKaznacejstvaBrowse.menu"/>
+            <item screen="Stat1iDohodovIRashodov.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.stat1idohodovirashodov/stat1iDohodovIRashodovBrowse.menu"/>
+        </menu>
+        <menu id="menu_bud_reps" caption="Отчеты"/>
+        <item screen="BudjetReports" caption="msg://kg.infosystems.buhproject.screen.reports.zarplataikadry.budjet/budjetReports.caption"/>
+    </menu>
+    <menu id="menu_bk" caption="Банк и касса" insertBefore="administration">
+        <menu id="menu_bk_bank" caption="Банк">
+            <item screen="BudzetnoePorucenie.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.budzetnoeporucenie/budzetnoePorucenieBrowse.menu"/>
+            <item screen="Zaavka.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.zaavka/zaavkaBrowse.menu"/>
+            <item screen="PlateznoePorucenieVhodasee.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.plateznoeporucenievhodasee/plateznoePorucenieVhodaseeBrowse.menu"/>
+            <item screen="PlateznoePorucenieIshodasee.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.plateznoeporucenieishodasee/plateznoePorucenieIshodaseeBrowse.menu"/>
+        </menu>
+        <menu id="menu_bk_kassa" caption="Касса">
+            <item screen="PrihodnyjKassovyjOrder.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.prihodnyjkassovyjorder/prihodnyjKassovyjOrderBrowse.menu"/>
+            <item screen="RashodnyjKassovyjOrder.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.rashodnyjkassovyjorder/rashodnyjKassovyjOrderBrowse.menu"/>
+            <item screen="AvansovyjOtcet.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.avansovyjotcet/avansovyjOtcetBrowse.menu"/>
+        </menu>
+        <menu id="menu_bk_cats" caption="Справочники">
+            <item screen="BankovskieSceta.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.bankovskiesceta/bankovskieScetaBrowse.menu"/>
+            <item screen="Banki.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.banki/bankiBrowse.menu"/>
+            <item screen="Kassy.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.kassy/kassyBrowse.menu"/>
+            <item screen="VidyOperacijPKO.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.vidyoperacijpko/vidyOperacijPKOBrowse.menu"/>
+            <item screen="VidyOperacijPPV.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.vidyoperacijppv/vidyOperacijPPVBrowse.menu"/>
+            <item screen="VidyOperacijPPI.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.vidyoperacijppi/vidyOperacijPPIBrowse.menu"/>
+            <item screen="VidyOperacijRKO.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.vidyoperacijrko/vidyOperacijRKOBrowse.menu"/>
+            <item screen="KodyPlatezej.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.kodyplatezej/kodyPlatezejBrowse.menu"/>
+        </menu>
+        <menu id="menu_bk_reps" caption="Reports"/>
+        <menu id="menu_bk_tools" caption="Tools"/>
+        <item screen="BankIKassaReports"
+              caption="msg://kg.infosystems.buhproject.screen.reports.bankikassa/bankIKassaReports.caption"/>
+    </menu>
+    <menu id="menu_bs" caption="Покупка и продажа" insertBefore="administration">
+        <menu id="menu_bs_buy" caption="Покупка">
+            <item screen="Doverennost1.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.doverennost1/doverennost1Browse.menu"/>
+            <item screen="Dopolnitel1nyeRashody.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.dopolnitel1nyerashody/dopolnitel1nyeRashodyBrowse.menu"/>
+            <item screen="PostuplenieTovarovUslug.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.postuplenietovarovuslug/postuplenieTovarovUslugBrowse.menu"/>
+            <item screen="VozvratTovarovPostavsiku.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.vozvrattovarovpostavsiku/vozvratTovarovPostavsikuBrowse.menu"/>
+        </menu>
+        <menu id="menu_bs_kontr" caption="Расчеты с контрагентами">
+            <item screen="AktSverkiVzaimorascetov.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.aktsverkivzaimorascetov/aktSverkiVzaimorascetovBrowse.menu"/>
+            <item screen="KorrektirovkaDolga.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.korrektirovkadolga/korrektirovkaDolgaBrowse.menu"/>
+        </menu>
+        <menu id="menu_bs_cats" caption="Справочники и настройки">
+            <item screen="Kontragenty.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.kontragenty/kontragentyBrowse.menu"/>
+            <item screen="Nomenklatura.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.nomenklatura/nomenklaturaBrowse.menu"/>
+            <item screen="PodrazdeleniaOrganizacij.browse" id="PodrazdeleniaOrganizacij2"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.podrazdeleniaorganizacij/podrazdeleniaOrganizacijBrowse.menu"/>
+        </menu>
+        <menu id="menu_bs_other" caption="Прочее">
+            <item screen="informations_ScetaRascetovSKontragentami.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.registers.informations.scetarascetovskontragentami/scetaRascetovSKontragentamiBrowse.menu"/>
+        </menu>
+        <menu id="menu_bs_reps" caption="Отчеты"/>
+        <item screen="PokupkaIProdojaReports"
+              caption="msg://kg.infosystems.buhproject.screen.reports.pokupkaiprodoja/pokupkaIProdojaReports.caption"/>
+    </menu>
+    <menu id="menu_zap" caption="Запасы" insertBefore="administration">
+        <menu id="menu_zap_tov" caption="Товары">
+            <item screen="InventarizaciaTovarov.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.inventarizaciatovarov/inventarizaciaTovarovBrowse.menu"/>
+            <item screen="OprihodovanieTovarov.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.oprihodovanietovarov/oprihodovanieTovarovBrowse.menu"/>
+            <item screen="PeremesenieTovarov.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.peremesenietovarov/peremesenieTovarovBrowse.menu"/>
+            <item screen="SpisanieTovarov.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.spisanietovarov/spisanieTovarovBrowse.menu"/>
+        </menu>
+        <menu id="menu_zap_mbp" caption="МБП">
+            <item screen="DvizenieMBP.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.dvizeniembp/dvizenieMBPBrowse.menu"/>
+            <item screen="InventarizaciaMBP.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.inventarizaciambp/inventarizaciaMBPBrowse.menu"/>
+        </menu>
+        <menu id="menu_zap_cats" caption="Справочники">
+            <item screen="Nomenklatura.browse" id="Nomenklatura2"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.nomenklatura/nomenklaturaBrowse.menu"/>
+            <item screen="Sklady.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.sklady/skladyBrowse.menu"/>
+            <item screen="KlassifikatorEdinicIzmerenia.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.klassifikatoredinicizmerenia/klassifikatorEdinicIzmereniaBrowse.menu"/>
+            <item screen="informations_ScetaUcetaNomenklatury.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.registers.informations.scetaucetanomenklatury/scetaUcetaNomenklaturyBrowse.menu"/>
+            <item screen="SobytiaSTovarami.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.sobytiastovarami/sobytiaSTovaramiBrowse.menu"/>
+        </menu>
+        <menu id="menu_zap_reps" caption="Отчеты"/>
+        <item screen="ZapaciReports" caption="msg://kg.infosystems.buhproject.screen.reports.zapaci/zapaciReports.caption"/>
+    </menu>
+    <menu id="menu_os_nma" caption="ОС и НМА" insertBefore="administration">
+        <menu id="menu_os" caption="Основные средства">
+            <item screen="VozvratOSINMAPostavsiku.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.vozvratosinmapostavsiku/vozvratOSINMAPostavsikuBrowse.menu"/>
+            <item screen="IzmenenieParametrovOSINMA.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.izmenenieparametrovosinma/izmenenieParametrovOSINMABrowse.menu"/>
+            <item screen="InventarizaciaOS.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.inventarizaciaos/inventarizaciaOSBrowse.menu"/>
+            <item screen="ModernizaciaOS.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.modernizaciaos/modernizaciaOSBrowse.menu"/>
+            <item screen="PeredacaOSINMA.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.peredacaosinma/peredacaOSINMABrowse.menu"/>
+            <item screen="PeremesenieOSINMA.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.peremesenieosinma/peremesenieOSINMABrowse.menu"/>
+            <item screen="PrinatieKUcetuOSINMA.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.prinatiekucetuosinma/prinatieKUcetuOSINMABrowse.menu"/>
+            <item screen="SpisanieOSINMA.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.spisanieosinma/spisanieOSINMABrowse.menu"/>
+        </menu>
+        <menu id="menu_os_cats" caption="Справочники и настройки">
+            <item screen="OsnovnyeSredstva.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.osnovnyesredstva/osnovnyeSredstvaBrowse.menu"/>
+            <item screen="SposobyOtrazeniaRashodovPoAmortizacii.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.sposobyotrazeniarashodovpoamortizacii/sposobyOtrazeniaRashodovPoAmortizaciiBrowse.menu"/>
+            <item screen="GrafikiAmortizacii.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.grafikiamortizacii/grafikiAmortizaciiBrowse.menu"/>
+            <item screen="Nematerial1nyeAktivy.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.nematerial1nyeaktivy/nematerial1nyeAktivyBrowse.menu"/>
+            <item screen="PricinySpisaniaOSINMA.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.pricinyspisaniaosinma/pricinySpisaniaOSINMABrowse.menu"/>
+        </menu>
+        <menu id="menu_os_reps" caption="Отчеты"/>
+        <item screen="OsNmaReports" caption="msg://kg.infosystems.buhproject.screen.reports.osnma/osNmaReports.caption"/>
+    </menu>
+    <menu id="menu_bf" caption="Библиотечные фонды" insertBefore="administration">
+        <menu id="menu_bf_bf" caption="Библиотечные фонды">
+            <item screen="DvizenieBibliotecnyhFondov.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.dvizeniebibliotecnyhfondov/dvizenieBibliotecnyhFondovBrowse.menu"/>
+            <item screen="InventarizaciaBibliotecnyhFondov.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.inventarizaciabibliotecnyhfondov/inventarizaciaBibliotecnyhFondovBrowse.menu"/>
+        </menu>
+        <menu id="menu_bf_cats" caption="Справочники и настройки">
+            <item screen="BibliotecnyeFondy.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.bibliotecnyefondy/bibliotecnyeFondyBrowse.menu"/>
+            <item screen="SobytiaOS.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.sobytiaos/sobytiaOSBrowse.menu"/>
+        </menu>
+        <menu id="menu_bf_reps" caption="Отчеты"/>
+        <item screen="BibliotechnieFondiReports"
+              caption="msg://kg.infosystems.buhproject.screen.reports.bibliotechniefondi/bibliotechnieFondiReports.caption"/>
+    </menu>
+    <menu id="menu_hr" caption="Зарплата и кадры" insertBefore="administration">
+        <menu id="menu_hr_cats" caption="Справочники">
+            <item screen="VidyNacislenij.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.compensations.vidynacislenij/vidyNacislenijBrowse.menu"/>
+            <item screen="VidyUderzanij.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.compensations.vidyuderzanij/vidyUderzanijBrowse.menu"/>
+            <item screen="VidyPosobiy.browse" caption="msg://kg.infosystems.buhproject.screen.compensations/vidyPosobiyBrowse.menu"/>
+            <item screen="VidyOtpuska.browse" caption="msg://kg.infosystems.buhproject.screen.compensations/vidyOtpuskaBrowse.menu"/>
+            <item screen="FiziceskieLica.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.fiziceskielica/fiziceskieLicaBrowse.menu"/>
+            <item screen="PodrazdeleniaOrganizacij.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.podrazdeleniaorganizacij/podrazdeleniaOrganizacijBrowse.menu"/>
+            <item screen="Dolznosti.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.dolznosti/dolznostiBrowse.menu"/>
+            <item screen="Statusy.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.statusy/statusyBrowse.menu"/>
+            <item screen="GrafikiRaboty.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.grafikiraboty/grafikiRabotyBrowse.menu"/>
+            <item screen="SposobyOtrazeniaZarabotnojPlaty.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.sposobyotrazeniazarabotnojplaty/sposobyOtrazeniaZarabotnojPlatyBrowse.menu"/>
+            <item screen="MetodyRascetaBol1nicnogoLista.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.metodyrascetabol1nicnogolista/metodyRascetaBol1nicnogoListaBrowse.menu"/>
+            <item screen="MetodyRascetaOtpuska.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.metodyrascetaotpuska/metodyRascetaOtpuskaBrowse.menu"/>
+            <item screen="informations_NormyBol1nicnyhListov.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.registers.informations.normybol1nicnyhlistov/normyBol1nicnyhListovBrowse.menu"/>
+            <item screen="OsnovaniaUvol1neniaIzOrganizacii.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.osnovaniauvol1neniaizorganizacii/osnovaniaUvol1neniaIzOrganizaciiBrowse.menu"/>
+            <item screen="Stat1iTrudovogoKodeksa.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.stat1itrudovogokodeksa/stat1iTrudovogoKodeksaBrowse.menu"/>
+            <item screen="informations_TarifyKomandirovocnyh.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.registers.informations.tarifykomandirovocnyh/tarifyKomandirovocnyhBrowse.menu"/>
+            <item screen="Sotrudniki.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.sotrudniki/sotrudnikiBrowse.menu"/>
+            <item screen="TarifyStrahovyhVznosov.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.tarifystrahovyhvznosov/tarifyStrahovyhVznosovBrowse.menu"/>
+            <item screen="KategoriaRabotnikov.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.kategoriarabotnikov/kategoriaRabotnikovBrowse.menu"/>
+            <item screen="RascetnyjPokazatel1.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents/rascetnyjPokazatel1Browse.menu"/>
+        </menu>
+        <menu id="menu_hr_prikazy" caption="Приказы">
+            <item screen="PriemNaRabotu.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.priemnarabotu/priemNaRabotuBrowse.menu"/>
+            <item screen="KadrovoePeremesenie.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.kadrovoeperemesenie/kadrovoePeremesenieBrowse.menu"/>
+            <item screen="Vedomost1ZarabotnojPlaty.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.vedomost1zarabotnojplaty/vedomost1ZarabotnojPlatyBrowse.menu"/>
+            <item screen="IzmenenieStatusovIDopolnitel1nyhVycetov.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.izmeneniestatusovidopolnitel1nyhvycetov/izmenenieStatusovIDopolnitel1nyhVycetovBrowse.menu"/>
+            <item screen="Profvznosy.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.profvznosy/profvznosyBrowse.menu"/>
+            <item screen="TrudovoeSoglasenie.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.trudovoesoglasenie/trudovoeSoglasenieBrowse.menu"/>
+            <item screen="Uvol1nenie.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.uvol1nenie/uvol1nenieBrowse.menu"/>
+        </menu>
+        <menu id="menu_hr_tabel" caption="Табель">
+            <item screen="Bol1nicnyjList.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.bol1nicnyjlist/bol1nicnyjListBrowse.menu"/>
+            <item screen="Komandirovka.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.komandirovka/komandirovkaBrowse.menu"/>
+            <item screen="Neavka.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.neavka/neavkaBrowse.menu"/>
+            <item screen="Otpusk.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.otpusk/otpuskBrowse.menu"/>
+            <item screen="RabotaVVyhodnyeIPrazdnicnyeDni.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.rabotavvyhodnyeiprazdnicnyedni/rabotaVVyhodnyeIPrazdnicnyeDniBrowse.menu"/>
+            <item screen="RabotaSverhurocno.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.rabotasverhurocno/rabotaSverhurocnoBrowse.menu"/>
+        </menu>
+        <menu id="menu_hr_uchetnaia_politika" caption="Учетная политика">
+            <item screen="DocumentStavki.browse" caption="msg://kg.infosystems.buhproject.screen.documentstavki/documentStavkiBrowse.menu"/>
+            <item screen="RegionalnyeOrganySF.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents/regionalnyeOrganySFBrowse.menu"/>
+            <item screen="RegionalnyeOrganyUGNS.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents/regionalnyeOrganyUGNSBrowse.menu"/>
+            <item screen="PerecenAdminScetovGNS.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents/perecenAdminScetovGNSBrowse.menu"/>
+        </menu>
+        <menu id="menu_hr_statnoe_raspisanie" caption="Модуль штатного расписание">
+            <item screen="StatnieRaspisaniePrikazy.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.statnieraspisanieprikazy/statnieRaspisaniePrikazyBrowse.menu"/>
+            <item screen="BazoviyOklad.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.bazoviyoklad/bazoviyOkladBrowse.menu"/>
+            <item screen="DoljnostnieOklady.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.catalogs.doljnostnieoklady/doljnostnieOkladyBrowse.menu"/>
+            <item screen="UpravlenieStatnymRaspisaniem.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.upravleniestatnymraspisaniem/upravlenieStatnymRaspisaniemBrowse.menu"/>
+            <item screen="Predel1naaCislennost1.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.predel1naacislennost1/predel1naaCislennost1Browse.menu"/>
+
+        </menu>
+        <menu id="menu_hr_nacislenia" caption="Начисления и удержания">
+            <item screen="Ispolnitel1nyjList.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.ispolnitel1nyjlist/ispolnitel1nyjListBrowse.menu"/>
+            <item screen="NacislenieZarplaty.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.nacisleniezarplaty/nacislenieZarplatyBrowse.menu"/>
+            <item screen="NacislenieZarplatyPoSrednemuZarabotku.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.nacisleniezarplatyposrednemuzarabotku/nacislenieZarplatyPoSrednemuZarabotkuBrowse.menu"/>
+            <item screen="PlanovoeUderzanie.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.planovoeuderzanie/planovoeUderzanieBrowse.menu"/>
+            <item screen="RazovoeUderzanie.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.razovoeuderzanie/razovoeUderzanieBrowse.menu"/>
+            <item screen="UderzanieZaPeriod.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.uderzaniezaperiod/uderzanieZaPeriodBrowse.menu"/>
+            <item screen="NacisleniyaIUderjaniya.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents/nacisleniyaIUderjaniyaBrowse.menu"/>
+        </menu>
+        <menu id="menu_hr_zakrytieMesaca" caption="Закрытие месяца">
+            <item screen="ZakrytieMesacaZP.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.zakrytiemesacazp/zakrytieMesacaZPBrowse.menu"/>
+            <item screen="OtcetPoVyplatamIUderzaniamPN.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.otcetpovyplatamiuderzaniampn/otcetPoVyplatamIUderzaniamPNBrowse.menu"/>
+            <item screen="OtcetyPoPodohodnomuNalogu.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.otcetypopodohodnomunalogu/otcetyPoPodohodnomuNaloguBrowse.menu"/>
+            <item screen="OtcetyPoSocial1nomuFondu.browse"
+                  caption="msg://kg.infosystems.buhproject.screen.documents.otcetyposocial1nomufondu/otcetyPoSocial1nomuFonduBrowse.menu"/>
+        </menu>
+        <menu id="menu_hr_reps" caption="Отчеты"/>
+        <item screen="ZarplataIKadryReports"
+              caption="msg://kg.infosystems.buhproject.screen.reports.zarplataikadry/zarplataIKadryReports.caption"/>
+
+    </menu>
+    <menu id="menu_registers" caption="Регистры" insertBefore="administration">
+        <item screen="informations_Sotrudniki.browse" caption="msg://kg.infosystems.buhproject.screen.sotrudniki/sotrudnikiBrowse.menu"/>
+        <item screen="informations_PlanovyeNacisleniaNacalo.browse"
+              caption="msg://kg.infosystems.buhproject.screen.registers.informations.planovyenacislenianacalo/planovyeNacisleniaNacaloBrowse.menu"/>
+        <item screen="informations_PlanovyeNacisleniaOkoncanie.browse"
+              caption="msg://kg.infosystems.buhproject.screen.registers.informations.planovyenacisleniaokoncanie/planovyeNacisleniaOkoncanieBrowse.menu"/>
+        <item screen="RazovoeNacislenie.browse"
+              caption="msg://kg.infosystems.buhproject.screen.registers.informations/razovoeNacislenieBrowse.menu"/>
+        <item screen="Tabel1UcetaPoseshenia.browse"
+              caption="msg://kg.infosystems.buhproject.screen.registers.informations/tabel1UcetaPosesheniaBrowse.menu"/>
+    </menu>
+    <menu id="menu_reps" caption="Отчеты" insertBefore="administration">
+        <menu id="menu_reps_std" caption="Стандартные отчеты"/>
+        <menu id="menu_reps_reg" caption="Регламентированные отчеты"/>
+    </menu>
+    <menu id="application" caption="msg://kg.infosystems.buhproject/menu.application" insertBefore="administration">
+        <item screen="User.browse" caption="msg://kg.infosystems.buhproject.screen.user/UserBrowse.caption"/>
+        <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
+    </menu>
+    <menu id="catalogs" caption="msg://kg.infosystems.buhproject/Catalogs" insertBefore="administration">
+        <item screen="Hozrascetnyj.browse" caption="msg://kg.infosystems.buhproject.screen.accounts.hozrascetnyj/hozrascetnyjBrowse.menu"/>
+        <item screen="AzykiNarodovMira.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.azykinarodovmira/azykiNarodovMiraBrowse.menu"/>
+        <item screen="GNS.browse" caption="msg://kg.infosystems.buhproject.screen.catalogs.gns/GNSBrowse.menu"/>
+        <item screen="RajonnoeOtdelenieKaznacejstva.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.rajonnoeotdeleniekaznacejstva/rajonnoeOtdelenieKaznacejstvaBrowse.menu"/>
+        <item screen="Organizacii.browse" caption="msg://kg.infosystems.buhproject.screen.organizacii/organizaciiBrowse.menu"/>
+        <item screen="StranyMira.browse" caption="msg://kg.infosystems.buhproject.screen.catalogs.stranymira/stranyMiraBrowse.menu"/>
+        <item screen="Nacional1nosti.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.nacional1nosti/nacional1nostiBrowse.menu"/>
+        <item screen="PravilaUvazki.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.pravilauvazki/pravilaUvazkiBrowse.menu"/>
+        <item screen="FormulyUvazki.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.formulyuvazki/formulyUvazkiBrowse.menu"/>
+        <item screen="Goroda.browse" caption="msg://kg.infosystems.buhproject.screen.catalogs.goroda/gorodaBrowse.menu"/>
+        <item screen="ProfiliGruppDostupa.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.profiligruppdostupa/profiliGruppDostupaBrowse.menu"/>
+        <item screen="GruppyDostupa.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.gruppydostupa/gruppyDostupaBrowse.menu"/>
+        <item screen="GruppyPol1zovatelej.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.gruppypol1zovatelej/gruppyPol1zovatelejBrowse.menu"/>
+        <item screen="GruppyVnesnihPol1zovatelej.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.gruppyvnesnihpol1zovatelej/gruppyVnesnihPol1zovatelejBrowse.menu"/>
+        <item screen="GruppyVoinskogoUceta.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.gruppyvoinskogouceta/gruppyVoinskogoUcetaBrowse.menu"/>
+        <item screen="KartScetaSotrudnikov.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.kartscetasotrudnikov/kartScetaSotrudnikovBrowse.menu"/>
+        <item screen="KategoriiSotrudnikov.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.kategoriisotrudnikov/kategoriiSotrudnikovBrowse.menu"/>
+        <item screen="KategoriiVoinskogoUceta.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.kategoriivoinskogouceta/kategoriiVoinskogoUcetaBrowse.menu"/>
+        <item screen="KlassifikatorSpecial1nostejPoObrazovaniu.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.klassifikatorspecial1nostejpoobrazovaniu/klassifikatorSpecial1nostejPoObrazovaniuBrowse.menu"/>
+        <item screen="KlassifikatorTNVED.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.klassifikatortnved/klassifikatorTNVEDBrowse.menu"/>
+        <item screen="KlucevyeOperacii.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.klucevyeoperacii/klucevyeOperaciiBrowse.menu"/>
+        <item screen="KvalifikaciiSotrudnikov.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.kvalifikaciisotrudnikov/kvalifikaciiSotrudnikovBrowse.menu"/>
+        <item screen="NastrojkiBalansa.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.nastrojkibalansa/nastrojkiBalansaBrowse.menu"/>
+        <item screen="NastrojkiRassifrovkiMemorial1nogoOrdera9.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.nastrojkirassifrovkimemorial1nogoordera9/nastrojkiRassifrovkiMemorial1nogoOrdera9Browse.menu"/>
+        <item screen="Ob2ektyStroitel1stva.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.ob2ektystroitel1stva/ob2ektyStroitel1stvaBrowse.menu"/>
+        <item screen="TipyInformaciiInformacionnogoCentra.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.tipyinformaciiinformacionnogocentra/tipyInformaciiInformacionnogoCentraBrowse.menu"/>
+        <item screen="TipovyeOperacii.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.tipovyeoperacii/tipovyeOperaciiBrowse.menu"/>
+        <item screen="ParametryVyrabotkiOS.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.parametryvyrabotkios/parametryVyrabotkiOSBrowse.menu"/>
+        <item screen="PoosreniaIVzyskania.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.poosreniaivzyskania/poosreniaIVzyskaniaBrowse.menu"/>
+        <item screen="PostavsikiUslugServisa.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.postavsikiuslugservisa/postavsikiUslugServisaBrowse.menu"/>
+        <item screen="ProfiliKlucevyhOperacij.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.profiliklucevyhoperacij/profiliKlucevyhOperacijBrowse.menu"/>
+        <item screen="ProgrammyElektronnojPodpisiISifrovania.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.programmyelektronnojpodpisiisifrovania/programmyElektronnojPodpisiISifrovaniaBrowse.menu"/>
+        <item screen="SostavyVoennosluzasih.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.sostavyvoennosluzasih/sostavyVoennosluzasihBrowse.menu"/>
+        <item screen="SostoanieVBrake.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.sostoanievbrake/sostoanieVBrakeBrowse.menu"/>
+        <item screen="SpiskiScetovMemorial1nyhOrderov.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.spiskiscetovmemorial1nyhorderov/spiskiScetovMemorial1nyhOrderovBrowse.menu"/>
+        <item screen="VidyZanatosti.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.vidyzanatosti/vidyZanatostiBrowse.menu"/>
+        <item screen="StepeniRodstvaFiziceskihLic.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.stepenirodstvafiziceskihlic/stepeniRodstvaFiziceskihLicBrowse.menu"/>
+        <item screen="StepeniZnaniaAzyka.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.stepeniznaniaazyka/stepeniZnaniaAzykaBrowse.menu"/>
+        <item screen="TomaHraneniaFajlov.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.tomahraneniafajlov/tomaHraneniaFajlovBrowse.menu"/>
+        <item screen="UcebnyeZavedenia.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.ucebnyezavedenia/ucebnyeZavedeniaBrowse.menu"/>
+        <item screen="UcenyeStepeni.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.ucenyestepeni/ucenyeStepeniBrowse.menu"/>
+        <item screen="UcenyeZvania.browse" caption="msg://kg.infosystems.buhproject.screen.catalogs.ucenyezvania/ucenyeZvaniaBrowse.menu"/>
+        <item screen="UslugiServisa.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.uslugiservisa/uslugiServisaBrowse.menu"/>
+        <item screen="Valuty.browse" caption="msg://kg.infosystems.buhproject.screen.catalogs.valuty/valutyBrowse.menu"/>
+        <item screen="VidyKontaktnojInformacii.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.vidykontaktnojinformacii/vidyKontaktnojInformaciiBrowse.menu"/>
+        <item screen="VidyObrazovaniaFiziceskihLic.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.vidyobrazovaniafiziceskihlic/vidyObrazovaniaFiziceskihLicBrowse.menu"/>
+        <item screen="VidyOtvetstvennyhLic.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.vidyotvetstvennyhlic/vidyOtvetstvennyhLicBrowse.menu"/>
+        <item screen="VidyProverok.browse" caption="msg://kg.infosystems.buhproject.screen.catalogs.vidyproverok/vidyProverokBrowse.menu"/>
+        <item screen="Voenkomaty.browse" caption="msg://kg.infosystems.buhproject.screen.catalogs.voenkomaty/voenkomatyBrowse.menu"/>
+        <item screen="VedomstvennayaClassifikacia.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.vedomstvennayaclassifikacia/vedomstvennayaClassifikaciaBrowse.menu"/>
+        <item screen="Funkcional1nayaClassifikacia.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.funkcional1nayaclassifikacia/funkcional1nayaClassifikaciaBrowse.menu"/>
+        <item screen="TipOrganizacii.browse"
+              caption="msg://kg.infosystems.buhproject.screen.catalogs.tiporganizacii/tipOrganizaciiBrowse.menu"/>
+        <item screen="Pol1zovateli.browse" caption="msg://kg.infosystems.buhproject.screen.catalogs.pol1zateli/pol1zovateliBrowse.menu"/>
+        <item screen="Multiple.browse" caption="msg://kg.infosystems.buhproject.screen.one/multipleBrowse.menu"/>
+        <item screen="StatusDoljnosti.browse" caption="msg://kg.infosystems.buhproject.screen.catalogs/statusDoljnostiBrowse.menu"/>
+        <item screen="RegistrDoljnosti.browse" caption="msg://kg.infosystems.buhproject.screen.catalogs/registrDoljnostiBrowse.menu"/>
+    </menu>
+
+</menu-config>

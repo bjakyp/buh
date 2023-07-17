@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="buh-project">
+        <addColumn schemaName="documents" tableName="Komandirovka">
+            <column name="VID_NACISLENII_ID" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2" author="buh-project">
+        <createIndex indexName="IDX_KOMANDIROVKA_VID_NACISLENII" schemaName="documents" tableName="Komandirovka">
+            <column name="VID_NACISLENII_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="VID_NACISLENII_ID" baseTableName="Komandirovka"
+                                 baseTableSchemaName="documents" constraintName="FK_KOMANDIROVKA_ON_VID_NACISLENII"
+                                 referencedColumnNames="ID" referencedTableName="VidyNacislenij"
+                                 referencedTableSchemaName="comps"/>
+    </changeSet>
+</databaseChangeLog>

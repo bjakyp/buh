@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="buh-project-enums-data">
+        <insert tableName="SposobyPostupleniaOS" schemaName="enumerations">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="Приобретение"/>
+            <column name="SYNONYM_" value="Приобретение"/>
+            <column name="ORDER_" value="1"/>
+        </insert>
+        <insert tableName="SposobyPostupleniaOS" schemaName="enumerations">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="Строительство"/>
+            <column name="SYNONYM_" value="Строительство"/>
+            <column name="ORDER_" value="2"/>
+        </insert>
+        <insert tableName="SposobyPostupleniaOS" schemaName="enumerations">
+            <column name="ID" value="3"/>
+            <column name="NAME" value="ВкладВУК"/>
+            <column name="SYNONYM_" value="Вклад в УК"/>
+            <column name="ORDER_" value="3"/>
+        </insert>
+        <insert tableName="SposobyPostupleniaOS" schemaName="enumerations">
+            <column name="ID" value="4"/>
+            <column name="NAME" value="Аренда"/>
+            <column name="SYNONYM_" value="Аренда"/>
+            <column name="ORDER_" value="4"/>
+        </insert>
+        <insert tableName="SposobyPostupleniaOS" schemaName="enumerations">
+            <column name="ID" value="5"/>
+            <column name="NAME" value="Инвентаризация"/>
+            <column name="SYNONYM_" value="Инвентаризация"/>
+            <column name="ORDER_" value="5"/>
+        </insert>
+        <insert tableName="SposobyPostupleniaOS" schemaName="enumerations">
+            <column name="ID" value="6"/>
+            <column name="NAME" value="ДругоеПоступление"/>
+            <column name="SYNONYM_" value="Другое поступление"/>
+            <column name="ORDER_" value="6"/>
+        </insert>
+        <insert tableName="SposobyPostupleniaOS" schemaName="enumerations">
+            <column name="ID" value="7"/>
+            <column name="NAME" value="Иное"/>
+            <column name="SYNONYM_" value="Иное"/>
+            <column name="ORDER_" value="7"/>
+        </insert>
+        <insert tableName="SposobyPostupleniaOS" schemaName="enumerations">
+            <column name="ID" value="8"/>
+            <column name="NAME" value="ВнутриведомственноеПоступление"/>
+            <column name="SYNONYM_" value="Внутриведомственное поступление"/>
+            <column name="ORDER_" value="8"/>
+        </insert>
+        <insert tableName="SposobyPostupleniaOS" schemaName="enumerations">
+            <column name="ID" value="9"/>
+            <column name="NAME" value="ВнутриведомственноеПередача"/>
+            <column name="SYNONYM_" value="Внутриведомственное передача"/>
+            <column name="ORDER_" value="9"/>
+        </insert>
+        <insert tableName="SposobyPostupleniaOS" schemaName="enumerations">
+            <column name="ID" value="10"/>
+            <column name="NAME" value="ДругаяЕдиницаГосСектора"/>
+            <column name="SYNONYM_" value="Другая единица гос сектора"/>
+            <column name="ORDER_" value="10"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

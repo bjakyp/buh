@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="buh-project-enums-data">
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="ПринятиеКУчету"/>
+            <column name="SYNONYM_" value="Принятие к учету"/>
+            <column name="ORDER_" value="1"/>
+        </insert>
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="НачислениеАмортизации"/>
+            <column name="SYNONYM_" value="Начисление амортизации"/>
+            <column name="ORDER_" value="2"/>
+        </insert>
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="3"/>
+            <column name="NAME" value="ВнутреннееПеремещение"/>
+            <column name="SYNONYM_" value="Внутреннее перемещение"/>
+            <column name="ORDER_" value="3"/>
+        </insert>
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="4"/>
+            <column name="NAME" value="КапитальныйРемонт"/>
+            <column name="SYNONYM_" value="Капитальный ремонт"/>
+            <column name="ORDER_" value="4"/>
+        </insert>
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="5"/>
+            <column name="NAME" value="Переоценка"/>
+            <column name="SYNONYM_" value="Переоценка"/>
+            <column name="ORDER_" value="5"/>
+        </insert>
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="6"/>
+            <column name="NAME" value="Модернизация"/>
+            <column name="SYNONYM_" value="Модернизация"/>
+            <column name="ORDER_" value="6"/>
+        </insert>
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="7"/>
+            <column name="NAME" value="Списание"/>
+            <column name="SYNONYM_" value="Списание"/>
+            <column name="ORDER_" value="7"/>
+        </insert>
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="8"/>
+            <column name="NAME" value="Прочее"/>
+            <column name="SYNONYM_" value="Прочее"/>
+            <column name="ORDER_" value="8"/>
+        </insert>
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="9"/>
+            <column name="NAME" value="ПередачаБезвозмездно"/>
+            <column name="SYNONYM_" value="Передача безвозмездно"/>
+            <column name="ORDER_" value="9"/>
+        </insert>
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="10"/>
+            <column name="NAME" value="СписаниеПоРезультатамИнвентаризации"/>
+            <column name="SYNONYM_" value="Списание по результатам инвентаризации"/>
+            <column name="ORDER_" value="10"/>
+        </insert>
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="11"/>
+            <column name="NAME" value="ПоступлениеОтДругойОрганизации"/>
+            <column name="SYNONYM_" value="Поступление от другой организации"/>
+            <column name="ORDER_" value="11"/>
+        </insert>
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="12"/>
+            <column name="NAME" value="ПоступлениеБезвозмездно"/>
+            <column name="SYNONYM_" value="Поступление безвозмездно"/>
+            <column name="ORDER_" value="12"/>
+        </insert>
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="13"/>
+            <column name="NAME" value="ПоступлениеПоИнвентаризации"/>
+            <column name="SYNONYM_" value="Поступление по инвентаризации"/>
+            <column name="ORDER_" value="13"/>
+        </insert>
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="14"/>
+            <column name="NAME" value="Приобретение"/>
+            <column name="SYNONYM_" value="Приобретение"/>
+            <column name="ORDER_" value="14"/>
+        </insert>
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="15"/>
+            <column name="NAME" value="ПолучениеОтДругойЕдиницыГоссектораВнутриведомственно"/>
+            <column name="SYNONYM_" value="Получение от другой единицы госсектора внутриведомственно"/>
+            <column name="ORDER_" value="15"/>
+        </insert>
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="16"/>
+            <column name="NAME" value="ПередачаДругойЕдиницеГоссектораВнутриведомственно"/>
+            <column name="SYNONYM_" value="Передача другой единице госсектора внутриведомственно"/>
+            <column name="ORDER_" value="16"/>
+        </insert>
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="17"/>
+            <column name="NAME" value="ПередачаДругойЕдиницеГоссектора"/>
+            <column name="SYNONYM_" value="Передача другой единице госсектора"/>
+            <column name="ORDER_" value="17"/>
+        </insert>
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="18"/>
+            <column name="NAME" value="ПолучениеОтДругойЕдиницыГоссектора"/>
+            <column name="SYNONYM_" value="Получение от другой единицы госсектора"/>
+            <column name="ORDER_" value="18"/>
+        </insert>
+        <insert tableName="VidySobytijOS" schemaName="enumerations">
+            <column name="ID" value="19"/>
+            <column name="NAME" value="ПередачаДругойОрганизации"/>
+            <column name="SYNONYM_" value="Передача другой организации"/>
+            <column name="ORDER_" value="19"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

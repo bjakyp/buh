@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://planovyeNacisleniaOkoncanieBrowse.caption"
+        focusComponent="planovyeNacisleniaOkoncaniesTable">
+    <data readOnly="true">
+        <collection id="planovyeNacisleniaOkoncaniesDc"
+                    class="kg.infosystems.buhproject.entity.registers.informations.PlanovyeNacisleniaOkoncanie">
+            <fetchPlan extends="_base">
+                <property name="registrator" fetchPlan="_base"/>
+                <property name="organizacia" fetchPlan="_base"/>
+                <property name="sotrudnik" fetchPlan="_base"/>
+                <property name="vidRasceta" fetchPlan="_base"/>
+                <property name="dokumentSsylka" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="planovyeNacisleniaOkoncaniesDl">
+                <query>
+                    <![CDATA[select e from informations_PlanovyeNacisleniaOkoncanie e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="planovyeNacisleniaOkoncaniesTable" spacing="true">
+        <filter id="filter"
+                dataLoader="planovyeNacisleniaOkoncaniesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="planovyeNacisleniaOkoncaniesTable"
+                    width="100%"
+                    dataContainer="planovyeNacisleniaOkoncaniesDc">
+            <actions>
+                <action id="refresh" type="refresh"/>
+                <action id="remove" type="remove"/>
+                <action id="view" type="view"/>
+            </actions>
+            <columns>
+                <column id="aktivnost1"  caption="msg://aktivnost1-planovyeNacisleniaNacaloes"/>
+                <column id="period" caption="msg://period-planovyeNacisleniaNacaloes"/>
+                <column id="organizacia" caption="msg://organizacia-planovyeNacisleniaNacaloes"/>
+                <column id="sotrudnik" caption="msg://sotrudnik-planovyeNacisleniaNacaloes"/>
+                <column id="vidRasceta" caption="msg://vidRasceta-planovyeNacisleniaNacaloes"/>
+                <column id="dokumentSsylka" caption="msg://dokumentSsylka-planovyeNacisleniaNacaloes"/>
+                <column id="razmer" caption="msg://razmer-planovyeNacisleniaNacaloes"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="refreshBtn" action="planovyeNacisleniaOkoncaniesTable.refresh"/>
+                <button id="removeBtn" action="planovyeNacisleniaOkoncaniesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

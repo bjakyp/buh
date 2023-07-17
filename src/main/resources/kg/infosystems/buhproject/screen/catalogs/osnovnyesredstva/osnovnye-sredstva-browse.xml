@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://osnovnyeSredstvaBrowse.caption"
+        focusComponent="osnovnyeSredstvasTable">
+    <data readOnly="true">
+        <collection id="osnovnyeSredstvasDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.OsnovnyeSredstva">
+            <fetchPlan extends="_base">
+                <property name="roditel1" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="osnovnyeSredstvasDl">
+                <query>
+                    <![CDATA[select e from OsnovnyeSredstva e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="osnovnyeSredstvasTable" spacing="true">
+        <filter id="filter"
+                dataLoader="osnovnyeSredstvasDl">
+            <properties include=".*"/>
+        </filter>
+        <treeTable id="osnovnyeSredstvasTable"
+                   width="100%"
+                   dataContainer="osnovnyeSredstvasDc"
+                   hierarchyProperty="roditel1">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="kod"/>
+                <column id="naimenovanie"/>
+                <column id="roditel1"/>
+                <column id="etoGruppa"/>
+                <column id="naimenovaniePolnoe"/>
+                <column id="zavodskojNomer"/>
+                <column id="nomerPasporta"/>
+                <column id="izgotovitel1"/>
+                <column id="dataVypuska"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="osnovnyeSredstvasTable.create"/>
+                <button id="editBtn" action="osnovnyeSredstvasTable.edit"/>
+                <button id="removeBtn" action="osnovnyeSredstvasTable.remove"/>
+            </buttonsPanel>
+        </treeTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

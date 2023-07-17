@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://employeesBrowse.caption"
+        focusComponent="employeesesTable">
+    <data readOnly="true">
+        <collection id="employeesesDc"
+                    class="kg.infosystems.buhproject.entity.parts.documents.Employees">
+            <fetchPlan extends="_base">
+                <property name="doljnost" fetchPlan="_base"/>
+                <property name="podrazdelenie" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="employeesesDl">
+                <query>
+                    <![CDATA[select e from Employees e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="employeesesTable" spacing="true">
+        <filter id="filter"
+                dataLoader="employeesesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="employeesesTable"
+                    width="100%"
+                    dataContainer="employeesesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="doljnost"/>
+                <column id="fullname"/>
+                <column id="stavka"/>
+                <column id="doljnostnoyOklad"/>
+                <column id="zaVyslugiLet"/>
+                <column id="klasnyiChin"/>
+                <column id="nadbavkaZaVysokogorie"/>
+                <column id="podrazdelenie"/>
+                <column id="uchenayaStepen"/>
+                <column id="secretnost1"/>
+                <column id="inyeNadbavki"/>
+                <column id="vsegoZaFOTzaMesyac"/>
+                <column id="otpusknoy"/>
+                <column id="lechebnoePosobieKOtpusku"/>
+                <column id="premia"/>
+                <column id="godovoyFOT"/>
+                <column id="otchislenieSFKR"/>
+                <column id="godovoyFOTzaVychetomSFKR"/>
+                <column id="primechanie"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="employeesesTable.create"/>
+                <button id="editBtn" action="employeesesTable.edit"/>
+                <button id="removeBtn" action="employeesesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

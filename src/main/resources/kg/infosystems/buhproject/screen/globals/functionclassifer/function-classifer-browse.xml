@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://functionClassiferBrowse.caption"
+        focusComponent="functionClassifersTable">
+    <data readOnly="true">
+        <collection id="functionClassifersDc"
+                    class="kg.infosystems.buhproject.entity.globals.FunctionClassifer">
+            <fetchPlan extends="_base">
+                <property name="parent" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="functionClassifersDl">
+                <query>
+                    <![CDATA[select e from FunctionClassifer e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="functionClassifersTable" spacing="true">
+        <filter id="filter"
+                dataLoader="functionClassifersDl">
+            <properties include=".*"/>
+        </filter>
+        <treeTable id="functionClassifersTable"
+                   width="100%"
+                   dataContainer="functionClassifersDc"
+                   hierarchyProperty="parent">
+            <actions>
+            </actions>
+            <columns>
+                <column id="code"/>
+                <column id="name"/>
+                <column id="shortName"/>
+                <column id="active"/>
+                <column id="parent"/>
+            </columns>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+            </buttonsPanel>
+        </treeTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

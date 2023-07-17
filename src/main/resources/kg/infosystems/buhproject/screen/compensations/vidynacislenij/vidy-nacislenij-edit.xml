@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://vidyNacislenijEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="vidyNacislenijDc"
+                  class="kg.infosystems.buhproject.entity.compensations.VidyNacislenij">
+            <fetchPlan extends="_base">
+                <property name="vidBudjeta" fetchPlan="_instance_name"/>
+                <property name="sposobRasceta" fetchPlan="_instance_name"/>
+                <property name="sposobyOtrazeniaZarabotnojPlaty" fetchPlan="_instance_name"/>
+                <property name="kategoriiRascetov" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="vidyNacislenijDc">
+                <column width="350px">
+                    <textField id="descriptionField" property="description"/>
+                    <entityPicker id="vidFinansirovaniaField" property="vidBudjeta" caption="msg://vidBudjeta">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="sposobRascetaField" property="sposobRasceta">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="sposobyOtrazeniaZarabotnojPlatyField" property="sposobyOtrazeniaZarabotnojPlaty">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+                <column width="150px">
+                    <textField id="codeField" property="code"/>
+                    <label/>
+                    <checkBox id="rascetOtObratnogoField" property="rascetOtObratnogo"/>
+                </column>
+                <column width="150px">
+                    <textField id="bukvennijKodField" property="bukvennijKod"/>
+                </column>
+            </form>
+            <tabSheet id="tabSheet">
+                <tab id="tab1" spacing="true" margin="true" caption="Учет">
+                    <form dataContainer="vidyNacislenijDc">
+                        <column width="300px">
+                            <label value="Налоги, отчисления и взносы" stylename="colored"/>
+                            <checkBox id="oblagaetsaPNField" property="oblagaetsaPN"/>
+                            <checkBox id="oblagaetsaSFField" property="oblagaetsaSF"/>
+                            <label value="Прочее" stylename="colored"/>
+                            <checkBox id="zacetOtrabotannogoVremeniField" property="zacetOtrabotannogoVremeni"/>
+                            <checkBox id="dopolnitel1nijDohodField" property="dopolnitel1nijDohod"/>
+                            <checkBox id="ucetPriRasceteField" property="ucetPriRascete" caption="msg://ucetPriRascete"/>
+                        </column>
+                    </form>
+                </tab>
+                <tab id="tab4" spacing="true" margin="true" caption="Дополнительно">
+                    <form dataContainer="vidyNacislenijDc">
+                        <column width="300px">
+                            <textField id="poradokField" property="poradok"/>
+                            <textArea id="opisanieField" property="opisanie" rows="5"/>
+                            <label value="Служебные" stylename="colored"/>
+                            <checkBox id="trebuetsaRascetBazyField" property="trebuetsaRascetBazy"/>
+                            <checkBox id="trebuetsaRascetVremeniField" property="trebuetsaRascetVremeni"/>
+                            <checkBox id="trebuetsaRascetVremeniVCasahField" property="trebuetsaRascetVremeniVCasah"/>
+                            <entityPicker id="kategoriiRascetovField" property="kategoriiRascetov">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <checkBox id="baseAsActField" property="baseAsAct"/>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

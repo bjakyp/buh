@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://hozrascetnyjBrowse.caption"
+        focusComponent="hozrascetnyjsTable">
+    <data readOnly="true">
+        <collection id="hozrascetnyjsDc"
+                    class="kg.infosystems.buhproject.entity.accounts.Hozrascetnyj">
+            <fetchPlan extends="_base">
+                <property name="parent" fetchPlan="_instance_name"/>
+                <property name="pair" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="hozrascetnyjsDl">
+                <query>
+                    <![CDATA[select e from Hozrascetnyj e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="hozrascetnyjsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="hozrascetnyjsDl">
+            <properties include=".*"/>
+        </filter>
+        <treeTable id="hozrascetnyjsTable"
+                   width="100%"
+                   dataContainer="hozrascetnyjsDc"
+                   hierarchyProperty="parent">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="parent"/>
+                <column id="code" sort="ASCENDING"/>
+                <column id="description"/>
+                <column id="orderField"/>
+                <column id="kind"/>
+                <column id="offBalance"/>
+                <column id="dontUseInProv"/>
+                <column id="pair"/>
+                <column id="temporary"/>
+                <column id="monetary"/>
+                <column id="cardinal"/>
+            </columns>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="hozrascetnyjsTable.create"/>
+                <button id="editBtn" action="hozrascetnyjsTable.edit"/>
+                <button id="removeBtn" action="hozrascetnyjsTable.remove"/>
+
+            </buttonsPanel>
+        </treeTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

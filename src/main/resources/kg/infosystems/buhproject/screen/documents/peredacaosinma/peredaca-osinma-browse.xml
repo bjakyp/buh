@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://peredacaOSINMABrowse.caption"
+        focusComponent="peredacaOSINMAsTable">
+    <data readOnly="true">
+        <collection id="peredacaOSINMAsDc"
+                    class="kg.infosystems.buhproject.entity.documents.PeredacaOSINMA">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="peredacaOSINMAsDl">
+                <query>
+                    <![CDATA[select e from PeredacaOSINMA e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="peredacaOSINMAsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="peredacaOSINMAsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="peredacaOSINMAsTable"
+                    width="100%"
+                    dataContainer="peredacaOSINMAsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="data"/>
+                <column id="nomer"/>
+<!--                <column id="proveden"/>-->
+                <column id="organizacia"/>
+                <column id="vidFinansirovania"/>
+<!--                <column id="neUkazyvat1Stoimosti"/>-->
+<!--                <column id="dataPeredaci"/>-->
+<!--                <column id="nomerPeredaci"/>-->
+<!--                <column id="adresDostavki"/>-->
+                <column id="kommentarij"/>
+                <column id="avtor"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="peredacaOSINMAsTable.create"/>
+                <button id="editBtn" action="peredacaOSINMAsTable.edit"/>
+                <button id="removeBtn" action="peredacaOSINMAsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="buh-project-enums-data">
+        <insert tableName="ParametryIzmeneniaOSINMA" schemaName="enumerations">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="ИнвентарныйНомер"/>
+            <column name="SYNONYM_" value="Инвентарный номер"/>
+            <column name="ORDER_" value="1"/>
+        </insert>
+        <insert tableName="ParametryIzmeneniaOSINMA" schemaName="enumerations">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="СчетУчета"/>
+            <column name="SYNONYM_" value="Счет учета"/>
+            <column name="ORDER_" value="2"/>
+        </insert>
+        <insert tableName="ParametryIzmeneniaOSINMA" schemaName="enumerations">
+            <column name="ID" value="3"/>
+            <column name="NAME" value="СрокСлужбы"/>
+            <column name="SYNONYM_" value="Срок службы"/>
+            <column name="ORDER_" value="3"/>
+        </insert>
+        <insert tableName="ParametryIzmeneniaOSINMA" schemaName="enumerations">
+            <column name="ID" value="4"/>
+            <column name="NAME" value="СпособНачисленияАмортизации"/>
+            <column name="SYNONYM_" value="Начисление амортизации"/>
+            <column name="ORDER_" value="4"/>
+        </insert>
+        <insert tableName="ParametryIzmeneniaOSINMA" schemaName="enumerations">
+            <column name="ID" value="5"/>
+            <column name="NAME" value="СпособОтраженияРасходовПоАмортизации"/>
+            <column name="SYNONYM_" value="Отражение амортизации"/>
+            <column name="ORDER_" value="5"/>
+        </insert>
+        <insert tableName="ParametryIzmeneniaOSINMA" schemaName="enumerations">
+            <column name="ID" value="6"/>
+            <column name="NAME" value="ПроцентГодовойАмортизации"/>
+            <column name="SYNONYM_" value="% годовой амортизации"/>
+            <column name="ORDER_" value="6"/>
+        </insert>
+        <insert tableName="ParametryIzmeneniaOSINMA" schemaName="enumerations">
+            <column name="ID" value="7"/>
+            <column name="NAME" value="ГрафикАмортизации"/>
+            <column name="SYNONYM_" value="График амортизации"/>
+            <column name="ORDER_" value="7"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

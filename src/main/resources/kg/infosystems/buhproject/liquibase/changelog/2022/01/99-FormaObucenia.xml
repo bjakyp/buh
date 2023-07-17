@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="buh-project-enums-data">
+        <insert tableName="FormaObucenia" schemaName="enumerations">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="Очное"/>
+            <column name="SYNONYM_" value="Очное"/>
+            <column name="ORDER_" value="1"/>
+        </insert>
+        <insert tableName="FormaObucenia" schemaName="enumerations">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="Заочное"/>
+            <column name="SYNONYM_" value="Заочное"/>
+            <column name="ORDER_" value="2"/>
+        </insert>
+        <insert tableName="FormaObucenia" schemaName="enumerations">
+            <column name="ID" value="3"/>
+            <column name="NAME" value="Вечернее"/>
+            <column name="SYNONYM_" value="Вечернее"/>
+            <column name="ORDER_" value="3"/>
+        </insert>
+        <insert tableName="FormaObucenia" schemaName="enumerations">
+            <column name="ID" value="4"/>
+            <column name="NAME" value="Экстернат"/>
+            <column name="SYNONYM_" value="Экстернат"/>
+            <column name="ORDER_" value="4"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

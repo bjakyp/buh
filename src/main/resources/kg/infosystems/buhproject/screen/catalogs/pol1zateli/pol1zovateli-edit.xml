@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://pol1zovateliEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="pol1zovateliDc"
+                  class="kg.infosystems.buhproject.entity.catalogs.Pol1zovateli">
+            <fetchPlan extends="_base">
+                <property name="svojstvaPol1zovatelaIB" fetchPlan="_base"/>
+                <property name="fotografia" fetchPlan="_base"/>
+                <property name="dopolnitel1nyeRekvizity" fetchPlan="_base"/>
+                <property name="kontaktnaaInformacia" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="dopolnitel1nyeRekvizityDc" property="dopolnitel1nyeRekvizity"/>
+            <collection id="kontaktnaaInformaciaDc" property="kontaktnaaInformacia"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="pol1zovateliDc">
+                <column width="350px">
+                    <textField id="naimenovanieField" property="naimenovanie"/>
+                    <checkBox id="nedejstvitelenField" property="nedejstvitelen"/>
+                    <textField id="podrazdelenieField" property="podrazdelenie"/>
+                    <textField id="fiziceskoeLicoField" property="fiziceskoeLico"/>
+                    <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                    <checkBox id="sluzebnyjField" property="sluzebnyj"/>
+                    <checkBox id="podgotovlenField" property="podgotovlen"/>
+                    <maskedField id="identifikatorPol1zovatelaIBField" mask="hhhhhhhh-hhhh-hhhh-hhhh-hhhhhhhhhhhh"
+                                 property="identifikatorPol1zovatelaIB"/>
+                    <maskedField id="identifikatorPol1zovatelaServisaField" mask="hhhhhhhh-hhhh-hhhh-hhhh-hhhhhhhhhhhh"
+                                 property="identifikatorPol1zovatelaServisa"/>
+                    <entityPicker id="svojstvaPol1zovatelaIBField" property="svojstvaPol1zovatelaIB">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="fotografiaField" property="fotografia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+            </form>
+            <groupBox id="dopolnitel1nyeRekvizityBox"
+                      caption="msg://kg.infosystems.buhproject.entity.catalogs/Pol1zovateli.dopolnitel1nyeRekvizity">
+                <table id="dopolnitel1nyeRekvizityTable" dataContainer="dopolnitel1nyeRekvizityDc" width="100%"
+                       height="200px">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="nomerStroki"/>
+                        <column id="tekstovaaStroka"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="dopolnitel1nyeRekvizityTable.create"/>
+                        <button action="dopolnitel1nyeRekvizityTable.edit"/>
+                        <button action="dopolnitel1nyeRekvizityTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+            <groupBox id="kontaktnaaInformaciaBox"
+                      caption="msg://kg.infosystems.buhproject.entity.catalogs/Pol1zovateli.kontaktnaaInformacia">
+                <table id="kontaktnaaInformaciaTable" dataContainer="kontaktnaaInformaciaDc" width="100%"
+                       height="200px">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="nomerStroki"/>
+                        <column id="predstavlenie"/>
+                        <column id="znaceniaPolej"/>
+                        <column id="strana"/>
+                        <column id="region"/>
+                        <column id="gorod"/>
+                        <column id="adresEP"/>
+                        <column id="domennoeImaServera"/>
+                        <column id="nomerTelefona"/>
+                        <column id="nomerTelefonaBezKodov"/>
+                        <column id="znacenie"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="kontaktnaaInformaciaTable.create"/>
+                        <button action="kontaktnaaInformaciaTable.edit"/>
+                        <button action="kontaktnaaInformaciaTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

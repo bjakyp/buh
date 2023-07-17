@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://otcetyPoPodohodnomuNaloguEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="otcetyPoPodohodnomuNaloguDc"
+                  class="kg.infosystems.buhproject.entity.documents.OtcetyPoPodohodnomuNalogu">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="kontragent" fetchPlan="_instance_name"/>
+                <property name="vidOtceta" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="pdohonyjNalog" fetchPlan="_base"/>
+                <property name="podohonyjNalogPervyjMesacKvartala" fetchPlan="_base"/>
+                <property name="podohodnyjNalogVtorojMesacKvartala" fetchPlan="_base"/>
+                <property name="podohodnyjNalogTretijMesacKvartala" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="pdohonyjNalogDc" property="pdohonyjNalog"/>
+            <collection id="podohonyjNalogPervyjMesacKvartalaDc" property="podohonyjNalogPervyjMesacKvartala"/>
+            <collection id="podohodnyjNalogVtorojMesacKvartalaDc" property="podohodnyjNalogVtorojMesacKvartala"/>
+            <collection id="podohodnyjNalogTretijMesacKvartalaDc" property="podohodnyjNalogTretijMesacKvartala"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="otcetyPoPodohodnomuNaloguDc">
+                <column width="350px">
+                    <entityPicker id="kontragentField" property="kontragent">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <textField id="vidSub2ektaField" property="vidSub2ekta"/>
+                    <entityPicker id="vidOtcetaField" property="vidOtceta">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <checkBox id="okruglenieField" property="okruglenie"/>
+                </column>
+                <column width="350px">
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data"/>
+                    <!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="vidFinansirovaniaField" property="vidFinansirovania">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <checkBox id="neZapolnat1VyplatyPoZPField" property="neZapolnat1VyplatyPoZP"/>
+                </column>
+            </form>
+            <tabSheet id="tabSheet1" height="800px">
+                <tab id="tab1" caption="Подоходный налог" spacing="true" margin="true" expand="pdohonyjNalogBox">
+                    <groupBox id="pdohonyjNalogBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/OtcetyPoPodohodnomuNalogu.pdohonyjNalog"
+                              expand="pdohonyjNalogTable">
+                        <table id="pdohonyjNalogTable" dataContainer="pdohonyjNalogDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="strokaOtceta" editable="true"/>
+                                <column id="kolicestvo" editable="true"/>
+                                <column id="summaNacisleno" editable="true"/>
+                                <column id="summaNeoblagaemaa" editable="true"/>
+                                <column id="vycety" editable="true"/>
+                                <column id="summaOblagaemaa" editable="true"/>
+                                <column id="summaPNSSotrudnika" editable="true"/>
+                                <column id="summaPN" editable="true"/>
+                                <column id="summaPNSMRD" editable="true"/>
+                                <column id="summaVyplacennyhDohodov" editable="true"/>
+                                <column id="summaPNPodlezasaaUplate" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="pdohonyjNalogTable.create"/>
+                                <!--                                <button action="pdohonyjNalogTable.edit"/>-->
+                                <button action="pdohonyjNalogTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="Подоходный налог (приложение)" spacing="true" margin="true"
+                     >
+                    <groupBox id="podohonyjNalogPervyjMesacKvartalaBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/OtcetyPoPodohodnomuNalogu.podohonyjNalogPervyjMesacKvartala"
+                              box.expandRatio="1"
+                              expand="podohonyjNalogPervyjMesacKvartalaTable">
+                        <table id="podohonyjNalogPervyjMesacKvartalaTable"
+                               dataContainer="podohonyjNalogPervyjMesacKvartalaDc"
+                               width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="strokaOtceta"/>
+                                <column id="kolicestvo"/>
+                                <column id="summaNacisleno"/>
+                                <column id="summaNeoblagaemaa"/>
+                                <column id="vycety"/>
+                                <column id="summaOblagaemaa"/>
+                                <column id="summaPNSSotrudnika"/>
+                                <column id="summaPN"/>
+                                <column id="summaPNSMRD"/>
+                                <column id="summaVyplacennyhDohodov"/>
+                                <column id="summaPNPodlezasaaUplate"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="podohonyjNalogPervyjMesacKvartalaTable.create"/>
+                                <!--                                <button action="podohonyjNalogPervyjMesacKvartalaTable.edit"/>-->
+                                <button action="podohonyjNalogPervyjMesacKvartalaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                    <groupBox id="podohodnyjNalogVtorojMesacKvartalaBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/OtcetyPoPodohodnomuNalogu.podohodnyjNalogVtorojMesacKvartala"
+                              box.expandRatio="1"
+                              expand="podohodnyjNalogVtorojMesacKvartalaTable">
+                        <table id="podohodnyjNalogVtorojMesacKvartalaTable"
+                               dataContainer="podohodnyjNalogVtorojMesacKvartalaDc"
+                               width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="strokaOtceta"/>
+                                <column id="kolicestvo"/>
+                                <column id="summaNacisleno"/>
+                                <column id="summaNeoblagaemaa"/>
+                                <column id="vycety"/>
+                                <column id="summaOblagaemaa"/>
+                                <column id="summaPNSSotrudnika"/>
+                                <column id="summaPN"/>
+                                <column id="summaPNSMRD"/>
+                                <column id="summaVyplacennyhDohodov"/>
+                                <column id="summaPNPodlezasaaUplate"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="podohodnyjNalogVtorojMesacKvartalaTable.create"/>
+                                <!--                                <button action="podohodnyjNalogVtorojMesacKvartalaTable.edit"/>-->
+                                <button action="podohodnyjNalogVtorojMesacKvartalaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                    <groupBox id="podohodnyjNalogTretijMesacKvartalaBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/OtcetyPoPodohodnomuNalogu.podohodnyjNalogTretijMesacKvartala"
+                              box.expandRatio="1"
+                              expand="podohodnyjNalogTretijMesacKvartalaTable">
+                        <table id="podohodnyjNalogTretijMesacKvartalaTable"
+                               dataContainer="podohodnyjNalogTretijMesacKvartalaDc"
+                               width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="strokaOtceta"/>
+                                <column id="kolicestvo"/>
+                                <column id="summaNacisleno"/>
+                                <column id="summaNeoblagaemaa"/>
+                                <column id="vycety"/>
+                                <column id="summaOblagaemaa"/>
+                                <column id="summaPNSSotrudnika"/>
+                                <column id="summaPN"/>
+                                <column id="summaPNSMRD"/>
+                                <column id="summaVyplacennyhDohodov"/>
+                                <column id="summaPNPodlezasaaUplate"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="podohodnyjNalogTretijMesacKvartalaTable.create"/>
+                                <!--                                <button action="podohodnyjNalogTretijMesacKvartalaTable.edit"/>-->
+                                <button action="podohodnyjNalogTretijMesacKvartalaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab3" caption="Дополнительно" spacing="true" margin="true">
+                    <form dataContainer="otcetyPoPodohodnomuNaloguDc">
+                        <column width="350px">
+                            <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                            <entityPicker id="avtorField" property="avtor">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

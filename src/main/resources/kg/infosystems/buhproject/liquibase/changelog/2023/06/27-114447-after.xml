@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="buh-project">
+        <createTable schemaName="documents" tableName="PROCIE_UDERJANIA">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PROCIE_UDERJANIA"/>
+            </column>
+            <column name="VERSIA_DANNYH" type="INT"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+            <column name="NOMER" type="VARCHAR(9)"/>
+            <column name="NAME" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="buh-project">
+        <addColumn schemaName="documents" tableName="UDERJANIA_NACISLENIA_I_UDERJANIA">
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+            <column name="VERSIA_DANNYH" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2-1" author="buh-project">
+        <modifyDataType schemaName="documents" tableName="uderjania_nacislenia_i_uderjania" columnName="norma_dnej" newDataType="int"/>
+        <modifyDataType schemaName="documents" tableName="uderjania_nacislenia_i_uderjania" columnName="otrabotano_dnej" newDataType="int"/>
+    </changeSet>
+    <changeSet id="3" author="buh-project">
+        <addColumn schemaName="documents" tableName="NACISLENIYA_I_UDERJANIYA">
+            <column name="PROCIE_UDERJANIA" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="4" author="buh-project">
+        <addForeignKeyConstraint baseColumnNames="PROCIE_UDERJANIA" baseTableName="NACISLENIYA_I_UDERJANIYA"
+                                 baseTableSchemaName="documents"
+                                 constraintName="FK_NACISLENIYA_I_UDERJANIYA_ON_PROCIE_UDERJANIA"
+                                 referencedColumnNames="ID" referencedTableName="PROCIE_UDERJANIA"
+                                 referencedTableSchemaName="documents"/>
+    </changeSet>
+    <changeSet id="5" author="buh-project">
+        <dropTable cascadeConstraints="true" tableName="uderjania_sv"/>
+    </changeSet>
+    <changeSet id="6" author="buh-project">
+        <dropColumn columnName="name" schemaName="documents" tableName="uderjania_pn"/>
+
+        <dropColumn columnName="nomer" schemaName="documents" tableName="uderjania_pn"/>
+    </changeSet>
+    <changeSet id="7" author="buh-project">
+        <dropColumn columnName="norma_casov" schemaName="documents" tableName="uderjania_nacislenia_i_uderjania"/>
+    </changeSet>
+    <changeSet id="9" author="buh-project">
+        <modifyDataType columnName="NORMA_DNEJ" schemaName="documents" tableName="UDERJANIA_PN" newDataType="int"/>
+
+        <modifyDataType columnName="OTRABOTANO_DNEJ" schemaName="documents" tableName="UDERJANIA_PN" newDataType="int"/>
+    </changeSet>
+</databaseChangeLog>

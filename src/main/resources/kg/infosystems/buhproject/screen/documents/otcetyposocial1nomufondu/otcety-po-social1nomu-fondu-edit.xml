@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://otcetyPoSocial1nomuFonduEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="otcetyPoSocial1nomuFonduDc"
+                  class="kg.infosystems.buhproject.entity.documents.OtcetyPoSocial1nomuFondu">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="kontragent" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="svedenia" fetchPlan="_base">
+                    <property name="sotrudnik" fetchPlan="_instance_name"/>
+                    <property name="kategoria" fetchPlan="_instance_name"/>
+                </property>
+                <property name="fond" fetchPlan="_base">
+                    <property name="kategoria" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="svedeniaDc" property="svedenia"/>
+            <collection id="fondDc" property="fond"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="otcetyPoSocial1nomuFonduDc">
+                <column width="350px">
+                    <entityPicker id="kontragentField" property="kontragent">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <checkBox id="okruglenieField" property="okruglenie"/>
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="vidFinansirovaniaField" property="vidFinansirovania">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+                <column width="350px">
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data"/>
+                    <dateField id="dataSdaciOtcetaField" property="dataSdaciOtceta"/>
+<!--                    <checkBox id="provedenField" property="proveden"/>-->
+                </column>
+            </form>
+            <tabSheet id="tabSheet" height="600px">
+                <tab id="tab1" caption="Сведения о занятости и заработной плате" spacing="true" margin="true" expand="svedeniaBox">
+                    <groupBox id="svedeniaBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/OtcetyPoSocial1nomuFondu.svedenia"
+                              expand="svedeniaTable">
+                        <table id="svedeniaTable" dataContainer="svedeniaDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="sotrudnik" editable="true"/>
+                                <column id="dataNacalaRaboty" editable="true"/>
+                                <column id="dataOkoncaniaRaboty" editable="true"/>
+                                <column id="dnej" editable="true"/>
+                                <column id="fakticeskiDnej" editable="true"/>
+                                <column id="fondOplatyTruda" editable="true"/>
+                                <column id="dopolnitel1nyjFondOplatyTruda" editable="true"/>
+                                <column id="nacislennyeStrahovyeVznosy" editable="true"/>
+                                <column id="nacsilenyeVznosyPoNPF" editable="true"/>
+                                <column id="kategoria" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="svedeniaTable.create"/>
+<!--                                <button action="svedeniaTable.edit"/>-->
+                                <button action="svedeniaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="Фонд оплаты труда и документы платежей" spacing="true" margin="true" expand="fondBox">
+                    <groupBox id="fondBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/OtcetyPoSocial1nomuFondu.fond"
+                              expand="fondTable">
+                        <table id="fondTable" dataContainer="fondDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="kategoria" editable="true"/>
+                                <column id="cislennost1" editable="true"/>
+                                <column id="fOTBolee" editable="true"/>
+                                <column id="fOTMenee" editable="true"/>
+                                <column id="dopFOT" editable="true"/>
+                                <column id="itogo" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="fondTable.create"/>
+<!--                                <button action="fondTable.edit"/>-->
+                                <button action="fondTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                    <form dataContainer="otcetyPoSocial1nomuFonduDc">
+                        <column width="350px">
+                            <textField id="obazatel1stvaPoStrahovymVznosamField" property="obazatel1stvaPoStrahovymVznosam"/>
+                            <textField id="pereplataPoStrahovymVznosamField" property="pereplataPoStrahovymVznosam"/>
+                        </column>
+                        <column width="350px">
+                            <textField id="obazatel1stvaPoPensionnomuFonduField" property="obazatel1stvaPoPensionnomuFondu"/>
+                            <textField id="pereplataPoPensionnomuFonduField" property="pereplataPoPensionnomuFondu"/>
+                        </column>
+                    </form>
+                </tab>
+                <tab id="tab3" caption="Дополнительно" spacing="true" margin="true">
+                    <form dataContainer="otcetyPoSocial1nomuFonduDc">
+                        <column width="350px">
+                            <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                            <entityPicker id="avtorField" property="avtor">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://doverennost1Edit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="doverennost1Dc"
+                  class="kg.infosystems.buhproject.entity.documents.Doverennost1">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="fizLico" fetchPlan="_instance_name"/>
+                <property name="kontragent" fetchPlan="_instance_name"/>
+                <property name="bankovskijScet" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="tovary" fetchPlan="_base">
+                    <property name="nomenklatura" fetchPlan="_instance_name"/>
+                    <property name="edinicaIzmerenia" fetchPlan="_instance_name"/>
+                </property>
+                <property name="os" fetchPlan="_base">
+                    <property name="osnovnoeSredstvo" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="tovaryDc" property="tovary"/>
+            <collection id="osDc" property="os"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="doverennost1Dc">
+                <column width="350px">
+                    <entityPicker id="fizLicoField" property="fizLico">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="kontragentField" property="kontragent">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+
+                    <textField id="seriaPasportaField" property="seriaPasporta"/>
+                    <textField id="nomerPasportaField" property="nomerPasporta"/>
+                    <dateField id="dataVydaciField" property="dataVydaci"/>
+                    <dateField id="srokDejstviaField" property="srokDejstvia"/>
+                    <textField id="kemVydanField" property="kemVydan"/>
+                </column>
+                <column width="350px">
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data"/>
+<!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <textField id="kolicestvoDnejDejstviaField" property="kolicestvoDnejDejstvia"/>
+                    <entityPicker id="bankovskijScetField" property="bankovskijScet">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+            </form>
+            <tabSheet id="tabSheet" height="600px">
+                <tab id="tab1" caption="Товары" spacing="true" margin="true" expand="tovaryBox">
+                    <groupBox id="tovaryBox" caption="msg://kg.infosystems.buhproject.entity.documents/Doverennost1.tovary" expand="tovaryTable">
+                        <table id="tovaryTable" dataContainer="tovaryDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="nomenklatura" editable="true"/>
+                                <column id="edinicaIzmerenia" editable="true"/>
+                                <column id="kolicestvo" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="tovaryTable.create"/>
+<!--                                <button action="tovaryTable.edit"/>-->
+                                <button action="tovaryTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="ОС" spacing="true" margin="true" expand="osBox">
+                    <groupBox id="osBox" caption="msg://kg.infosystems.buhproject.entity.documents/Doverennost1.os" expand="osTable">
+                        <table id="osTable" dataContainer="osDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="osnovnoeSredstvo" editable="true"/>
+                                <column id="kolicestvo" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="osTable.create"/>
+<!--                                <button action="osTable.edit"/>-->
+                                <button action="osTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab3" caption="Дополнительно" spacing="true" margin="true">
+                    <form dataContainer="doverennost1Dc">
+                        <column width="350px">
+                            <textField id="polucenoOtField" property="polucenoOt"/>
+                            <textField id="poDokumentuField" property="poDokumentu"/>
+                            <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                            <entityPicker id="avtorField" property="avtor">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

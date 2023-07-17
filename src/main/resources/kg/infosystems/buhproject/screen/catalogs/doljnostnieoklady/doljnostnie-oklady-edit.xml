@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://doljnostnieOkladyEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="doljnostnieOkladyDc"
+                  class="kg.infosystems.buhproject.entity.catalogs.DoljnostnieOklady">
+            <fetchPlan extends="_base">
+                <property name="detail1" fetchPlan="_base"/>
+                <property name="detail2" fetchPlan="_base"/>
+                <property name="organizasia" fetchPlan="_base"/>
+                <property name="vidDocumenta" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="detail1Dc" property="detail1"/>
+            <collection id="detail2Dc" property="detail2"/>
+        </instance>
+        <collection id="organizasiaDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.Organizacii"
+                    fetchPlan="_base">
+            <loader>
+                <query>
+                    <![CDATA[select m from Organizacii m]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="vidyDocumentaDc"
+                    class="kg.infosystems.buhproject.entity.compensations.VidyDocumenta"
+                    fetchPlan="_base">
+            <loader>
+                <query>
+                    <![CDATA[select m from VidyDocumenta m]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="doljnostnieOkladyDc">
+            <column width="350px">
+                <textField id="codeField" property="code" caption="msg://code"/>
+                <dateField id="dataDocumentaField" property="dataDocumenta"/>
+                <textField id="nameField" property="name" required="true" caption="msg://name"/>
+                <entityComboBox id="vidDocumenta" caption="Вид НПА" property="vidDocumenta" optionsContainer="vidyDocumentaDc"/>
+                <textField id="registerNumberField" property="registerNumber"/>
+                <dateField id="dateField" property="date" required="true"/>
+            </column>
+            <column>
+                <entityComboBox id="organizasia" caption="Организация" property="organizasia" optionsContainer="organizasiaDc" required="true"/>
+            </column>
+        </form>
+        <tabSheet id="tabSheet">
+            <tab id="detail1" margin="true" spacing="true"
+                 caption="msg://kg.infosystems.buhproject.entity.catalogs/DoljnostnieOklady.detail1">
+                <groupBox id="detail1Box">
+                    <table id="detail1Table" dataContainer="detail1Dc" width="100%" height="400px" editable="true">
+                        <actions>
+                            <action id="add" type="add"/>
+                            <action id="exclude" type="exclude"/>
+                        </actions>
+                        <columns>
+                            <column id="code" editable="true"/>
+                            <column id="doljnost" editable="true"/>
+                            <column id="bazoviyOklad" editable="true"/>
+                            <column id="bazoviyOklad.summa"/>
+                            <column id="coefficentKratnosti" editable="true"/>
+                            <column id="summa" editable="false"/>
+                        </columns>
+                        <buttonsPanel>
+                            <button id="detail1TableAddBtn" action="detail1Table.add"/>
+                            <button id="detail1TableExcludeBtn" action="detail1Table.exclude"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </tab>
+        </tabSheet>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

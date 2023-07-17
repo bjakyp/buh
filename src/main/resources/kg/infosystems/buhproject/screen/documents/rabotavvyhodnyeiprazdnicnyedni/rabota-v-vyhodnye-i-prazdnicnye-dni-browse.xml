@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://rabotaVVyhodnyeIPrazdnicnyeDniBrowse.caption"
+        focusComponent="rabotaVVyhodnyeIPrazdnicnyeDnisTable">
+    <data readOnly="true">
+        <collection id="rabotaVVyhodnyeIPrazdnicnyeDnisDc"
+                    class="kg.infosystems.buhproject.entity.documents.RabotaVVyhodnyeIPrazdnicnyeDni">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="rabotaVVyhodnyeIPrazdnicnyeDnisDl">
+                <query>
+                    <![CDATA[select e from RabotaVVyhodnyeIPrazdnicnyeDni e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="rabotaVVyhodnyeIPrazdnicnyeDnisTable" spacing="true">
+        <filter id="filter"
+                dataLoader="rabotaVVyhodnyeIPrazdnicnyeDnisDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="rabotaVVyhodnyeIPrazdnicnyeDnisTable"
+                    width="100%"
+                    dataContainer="rabotaVVyhodnyeIPrazdnicnyeDnisDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="reportAction" icon="PRINT" type="itemTracking"/>
+                <action id="refresh" type="refresh"/>
+                <action id="provesti" type="itemTracking" icon="DIALOG_OK"/>
+                <action id="otmenit1Provedenie" icon="BOOK" type="itemTracking"/>
+            </actions>
+            <columns>
+                <column id="data" dateFormat="MM/yyyy" resolution="DAY"/>
+                <column id="organizacia"/>
+                <column id="kommentarij"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="rabotaVVyhodnyeIPrazdnicnyeDnisTable.create"/>
+                <button id="editBtn" action="rabotaVVyhodnyeIPrazdnicnyeDnisTable.edit"/>
+                <button id="removeBtn" action="rabotaVVyhodnyeIPrazdnicnyeDnisTable.remove"/>
+                <button id="provestiBtn" action="rabotaVVyhodnyeIPrazdnicnyeDnisTable.provesti"/>
+                <button id="otmenit1ProvestiBtn" action="rabotaVVyhodnyeIPrazdnicnyeDnisTable.otmenit1Provedenie"/>
+                <comboBox id="reportTemplates" nullOptionVisible="false" nullName="Печать"/>
+                <button id="reportRunBtn" action="rabotaVVyhodnyeIPrazdnicnyeDnisTable.reportAction"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

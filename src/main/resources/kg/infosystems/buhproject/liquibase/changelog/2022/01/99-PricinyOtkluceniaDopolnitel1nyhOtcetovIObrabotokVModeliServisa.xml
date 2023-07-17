@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="buh-project-enums-data">
+        <insert tableName="PricinyOtkluceniaDopolnitel1nyhOtcetovIObrabotokVModeliServisa" schemaName="enumerations">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="БлокировкаАдминистраторомСервиса"/>
+            <column name="SYNONYM_" value="Блокировка администратором сервиса"/>
+            <column name="ORDER_" value="1"/>
+        </insert>
+        <insert tableName="PricinyOtkluceniaDopolnitel1nyhOtcetovIObrabotokVModeliServisa" schemaName="enumerations">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="БлокировкаВладельцем"/>
+            <column name="SYNONYM_" value="Блокировка владельцем"/>
+            <column name="ORDER_" value="2"/>
+        </insert>
+        <insert tableName="PricinyOtkluceniaDopolnitel1nyhOtcetovIObrabotokVModeliServisa" schemaName="enumerations">
+            <column name="ID" value="3"/>
+            <column name="NAME" value="ОбновлениеВерсииКонфигурации"/>
+            <column name="SYNONYM_" value="Обновление версии конфигурации"/>
+            <column name="ORDER_" value="3"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

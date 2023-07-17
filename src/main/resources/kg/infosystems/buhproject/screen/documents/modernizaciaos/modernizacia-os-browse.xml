@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://modernizaciaOSBrowse.caption"
+        focusComponent="modernizaciaOsesTable">
+    <data readOnly="true">
+        <collection id="modernizaciaOsesDc"
+                    class="kg.infosystems.buhproject.entity.documents.ModernizaciaOS">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="modernizaciaOsesDl">
+                <query>
+                    <![CDATA[select e from ModernizaciaOS e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="modernizaciaOsesTable" spacing="true">
+        <filter id="filter"
+                dataLoader="modernizaciaOsesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="modernizaciaOsesTable"
+                    width="100%"
+                    dataContainer="modernizaciaOsesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="data"/>
+                <column id="nomer"/>
+<!--                <column id="proveden"/>-->
+                <column id="organizacia"/>
+                <column id="vidFinansirovania"/>
+<!--                <column id="stoimost1Modernizacii"/>-->
+<!--                <column id="pervonacal1naaStoimost1DoModernizacii"/>-->
+<!--                <column id="pervonacal1naaStoimost1PosleModernizacii"/>-->
+<!--                <column id="nakoplennaaAmortizacia"/>-->
+<!--                <column id="stoimost1DlaRascetaAmortizaciiDoModernizacii"/>-->
+<!--                <column id="stoimost1DlaRascetaAmortizaciiPosleModernizacii"/>-->
+<!--                <column id="ostatocnaaStoimost1DoModernizacii"/>-->
+<!--                <column id="ostatocnaaStoimost1PosleModernizacii"/>-->
+                <column id="kommentarij"/>
+                <column id="avtor"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="modernizaciaOsesTable.create"/>
+                <button id="editBtn" action="modernizaciaOsesTable.edit"/>
+                <button id="removeBtn" action="modernizaciaOsesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

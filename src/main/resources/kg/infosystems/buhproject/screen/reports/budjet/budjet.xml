@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://budjetReports.caption">
+    <actions>
+        <action id="runReportAction" caption="msg://kg.infosystems.buhproject.screen.reports.zarplataikadry/RunReport" icon="font-icon:PRINT"/>
+    </actions>
+    <layout>
+        <vbox spacing="true">
+            <groupBox orientation="horizontal" spacing="true">
+                <comboBox id="reportField" caption="msg://kg.infosystems.buhproject.screen.reports.zarplataikadry/Reports" filterMode="CONTAINS"/>
+            </groupBox>
+            <groupBox orientation="horizontal" spacing="true">
+                <button id="runReportBtn" action="runReportAction" primary="true"/>
+            </groupBox>
+        </vbox>
+    </layout>
+</window>

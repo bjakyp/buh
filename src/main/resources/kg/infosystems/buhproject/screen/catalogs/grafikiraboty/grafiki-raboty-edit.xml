@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://grafikiRabotyEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="grafikiRabotyDc"
+                  class="kg.infosystems.buhproject.entity.catalogs.GrafikiRaboty">
+            <fetchPlan extends="_base">
+                <property name="roditel1" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+        <collection id="Periodicnost1KalendaraDC"
+                    class="kg.infosystems.buhproject.entity.registers.informations.Periodicnost1Kalendara" fetchPlan="_base">
+            <loader id="Periodicnost1KalendaraDl">
+                <query>
+                    <![CDATA[select m from informations_Periodicnost1Kalendara m order by m.data]]>
+                    <condition>
+                        <and>
+                            <jpql>
+                                <where>m.grafikRaboty = :container_grafikiRabotyDc</where>
+                            </jpql>
+                            <jpql>
+                                <where>m.god=:god</where>
+                            </jpql>
+                        </and>
+                    </condition>
+                </query>
+            </loader>
+        </collection>
+        <collection id="KalendariGrafikovRabotDc"
+                    class="kg.infosystems.buhproject.entity.registers.informations.KalendariGrafikovRabot"
+                    fetchPlan="_base">
+            <loader id="KalendariGrafikovRabotDl">
+                <query>
+                    <![CDATA[select m from informations_KalendariGrafikovRabot m order by m.data]]>
+                    <condition>
+                        <and>
+                            <jpql>
+                                <where>m.grafikRaboty = :container_grafikiRabotyDc</where>
+                            </jpql>
+                            <jpql>
+                                <where>m.god=:god</where>
+                            </jpql>
+                        </and>
+                    </condition>
+                </query>
+            </loader>
+        </collection>
+        <collection id="vidyDnejProizvodstvennogoKalendaraDc"
+                    class="kg.infosystems.buhproject.entity.enumerations.VidyDnejProizvodstvennogoKalendara"
+                    fetchPlan="_base">
+            <loader>
+                <query>
+                    <![CDATA[select m from VidyDnejProizvodstvennogoKalendara m]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="yearValueDc"
+                    class="kg.infosystems.buhproject.entity.registers.informations.Periodicnost1Kalendara"
+                    fetchPlan="_base">
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <tabSheet id="tabSheet">
+            <tab id="tab1"
+                 caption="msg://nastroiki"
+                 margin="true"
+                 spacing="true">
+                <hbox width="100%">
+                    <vbox spacing="true" width="50%">
+                        <form id="form" dataContainer="grafikiRabotyDc">
+                            <column width="350px">
+                                <textField id="naimenovanieField" property="naimenovanie" caption="msg://naimenovanie"/>
+                                <checkBox id="ucityvat1PrazdnikiField" property="ucityvat1Prazdniki" caption="msg://ucityvat1Prazdniki"/>
+                                <textField id="normaCasovZapolneniaField" property="normaCasovZapolnenia"
+                                           caption="msg://normaCasovZapolnenia"/>
+                                <textField id="periodVDnjahField" property="periodVDnjah" caption="msg://periodVDnjah"/>
+                            </column>
+                        </form>
+                    </vbox>
+                    <vbox spacing="true" width="50%">
+                        <form id="form1" dataContainer="grafikiRabotyDc">
+                            <comboBox id="zapolnennyeGody"
+                                      caption="msg://zapolnennyeGody"
+                                      dataContainer="yearValueDc"
+                                      property="god"
+                                      nullName="msg://dobavit1god"/>
+                        </form>
+                    </vbox>
+
+
+                </hbox>
+
+                <hbox width="100%">
+                    <vbox spacing="true" css="color: green; " width="50%">
+                        <label value="Периодичность" css="font-size: 20px;" height="10%"/>
+                        <table id="Periodicnost1KalendaraTable" width="200%" height="80%" dataContainer="Periodicnost1KalendaraDC"
+                               editable="true">
+                            <columns>
+                                <column id="data"/>
+                                <column id="casy" editable="true"/>
+                                <column id="vidDna" editable="true"/>
+                            </columns>
+                            <buttonsPanel id="buttonsPanel">
+                                <button caption="Заполнить" id="zapolnit1"/>
+                            </buttonsPanel>
+                        </table>
+                    </vbox>
+                    <vbox spacing="true" css="color: green;" width="50%">
+                        <label value="Данные производственного календаря" css="font-size: 20px;" height="10%"/>
+                         <table id="KalendariGrafikovRabotTable" width="200%" height="440px"
+                               dataContainer="KalendariGrafikovRabotDc" editable="true">
+                            <columns>
+                                <column id="data" width="100"/>
+                                <column id="znacenieDnej" editable="true" width="20" caption="msg://stavka"/>
+                                <column id="znacenieCasov" editable="true" width="200" caption="msg://casov"/>
+                                <column id="vidDna" editable="true" caption="msg://vidDna" width="200"/>
+                            </columns>
+                            <buttonsPanel id="buttonsPanel1">
+                                <button caption="Заполнить" id="zapolnit2"/>
+                            </buttonsPanel>
+                        </table>
+                    </vbox>
+                </hbox>
+            </tab>
+            <tab id="tab2"
+                 caption="msg://kalendar"
+                 margin="true"
+                 spacing="true">
+                <hbox width="100%">
+                    <hbox>
+                        <label id="labelYear" width="25%" css="color: red; font-size: 20px;"/>
+                        <label width="100px"/>
+                        <label id="label1" width="25%" value="msg://January" css="color: green; font-size: 20px;"/>
+                    </hbox>
+
+                    <label id="label2" align="TOP_CENTER" value="msg://February" css="color: green; font-size: 20px;"/>
+                    <label id="label3" align="TOP_CENTER" value="msg://March" css="color: green; font-size: 20px;"/>
+                    <label id="label4" align="TOP_CENTER" value="msg://April" css="color: green; font-size: 20px;"/>
+                </hbox>
+                <hbox>
+                    <gridLayout spacing="true" id="gridLayout1" width="25%">
+                        <columns count="7"/>
+                        <rows>
+                            <row/>
+                        </rows>
+                    </gridLayout>
+
+                    <label width="40px"/>
+                    <gridLayout spacing="true" id="gridLayout2" width="25%">
+                        <columns count="7"/>
+                        <rows>
+                            <row/>
+                        </rows>
+                    </gridLayout>
+
+                    <label width="40px"/>
+                    <gridLayout spacing="true" id="gridLayout3" width="25%">
+                        <columns count="7"/>
+                        <rows>
+                            <row/>
+                        </rows>
+                    </gridLayout>
+
+                    <label width="40px"/>
+                    <gridLayout spacing="true" id="gridLayout4" width="25%">
+                        <columns count="7"/>
+                        <rows>
+                            <row/>
+                        </rows>
+                    </gridLayout>
+                </hbox>
+                <hbox width="100%">
+                    <label id="label5" align="TOP_CENTER" value="msg://May" css="color: green; font-size: 20px;"/>
+                    <label id="label6" align="TOP_CENTER" value="msg://June" css="color: green; font-size: 20px;"/>
+                    <label id="label7" align="TOP_CENTER" value="msg://July" css="color: green; font-size: 20px;"/>
+                    <label id="label8" align="TOP_CENTER" value="msg://August" css="color: green; font-size: 20px;"/>
+                </hbox>
+                <hbox>
+                    <gridLayout spacing="true" id="gridLayout5" width="25%">
+                        <columns count="7"/>
+                        <rows>
+                            <row/>
+                        </rows>
+                    </gridLayout>
+
+                    <label width="40px"/>
+                    <gridLayout spacing="true" id="gridLayout6" width="25%">
+                        <columns count="7"/>
+                        <rows>
+                            <row/>
+                        </rows>
+                    </gridLayout>
+
+                    <label width="40px"/>
+                    <gridLayout spacing="true" id="gridLayout7" width="25%">
+                        <columns count="7"/>
+                        <rows>
+                            <row/>
+                        </rows>
+                    </gridLayout>
+
+                    <label width="40px"/>
+                    <gridLayout spacing="true" id="gridLayout8" width="25%">
+                        <columns count="7"/>
+                        <rows>
+                            <row/>
+                        </rows>
+                    </gridLayout>
+                </hbox>
+                <hbox width="100%">
+                    <label id="label9" align="TOP_CENTER" value="msg://September" css="color: green; font-size: 20px;"/>
+                    <label id="label10" align="TOP_CENTER" value="msg://October" css="color: green; font-size: 20px;"/>
+                    <label id="label11" align="TOP_CENTER" value="msg://November" css="color: green; font-size: 20px;"/>
+                    <label id="label12" align="TOP_CENTER" value="msg://December" css="color: green; font-size: 20px;"/>
+                </hbox>
+                <hbox>
+                    <gridLayout spacing="true" id="gridLayout9" width="25%">
+                        <columns count="7"/>
+                        <rows>
+                            <row/>
+                        </rows>
+                    </gridLayout>
+
+                    <label width="40px"/>
+                    <gridLayout spacing="true" id="gridLayout10" width="25%">
+                        <columns count="7"/>
+                        <rows>
+                            <row/>
+                        </rows>
+                    </gridLayout>
+
+                    <label width="40px"/>
+                    <gridLayout spacing="true" id="gridLayout11" width="25%">
+                        <columns count="7"/>
+                        <rows>
+                            <row/>
+                        </rows>
+                    </gridLayout>
+
+                    <label width="40px"/>
+                    <gridLayout spacing="true" id="gridLayout12" width="25%">
+                        <columns count="7"/>
+                        <rows>
+                            <row/>
+                        </rows>
+                    </gridLayout>
+                </hbox>
+            </tab>
+        </tabSheet>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

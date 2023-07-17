@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://stat1iDohodovIRashodovBrowse.caption"
+        focusComponent="stat1iDohodovIRashodovsTable">
+    <data readOnly="true">
+        <collection id="stat1iDohodovIRashodovsDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.Stat1iDohodovIRashodov">
+            <fetchPlan extends="_base">
+                <property name="roditel1" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="stat1iDohodovIRashodovsDl">
+                <query>
+                    <![CDATA[select e from Stat1iDohodovIRashodov e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="stat1iDohodovIRashodovsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="stat1iDohodovIRashodovsDl">
+            <properties include=".*"/>
+        </filter>
+        <treeTable id="stat1iDohodovIRashodovsTable"
+                   width="100%"
+                   dataContainer="stat1iDohodovIRashodovsDc"
+                   hierarchyProperty="roditel1">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="kod"/>
+                <column id="naimenovanie"/>
+                <column id="roditel1"/>
+                <column id="etoGruppa"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="stat1iDohodovIRashodovsTable.create"/>
+                <button id="editBtn" action="stat1iDohodovIRashodovsTable.edit"/>
+                <button id="removeBtn" action="stat1iDohodovIRashodovsTable.remove"/>
+            </buttonsPanel>
+        </treeTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1" author="buh-project-enums-data">
+        <insert tableName="RezimySovmestimostiRazresenijDopolnitel1nyhOtcetovIObrabotok" schemaName="enumerations">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="Версия_2_1_3"/>
+            <column name="SYNONYM_" value="Версия 2.1.3"/>
+            <column name="ORDER_" value="1"/>
+        </insert>
+        <insert tableName="RezimySovmestimostiRazresenijDopolnitel1nyhOtcetovIObrabotok" schemaName="enumerations">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="Версия_2_2_2"/>
+            <column name="SYNONYM_" value="Версия 2.2.2"/>
+            <column name="ORDER_" value="2"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

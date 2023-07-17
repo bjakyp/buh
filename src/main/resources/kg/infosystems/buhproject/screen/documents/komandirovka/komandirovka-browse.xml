@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://komandirovkaBrowse.caption"
+        focusComponent="komandirovkasTable">
+    <data readOnly="true">
+        <collection id="komandirovkasDc"
+                    class="kg.infosystems.buhproject.entity.documents.Komandirovka">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="strana" fetchPlan="_instance_name"/>
+                <property name="gorod" fetchPlan="_instance_name"/>
+                <property name="podrazdelenie" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="komandirovkasDl">
+                <query>
+                    <![CDATA[select e from Komandirovka e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="komandirovkasTable" spacing="true">
+        <filter id="filter"
+                dataLoader="komandirovkasDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="komandirovkasTable"
+                    width="100%"
+                    dataContainer="komandirovkasDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="reportRunAction" icon="PRINT" type="itemTracking"/>
+                <action id="refresh" type="refresh"/>
+                <action id="provesti" type="itemTracking" icon="DIALOG_OK"/>
+                <action id="otmenit1Provedenie" icon="BOOK" type="itemTracking"/>
+            </actions>
+            <columns>
+                <column id="data"/>
+                <column id="nomer"/>
+                <!--                <column id="proveden"/>-->
+                <column id="organizacia"/>
+                <column id="strana"/>
+                <column id="gorod"/>
+                <!--                <column id="kolicestvoDnej"/>-->
+                <!--                <column id="dataNacala"/>-->
+                <!--                <column id="dataOkoncania"/>-->
+                <!--                <column id="soderzanieOVyplate"/>-->
+                <column id="podrazdelenie"/>
+                <!--                <column id="oplataPoSrednemuZarabotku"/>-->
+                <!--                <column id="summaDokumenta"/>-->
+                <column id="kommentarij"/>
+                <column id="avtor"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="komandirovkasTable.create"/>
+                <button id="editBtn" action="komandirovkasTable.edit"/>
+                <button id="removeBtn" action="komandirovkasTable.remove"/>
+                <button id="provestiBtn" action="komandirovkasTable.provesti"/>
+                <button id="otmenit1ProvestiBtn" action="komandirovkasTable.otmenit1Provedenie"/>
+                <comboBox id="reportTemplates" nullOptionVisible="false" nullName="Печать"/>
+                <button id="reportRunBtn" action="komandirovkasTable.reportRunAction"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

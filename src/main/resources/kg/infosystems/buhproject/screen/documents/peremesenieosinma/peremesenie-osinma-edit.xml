@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://peremesenieOSINMAEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="peremesenieOSINMADc"
+                  class="kg.infosystems.buhproject.entity.documents.PeremesenieOSINMA">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="sobytieOS" fetchPlan="_instance_name"/>
+                <property name="mOLOtpravitel1" fetchPlan="_instance_name"/>
+                <property name="podrazdelenieOtpravitel1" fetchPlan="_instance_name"/>
+                <property name="mOLPolucatel1" fetchPlan="_instance_name"/>
+                <property name="podrazdeleniePolucatel1" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="os" fetchPlan="_base">
+                    <property name="osnovnoeSredstvo" fetchPlan="_instance_name"/>
+                    <property name="scetUceta" fetchPlan="_instance_name"/>
+                </property>
+                <property name="nma" fetchPlan="_base">
+                    <property name="nematerial1nyjAktiv" fetchPlan="_instance_name"/>
+                    <property name="scetUceta" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="osDc" property="os"/>
+            <collection id="nmaDc" property="nma"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="peremesenieOSINMADc">
+                <column width="350px">
+                    <entityPicker id="sobytieOSField" property="sobytieOS">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="mOLOtpravitel1Field" property="mOLOtpravitel1">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="podrazdelenieOtpravitel1Field" property="podrazdelenieOtpravitel1">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="mOLPolucatel1Field" property="mOLPolucatel1">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="podrazdeleniePolucatel1Field" property="podrazdeleniePolucatel1">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+                <column width="350px">
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data"/>
+                    <checkBox id="provedenField" property="proveden"/>
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="vidFinansirovaniaField" property="vidFinansirovania">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+            </form>
+            <tabSheet id="tabSheet" height="600px">
+                <tab id="tab1" caption="Основные средства" spacing="true" margin="true" expand="osBox">
+                    <groupBox id="osBox" caption="msg://kg.infosystems.buhproject.entity.documents/PeremesenieOSINMA.os" expand="osTable">
+                        <table id="osTable" dataContainer="osDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="osnovnoeSredstvo" editable="true"/>
+                                <column id="inventarnyjNomer" editable="true"/>
+                                <column id="pervonacal1naaStoimost1" editable="true"/>
+                                <column id="scetUceta" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="osTable.create"/>
+<!--                                <button action="osTable.edit"/>-->
+                                <button action="osTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="НМА" spacing="true" margin="true" expand="nmaBox">
+                    <groupBox id="nmaBox" caption="msg://kg.infosystems.buhproject.entity.documents/PeremesenieOSINMA.nma" expand="nmaTable">
+                        <table id="nmaTable" dataContainer="nmaDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="nematerial1nyjAktiv" editable="true"/>
+                                <column id="inventarnyjNomer" editable="true"/>
+                                <column id="pervonacal1naaStoimost1" editable="true"/>
+                                <column id="scetUceta" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="nmaTable.create"/>
+<!--                                <button action="nmaTable.edit"/>-->
+                                <button action="nmaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab3" caption="Дополнительно" spacing="true" margin="true">
+                    <form dataContainer="peremesenieOSINMADc">
+                        <column width="350px">
+                            <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                            <entityPicker id="avtorField" property="avtor">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://grafikiAmortizaciiBrowse.caption"
+        focusComponent="grafikiAmortizaciisTable">
+    <data readOnly="true">
+        <collection id="grafikiAmortizaciisDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.GrafikiAmortizacii">
+            <fetchPlan extends="_base"/>
+            <loader id="grafikiAmortizaciisDl">
+                <query>
+                    <![CDATA[select e from GrafikiAmortizacii e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="grafikiAmortizaciisTable" spacing="true">
+        <filter id="filter"
+                dataLoader="grafikiAmortizaciisDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="grafikiAmortizaciisTable"
+                    width="100%"
+                    dataContainer="grafikiAmortizaciisDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="kod"/>
+                <column id="naimenovanie"/>
+                <column id="procieSvedenia"/>
+                <column id="anvar1"/>
+                <column id="fevral1"/>
+                <column id="mart"/>
+                <column id="aprel1"/>
+                <column id="maj"/>
+                <column id="iun1"/>
+                <column id="iul1"/>
+                <column id="avgust"/>
+                <column id="sentabr1"/>
+                <column id="oktabr1"/>
+                <column id="noabr1"/>
+                <column id="dekabr1"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="grafikiAmortizaciisTable.create"/>
+                <button id="editBtn" action="grafikiAmortizaciisTable.edit"/>
+                <button id="removeBtn" action="grafikiAmortizaciisTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

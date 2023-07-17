@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="buh-project">
+        <createTable tableName="REGISTRASIONNYI_NOMER_SF">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_REGISTRASIONNYI_NOMER_SF"/>
+            </column>
+            <column name="KOD_RAYONA_SF_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SOSTOANIE" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VID_TARIFA_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="REGISTRASIONNYI_NOMER" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DATA_REGISTRASII" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="KOMMENTARIJ" type="VARCHAR(255)"/>
+            <column name="VERSIA_DANNYH" type="INT"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="buh-project">
+        <addColumn schemaName="enumerations" tableName="VidyDnejProizvodstvennogoKalendara">
+            <column name="SHORT_NAME" type="VARCHAR(5)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="3" author="buh-project">
+        <addColumn schemaName="parts_documents" tableName="RabotaSverhurocnoSotrudniki">
+            <column name="COEFFICIENT" type="DECIMAL(19, 2)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="4" author="buh-project">
+        <addColumn schemaName="parts_documents" tableName="RabotaVVyhodnyeIPrazdnicnyeDniSotrudniki">
+            <column name="COEFFICIENT" type="DECIMAL(15, 2)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="5" author="buh-project">
+        <createIndex indexName="IDX_REGISTRASIONNYI_NOMER_SF_KOD_RAYONA_SF" tableName="REGISTRASIONNYI_NOMER_SF">
+            <column name="KOD_RAYONA_SF_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="KOD_RAYONA_SF_ID" baseTableName="REGISTRASIONNYI_NOMER_SF"
+                                 constraintName="FK_REGISTRASIONNYI_NOMER_SF_ON_KOD_RAYONA_SF"
+                                 referencedColumnNames="ID" referencedTableName="REGIONALNYE_ORGANY_SF"
+                                 referencedTableSchemaName="documents"/>
+    </changeSet>
+    <changeSet id="6" author="buh-project">
+        <createIndex indexName="IDX_REGISTRASIONNYI_NOMER_SF_VID_TARIFA" tableName="REGISTRASIONNYI_NOMER_SF">
+            <column name="VID_TARIFA_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="VID_TARIFA_ID" baseTableName="REGISTRASIONNYI_NOMER_SF"
+                                 constraintName="FK_REGISTRASIONNYI_NOMER_SF_ON_VID_TARIFA" referencedColumnNames="ID"
+                                 referencedTableName="TARIFY_STRAHOVYH_VZNOSOV" referencedTableSchemaName="comps"/>
+    </changeSet>
+    <changeSet id="7" author="buh-project">
+        <dropNotNullConstraint columnDataType="datetime" columnName="DATA_OKONCANIA" schemaName="parts_documents"
+                               tableName="RabotaVVyhodnyeIPrazdnicnyeDniSotrudniki"/>
+    </changeSet>
+    <changeSet id="8" author="buh-project">
+        <dropNotNullConstraint columnDataType="uuid" columnName="GRAFIK_RABOTY_ID" schemaName="parts_documents"
+                               tableName="RabotaVVyhodnyeIPrazdnicnyeDniSotrudniki"/>
+    </changeSet>
+    <changeSet id="9" author="buh-project">
+        <dropNotNullConstraint columnDataType="uuid" columnName="PODRAZDELENIE_ID" schemaName="parts_documents"
+                               tableName="RabotaVVyhodnyeIPrazdnicnyeDniSotrudniki"/>
+    </changeSet>
+    <changeSet id="10" author="buh-project">
+        <dropNotNullConstraint columnDataType="uuid" columnName="SPOSOB_OTRAZENIA_ID" schemaName="parts_documents"
+                               tableName="RabotaVVyhodnyeIPrazdnicnyeDniSotrudniki"/>
+    </changeSet>
+    <changeSet id="11" author="buh-project">
+        <dropNotNullConstraint columnDataType="bigint" columnName="VID_RASCETA_RAZMERA_ID" schemaName="parts_documents"
+                               tableName="RabotaVVyhodnyeIPrazdnicnyeDniSotrudniki"/>
+</changeSet>
+</databaseChangeLog>

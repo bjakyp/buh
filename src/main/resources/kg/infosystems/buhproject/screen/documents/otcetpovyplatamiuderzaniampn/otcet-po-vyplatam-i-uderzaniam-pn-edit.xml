@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://otcetPoVyplatamIUderzaniamPNEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="otcetPoVyplatamIUderzaniamPNDc"
+                  class="kg.infosystems.buhproject.entity.documents.OtcetPoVyplatamIUderzaniamPN">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="vidOtceta" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="otcet" fetchPlan="_base">
+                    <property name="sotrudnik" fetchPlan="_instance_name"/>
+                </property>
+                <property name="otcetGodovoj" fetchPlan="_base">
+                    <property name="sotrudnik" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="otcetDc" property="otcet"/>
+            <collection id="otcetGodovojDc" property="otcetGodovoj"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="otcetPoVyplatamIUderzaniamPNDc">
+                <column width="350px">
+                    <dateField id="dataNacalaField" property="dataNacala"/>
+                    <dateField id="dataOkoncaniaField" property="dataOkoncania"/>
+                    <entityPicker id="vidOtcetaField" property="vidOtceta">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <checkBox id="godovojField" property="godovoj"/>
+                </column>
+                <column width="350px">
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data"/>
+<!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="vidFinansirovaniaField" property="vidFinansirovania">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+            </form>
+            <tabSheet id="tabSheet1" height="600px">
+                <tab id="tab1" caption="Отчет" spacing="true" margin="true" expand="otcetBox">
+                    <groupBox id="otcetBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/OtcetPoVyplatamIUderzaniamPN.otcet" expand="otcetTable">
+                        <table id="otcetTable" dataContainer="otcetDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="sotrudnik" editable="true"/>
+                                <column id="kodStrany" editable="true"/>
+                                <column id="nomerNalogovojRegistracii" editable="true"/>
+                                <column id="kodDohoda" editable="true"/>
+                                <column id="oDPN" editable="true"/>
+                                <column id="summaPN" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="otcetTable.create"/>
+<!--                                <button action="otcetTable.edit"/>-->
+                                <button action="otcetTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="Отчет" spacing="true" margin="true" expand="otcetGodovojBox">
+                    <groupBox id="otcetGodovojBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/OtcetPoVyplatamIUderzaniamPN.otcetGodovoj" expand="otcetGodovojTable">
+                        <table id="otcetGodovojTable" dataContainer="otcetGodovojDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="sotrudnik" editable="true"/>
+                                <column id="iNN" editable="true"/>
+                                <column id="kodDohoda" editable="true"/>
+                                <column id="oDPN" editable="true"/>
+                                <column id="summaMaterial1nojVygody" editable="true"/>
+                                <column id="summaPN" editable="true"/>
+                                <column id="summaPNSMaterial1nojVygody" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="otcetGodovojTable.create"/>
+<!--                                <button action="otcetGodovojTable.edit"/>-->
+                                <button action="otcetGodovojTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab3" caption="Дополнительно" spacing="true" margin="true">
+                    <form dataContainer="otcetPoVyplatamIUderzaniamPNDc">
+                        <column width="350px">
+                            <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                            <entityPicker id="avtorField" property="avtor">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

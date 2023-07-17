@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://documentStavkiEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="documentStavkiDc"
+                  class="kg.infosystems.buhproject.entity.documents.DocumentStavki">
+            <fetchPlan extends="_base">
+                <property name="stavkiStrahovyhVznosov_" fetchPlan="_base">
+                    <property name="kategoriaRabotnikov_" fetchPlan="_base"/>
+                </property>
+                <property name="tarifyStrahovyhVznosov_" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="stavkiStrahovyhVznosov_Dc" property="stavkiStrahovyhVznosov_"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="documentStavkiDc">
+            <column width="350px">
+                <textField id="nomerField" property="nomer"/>
+                <dateField id="dataDocumentaField" property="dataDocumenta"/>
+                <dateField id="dataVstuplenieDeistviaField" property="dataVstuplenieDeistvia"/>
+                <entityPicker id="tarifyStrahovyhVznosov_Field" property="tarifyStrahovyhVznosov_"
+                              caption="msg://tarifyStrahovyhVznosov_Field.caption">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+            </column>
+        </form>
+        <groupBox id="stavkiStrahovyhVznosov_Box"
+                  caption="msg://kg.infosystems.buhproject.entity.documents/DocumentStavki.stavkiStrahovyhVznosov_">
+            <table id="stavkiStrahovyhVznosov_Table" dataContainer="stavkiStrahovyhVznosov_Dc" width="100%"
+                   height="450px" editable="true">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="kategoriaRabotnikov_" editable="true" caption="msg://kategoriaRabotnikov_.caption"/>
+                    <column id="pfRabotodatel" editable="true"/>
+                    <column id="pfRabotnik" editable="true"/>
+                    <column id="fomsRabotadatel" editable="true"/>
+                    <column id="fomsRabotnik" editable="true"/>
+                    <column id="fotRabotodatel" editable="true"/>
+                    <column id="fotRabotnik" editable="true"/>
+                    <column id="gnpfRabotnik" editable="true"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="stavkiStrahovyhVznosov_Table.create"/>
+                    <button action="stavkiStrahovyhVznosov_Table.edit"/>
+                    <button action="stavkiStrahovyhVznosov_Table.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

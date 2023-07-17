@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://stranyMiraEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="stranyMiraDc"
+                  class="kg.infosystems.buhproject.entity.catalogs.StranyMira">
+            <fetchPlan extends="_base"/>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="stranyMiraDc">
+            <column width="350px">
+                <textField id="kodField" property="kod"/>
+                <textField id="naimenovanieField" property="naimenovanie"/>
+                <textField id="naimenovaniePolnoeField" property="naimenovaniePolnoe"/>
+                <textField id="kodAl1fa2Field" property="kodAl1fa2"/>
+                <textField id="kodAl1fa3Field" property="kodAl1fa3"/>
+                <checkBox id="ucastnikEAESField" property="ucastnikEAES"/>
+                <textField id="mezdunarodnoeNaimenovanieField" property="mezdunarodnoeNaimenovanie"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

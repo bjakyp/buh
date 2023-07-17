@@ -1,0 +1,1302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="201" author="buh-project">
+        <createTable schemaName="enumerations" tableName="CvetaZametok">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_CVETAZAMETOK"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="202" author="buh-project">
+        <createTable schemaName="enumerations" tableName="CvetnostiIzobrazenia">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_CVETNOSTIIZOBRAZENIA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="203" author="buh-project">
+        <createTable schemaName="enumerations" tableName="DejstviaPriObmene">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_DEJSTVIAPRIOBMENE"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="204" author="buh-project">
+        <createTable schemaName="enumerations" tableName="DejstviaSFajlamiPoDvojnomuSelcku">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_DEJSTVIASFAJLAMIPODVOJNOMUSELCKU"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="205" author="buh-project">
+        <createTable schemaName="enumerations" tableName="DolznostiSotrudnikovKaznacejstva">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_DOLZNOSTISOTRUDNIKOVKAZNACEJSTVA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="206" author="buh-project">
+        <createTable schemaName="enumerations" tableName="Dopolnitel1nyeZnaceniaDostupa">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_DOPOLNITEL1NYEZNACENIADOSTUPA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="207" author="buh-project">
+        <createTable schemaName="enumerations" tableName="DostupnyePeriodyOtceta">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_DOSTUPNYEPERIODYOTCETA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="208" author="buh-project">
+        <createTable schemaName="enumerations" tableName="EdinicyOtcetov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_EDINICYOTCETOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="209" author="buh-project">
+        <createTable schemaName="enumerations" tableName="Finansirovania">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_FINANSIROVANIA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="210" author="buh-project">
+        <createTable schemaName="enumerations" tableName="FormaObucenia">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_FORMAOBUCENIA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="211" author="buh-project">
+        <createTable schemaName="enumerations" tableName="FormatyHraneniaMnogostranicnyhFajlov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_FORMATYHRANENIAMNOGOSTRANICNYHFAJLOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="212" author="buh-project">
+        <createTable schemaName="enumerations" tableName="FormatyHraneniaOdnostranicnyhFajlov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_FORMATYHRANENIAODNOSTRANICNYHFAJLOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="213" author="buh-project">
+        <createTable schemaName="enumerations" tableName="FormatySkanirovannogoIzobrazenia">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_FORMATYSKANIROVANNOGOIZOBRAZENIA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="214" author="buh-project">
+        <createTable schemaName="enumerations" tableName="FormatySohraneniaOtcetov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_FORMATYSOHRANENIAOTCETOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="215" author="buh-project">
+        <createTable schemaName="enumerations" tableName="Formuly">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_FORMULY"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="216" author="buh-project">
+        <createTable schemaName="enumerations" tableName="Godnost1KVoinskojSluzbe">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_GODNOST1KVOINSKOJSLUZBE"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="217" author="buh-project">
+        <createTable schemaName="enumerations" tableName="IstocnikiPravilDlaObmenaDannymi">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_ISTOCNIKIPRAVILDLAOBMENADANNYMI"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="218" author="buh-project">
+        <createTable schemaName="enumerations" tableName="KategoriiRascetov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_KATEGORIIRASCETOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="219" author="buh-project">
+        <createTable schemaName="enumerations" tableName="KlassifikatorVoinskihZvanij">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_KLASSIFIKATORVOINSKIHZVANIJ"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="220" author="buh-project">
+        <createTable schemaName="enumerations" tableName="KodyPravovojFormy">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_KODYPRAVOVOJFORMY"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="221" author="buh-project">
+        <createTable schemaName="enumerations" tableName="KolicestvoSotrudnikovDlaOtcetaSF">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_KOLICESTVOSOTRUDNIKOVDLAOTCETASF"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="222" author="buh-project">
+        <createTable schemaName="enumerations" tableName="KolonkiDlaUvazki">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_KOLONKIDLAUVAZKI"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="223" author="buh-project">
+        <createTable schemaName="enumerations" tableName="NepolnyeMesacy">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_NEPOLNYEMESACY"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="224" author="buh-project">
+        <createTable schemaName="enumerations" tableName="Ob2ektyDlaUvazki">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_OB2EKTYDLAUVAZKI"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="225" author="buh-project">
+        <createTable schemaName="enumerations" tableName="OperaciiAdministrirovaniaProfilejBezopasnosti">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_OPERACIIADMINISTRIROVANIAPROFILEJBEZOPASNOSTI"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="226" author="buh-project">
+        <createTable schemaName="enumerations" tableName="OtnosenieKVoinskojObazannosti">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_OTNOSENIEKVOINSKOJOBAZANNOSTI"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="227" author="buh-project">
+        <createTable schemaName="enumerations" tableName="OtnosenieKVoinskomuUcetu">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_OTNOSENIEKVOINSKOMUUCETU"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="228" author="buh-project">
+        <createTable schemaName="enumerations" tableName="ParametryIzmeneniaOSINMA">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PARAMETRYIZMENENIAOSINMA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="229" author="buh-project">
+        <createTable schemaName="enumerations" tableName="PeriodOcistkiFajlov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PERIODOCISTKIFAJLOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="230" author="buh-project">
+        <createTable schemaName="enumerations" tableName="Periodicnost1PeriodovDejstvia">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PERIODICNOST1PERIODOVDEJSTVIA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="231" author="buh-project">
+        <createTable schemaName="enumerations" tableName="PeriodicnostiRaspisanijRassylokOtcetov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_PERIODICNOSTIRASPISANIJRASSYLOKOTCETOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="232" author="buh-project">
+        <createTable schemaName="enumerations" tableName="PlusMinus">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PLUSMINUS"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="233" author="buh-project">
+        <createTable schemaName="enumerations" tableName="PolFiziceskogoLica">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_POLFIZICESKOGOLICA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="234" author="buh-project">
+        <createTable schemaName="enumerations" tableName="PoradkiOkruglenia">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PORADKIOKRUGLENIA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="235" author="buh-project">
+        <createTable schemaName="enumerations" tableName="PravaPol1zovatelaPrilozenia">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PRAVAPOL1ZOVATELAPRILOZENIA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="236" author="buh-project">
+        <createTable schemaName="enumerations"
+                     tableName="PricinyOtkluceniaDopolnitel1nyhOtcetovIObrabotokVModeliServisa">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_PRICINYOTKLUCENIADOPOLNITEL1NYHOTCETOVIOBRABOTOKVMODELISERVI"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="237" author="buh-project">
+        <createTable schemaName="enumerations" tableName="PricinyOtkluceniaRassirenijVModeliServisa">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_PRICINYOTKLUCENIARASSIRENIJVMODELISERVISA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="238" author="buh-project">
+        <createTable schemaName="enumerations" tableName="PrilozeniaDlaUvazki">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PRILOZENIADLAUVAZKI"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="239" author="buh-project">
+        <createTable schemaName="enumerations" tableName="PrioritetyOb2ektovObmena">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PRIORITETYOB2EKTOVOBMENA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="240" author="buh-project">
+        <createTable schemaName="enumerations" tableName="RassirennyeKodyDlaUvazki">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_RASSIRENNYEKODYDLAUVAZKI"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="241" author="buh-project">
+        <createTable schemaName="enumerations" tableName="RazmeryBumagi">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_RAZMERYBUMAGI"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="242" author="buh-project">
+        <createTable schemaName="enumerations" tableName="RazreseniaSkanirovannogoIzobrazenia">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_RAZRESENIASKANIROVANNOGOIZOBRAZENIA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="243" author="buh-project">
+        <createTable schemaName="enumerations" tableName="RezimyIspol1zovaniaInformacionnojBazy">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_REZIMYISPOL1ZOVANIAINFORMACIONNOJBAZY"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="244" author="buh-project">
+        <createTable schemaName="enumerations" tableName="RezimySovmestimostiRazresenijDopolnitel1nyhOtcetovIObrabotok">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_REZIMYSOVMESTIMOSTIRAZRESENIJDOPOLNITEL1NYHOTCETOVIOBRABOTOK"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="245" author="buh-project">
+        <createTable schemaName="enumerations" tableName="RezimyVygruzkiOb2ektovObmena">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_REZIMYVYGRUZKIOB2EKTOVOBMENA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="246" author="buh-project">
+        <createTable schemaName="enumerations" tableName="RezimyVypolneniaObrabotcikov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_REZIMYVYPOLNENIAOBRABOTCIKOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="247" author="buh-project">
+        <createTable schemaName="enumerations" tableName="RezimyVypolneniaOtlozennyhObrabotcikov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_REZIMYVYPOLNENIAOTLOZENNYHOBRABOTCIKOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="248" author="buh-project">
+        <createTable schemaName="enumerations"
+                     tableName="Rezul1tatyObrabotkiZaprosovNaIspol1zovanieVnesnihResursovVModeliServisa">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_REZUL1TATYOBRABOTKIZAPROSOVNAISPOL1ZOVANIEVNESNIHRESURSOVVMO"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="249" author="buh-project">
+        <createTable schemaName="enumerations" tableName="Rezul1tatyVypolneniaObmena">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_REZUL1TATYVYPOLNENIAOBMENA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="250" author="buh-project">
+        <createTable schemaName="enumerations" tableName="RoliPol1zovatelejAbonentov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_ROLIPOL1ZOVATELEJABONENTOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="251" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SostoaniaIntegraciiOb2ektov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SOSTOANIAINTEGRACIIOB2EKTOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="252" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SostoaniaMigraciiPrilozenia">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SOSTOANIAMIGRACIIPRILOZENIA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="253" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SostoaniaPodkluceniaServisov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SOSTOANIAPODKLUCENIASERVISOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="254" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SostoaniaPrilozenij">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SOSTOANIAPRILOZENIJ"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="255" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SostoaniaRassirenij">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SOSTOANIARASSIRENIJ"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="256" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SostoaniaZaavleniaNaVypuskSertifikata">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_SOSTOANIAZAAVLENIANAVYPUSKSERTIFIKATA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="257" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SostoaniaZadanij">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SOSTOANIAZADANIJ"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="258" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SostoaniaZaprosovNaIspol1zovanieVnesnihResursov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_SOSTOANIAZAPROSOVNAISPOL1ZOVANIEVNESNIHRESURSOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="259" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SposobyAutentifikacii">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SPOSOBYAUTENTIFIKACII"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="260" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SposobyNacisleniaAmortizaciiOSINMA">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SPOSOBYNACISLENIAAMORTIZACIIOSINMA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="261" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SposobyOcenki">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SPOSOBYOCENKI"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="262" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SposobyOtkrytiaFajlaNaProsmotr">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SPOSOBYOTKRYTIAFAJLANAPROSMOTR"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="263" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SposobyPodtverzdeniaKriptooperacij">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SPOSOBYPODTVERZDENIAKRIPTOOPERACIJ"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="264" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SposobyPostupleniaOS">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SPOSOBYPOSTUPLENIAOS"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="265" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SposobyPovorotaIzobrazenia">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SPOSOBYPOVOROTAIZOBRAZENIA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="266" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SposobyRascetaNacislenij">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SPOSOBYRASCETANACISLENIJ"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="267" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SposobyRascetaUderzanij">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SPOSOBYRASCETAUDERZANIJ"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="268" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SposobyRaspredeleniaDopRashodov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SPOSOBYRASPREDELENIADOPRASHODOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="269" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SposobyRedaktirovaniaElektronnyhPisem">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_SPOSOBYREDAKTIROVANIAELEKTRONNYHPISEM"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="270" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SposobySravneniaVersijFajlov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SPOSOBYSRAVNENIAVERSIJFAJLOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="271" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SposobyUstanovkiKursaValuty">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SPOSOBYUSTANOVKIKURSAVALUTY"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="272" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SposobyUstanovkiVremeniNapominania">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SPOSOBYUSTANOVKIVREMENINAPOMINANIA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="273" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SposobyVypolneniaProverki">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SPOSOBYVYPOLNENIAPROVERKI"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="274" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SposobyVyzovaDopolnitel1nyhObrabotok">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_SPOSOBYVYZOVADOPOLNITEL1NYHOBRABOTOK"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="275" author="buh-project">
+        <createTable schemaName="enumerations" tableName="SrokiHraneniaVersij">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SROKIHRANENIAVERSIJ"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="276" author="buh-project">
+        <createTable schemaName="enumerations" tableName="StatusyIzvleceniaTekstaFajlov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_STATUSYIZVLECENIATEKSTAFAJLOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="277" author="buh-project">
+        <createTable schemaName="enumerations" tableName="StatusyOblastejDannyh">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_STATUSYOBLASTEJDANNYH"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="278" author="buh-project">
+        <createTable schemaName="enumerations" tableName="StatusyObrabotcikovObnovlenia">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_STATUSYOBRABOTCIKOVOBNOVLENIA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="279" author="buh-project">
+        <createTable schemaName="enumerations" tableName="TipHranilisaSertifikatov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_TIPHRANILISASERTIFIKATOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="280" author="buh-project">
+        <createTable schemaName="enumerations" tableName="TipyDannyhKesaProgrammnyhInterfejsov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_TIPYDANNYHKESAPROGRAMMNYHINTERFEJSOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="281" author="buh-project">
+        <createTable schemaName="enumerations" tableName="TipyFajlovDlaVstroennogoRedaktora">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_TIPYFAJLOVDLAVSTROENNOGOREDAKTORA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="282" author="buh-project">
+        <createTable schemaName="enumerations" tableName="TipyHraneniaFajlov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_TIPYHRANENIAFAJLOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="283" author="buh-project">
+        <createTable schemaName="enumerations" tableName="TipyKontaktnojInformacii">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_TIPYKONTAKTNOJINFORMACII"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="284" author="buh-project">
+        <createTable schemaName="enumerations" tableName="TipyOtcetov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_TIPYOTCETOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="285" author="buh-project">
+        <createTable schemaName="enumerations" tableName="TipyPodpisokServisa">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_TIPYPODPISOKSERVISA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="286" author="buh-project">
+        <createTable schemaName="enumerations" tableName="TipyPolejRegistra">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_TIPYPOLEJREGISTRA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="287" author="buh-project">
+        <createTable schemaName="enumerations" tableName="TipyProblemObmenaDannymi">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_TIPYPROBLEMOBMENADANNYMI"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="288" author="buh-project">
+        <createTable schemaName="enumerations" tableName="TipyRegistrov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_TIPYREGISTROV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="289" author="buh-project">
+        <createTable schemaName="enumerations" tableName="TipyTekstovElektronnyhPisem">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_TIPYTEKSTOVELEKTRONNYHPISEM"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="290" author="buh-project">
+        <createTable schemaName="enumerations" tableName="TipyUslug">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_TIPYUSLUG"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="291" author="buh-project">
+        <createTable schemaName="enumerations" tableName="TipyUvedomlenijRassirenij">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_TIPYUVEDOMLENIJRASSIRENIJ"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="292" author="buh-project">
+        <createTable schemaName="enumerations" tableName="TipyVersijOb2ekta">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_TIPYVERSIJOB2EKTA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="293" author="buh-project">
+        <createTable schemaName="enumerations" tableName="UridiceskoeFiziceskoeLico">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_URIDICESKOEFIZICESKOELICO"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="294" author="buh-project">
+        <createTable schemaName="enumerations" tableName="UrovniProizvoditel1nosti">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_UROVNIPROIZVODITEL1NOSTI"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="295" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VariantyIspol1zovaniaVnesnihKomponent">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_VARIANTYISPOL1ZOVANIAVNESNIHKOMPONENT"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="296" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VariantyOcistkiFajlov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VARIANTYOCISTKIFAJLOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="297" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VariantyPublikaciiDopolnitel1nyhOtcetovIObrabotok">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_VARIANTYPUBLIKACIIDOPOLNITEL1NYHOTCETOVIOBRABOTOK"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="298" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VariantySzatiaTIFF">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VARIANTYSZATIATIFF"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="299" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VariantyVersionirovaniaOb2ektov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VARIANTYVERSIONIROVANIAOB2EKTOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="300" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VariantyVyvodaMesacaVDateDokumenta">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VARIANTYVYVODAMESACAVDATEDOKUMENTA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="301" author="buh-project">
+        <createTable schemaName="enumerations" tableName="Vaznost1ProblemyUceta">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VAZNOST1PROBLEMYUCETA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="302" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyBudzeta">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYBUDZETA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="303" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyDejstviaNacislenijUderzanij">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYDEJSTVIANACISLENIJUDERZANIJ"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="304" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyDnejProizvodstvennogoKalendara">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYDNEJPROIZVODSTVENNOGOKALENDARA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="305" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyDopolnitel1nyhOtcetovIObrabotok">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_VIDYDOPOLNITEL1NYHOTCETOVIOBRABOTOK"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="306" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyDvizenijPoProfsouzam">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYDVIZENIJPOPROFSOUZAM"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="307" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyKadrovyhSobytij">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYKADROVYHSOBYTIJ"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="308" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyKontragentovSPARKRiski">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYKONTRAGENTOVSPARKRISKI"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="309" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyNaznaceniaDatZapreta">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYNAZNACENIADATZAPRETA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="310" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyNaznacenijKomissijSpisaniaOS">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYNAZNACENIJKOMISSIJSPISANIAOS"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="311" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyOperacijDvizenieBibliotecnyhFondov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_VIDYOPERACIJDVIZENIEBIBLIOTECNYHFONDOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="312" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyOperacijDvizenieMBP">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYOPERACIJDVIZENIEMBP"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="313" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyOperacijKorrektirovkaDolga">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYOPERACIJKORREKTIROVKADOLGA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="314" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyOperacijPostuplenia">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYOPERACIJPOSTUPLENIA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="315" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyOperacijPrinatieKUcetuOSINMA">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYOPERACIJPRINATIEKUCETUOSINMA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="316" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyOtcetaPoNalogam">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYOTCETAPONALOGAM"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="317" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyOtpuskov">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYOTPUSKOV"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="318" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyPoosrenijIVzyskanij">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYPOOSRENIJIVZYSKANIJ"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="319" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyPravilDlaObmenaDannymi">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYPRAVILDLAOBMENADANNYMI"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="320" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidySobytijOS">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYSOBYTIJOS"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="321" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidySobytijSTovarami">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYSOBYTIJSTOVARAMI"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="322" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidySostoanijOSINMA">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYSOSTOANIJOSINMA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="323" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyTransportaSoobsenijObmena">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYTRANSPORTASOOBSENIJOBMENA"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="324" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyUcetaIznosaMBP">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYUCETAIZNOSAMBP"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="325" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyVyplatyZarplaty">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYVYPLATYZARPLATY"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="326" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyZadolzennosti">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYZADOLZENNOSTI"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="327" author="buh-project">
+        <createTable schemaName="enumerations" tableName="VidyZadolzennostiKorrektirovki">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIDYZADOLZENNOSTIKORREKTIROVKI"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="SYNONYM_" type="VARCHAR(255)"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

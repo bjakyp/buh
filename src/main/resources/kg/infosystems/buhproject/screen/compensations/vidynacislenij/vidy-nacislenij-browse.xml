@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://vidyNacislenijBrowse.caption"
+        focusComponent="vidyNacislenijsTable">
+    <data readOnly="true">
+        <collection id="vidyNacislenijsDc"
+                    class="kg.infosystems.buhproject.entity.compensations.VidyNacislenij">
+            <fetchPlan extends="_base">
+                <property name="vidBudjeta" fetchPlan="_instance_name"/>
+                <property name="sposobRasceta" fetchPlan="_instance_name"/>
+                <property name="sposobyOtrazeniaZarabotnojPlaty" fetchPlan="_instance_name"/>
+                <property name="kategoriiRascetov" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="vidyNacislenijsDl">
+                <query>
+                    <![CDATA[select e from VidyNacislenij e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="vidyNacislenijsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="vidyNacislenijsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="vidyNacislenijsTable"
+                    width="100%"
+                    dataContainer="vidyNacislenijsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="code"/>
+                <column id="description"/>
+<!--                <column id="baseAsAct"/>-->
+<!--                <column id="vidFinansirovania"/>-->
+                <column id="sposobRasceta"/>
+<!--                <column id="sposobyOtrazeniaZarabotnojPlaty"/>-->
+<!--                <column id="bukvennijKod"/>-->
+<!--                <column id="rascetOtObratnogo"/>-->
+                <column id="oblagaetsaPN"/>
+                <column id="oblagaetsaSF"/>
+                <column id="zacetOtrabotannogoVremeni"/>
+                <column id="dopolnitel1nijDohod"/>
+<!--                <column id="opisanie"/>-->
+<!--                <column id="kategoriiRascetov"/>-->
+<!--                <column id="trebuetsaRascetBazy"/>-->
+<!--                <column id="trebuetsaRascetVremeni"/>-->
+<!--                <column id="trebuetsaRascetVremeniVCasah"/>-->
+<!--                <column id="periodRascetaSrednegoZarabotka"/>-->
+<!--                <column id="poradok"/>-->
+<!--                <column id="kolicestvoCasov"/>-->
+<!--                <column id="koef1"/>-->
+<!--                <column id="koef2"/>-->
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="vidyNacislenijsTable.create"/>
+                <button id="editBtn" action="vidyNacislenijsTable.edit"/>
+                <button id="removeBtn" action="vidyNacislenijsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

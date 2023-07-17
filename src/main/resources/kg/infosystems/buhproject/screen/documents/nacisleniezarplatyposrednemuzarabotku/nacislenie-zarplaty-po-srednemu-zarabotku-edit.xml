@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://nacislenieZarplatyPoSrednemuZarabotkuEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="nacislenieZarplatyPoSrednemuZarabotkuDc"
+                  class="kg.infosystems.buhproject.entity.documents.NacislenieZarplatyPoSrednemuZarabotku">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="sotrudnik" fetchPlan="_instance_name"/>
+                <property name="vidRasceta" fetchPlan="_instance_name"/>
+                <property name="sposobOtrazenia" fetchPlan="_instance_name"/>
+                <property name="grafikRaboty" fetchPlan="_instance_name"/>
+                <property name="podrazdelenie" fetchPlan="_instance_name"/>
+                <property name="dolznost1" fetchPlan="_instance_name"/>
+                <property name="dokumentOsnovanie" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="srednijZarabotok" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="srednijZarabotokDc" property="srednijZarabotok"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="nacislenieZarplatyPoSrednemuZarabotkuDc">
+                <column width="350px">
+                    <entityPicker id="sotrudnikField" property="sotrudnik">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="podrazdelenieField" property="podrazdelenie">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="dolznost1Field" property="dolznost1">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="grafikRabotyField" property="grafikRaboty">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+                <column width="350px">
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data"/>
+<!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="vidRascetaField" property="vidRasceta">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="sposobOtrazeniaField" property="sposobOtrazenia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+
+                    <dateField id="dataNacalaField" property="dataNacala"/>
+                    <dateField id="dataOkoncaniaField" property="dataOkoncania"/>
+                    <textField id="dnejField" property="dnej"/>
+                    <textField id="rezul1tatField" property="rezul1tat"/>
+<!--                    <entityPicker id="dokumentOsnovanieField" property="dokumentOsnovanie">-->
+<!--                        <actions>-->
+<!--                            <action id="entityLookup" type="entity_lookup"/>-->
+<!--                            <action id="entityClear" type="entity_clear"/>-->
+<!--                        </actions>-->
+<!--                    </entityPicker>-->
+                </column>
+            </form>
+            <tabSheet id="tabSheet" height="600px">
+                <tab id="tab1" caption="Средний заработок" spacing="true" margin="true" expand="srednijZarabotokBox">
+                    <groupBox id="srednijZarabotokBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/NacislenieZarplatyPoSrednemuZarabotku.srednijZarabotok" expand="srednijZarabotokTable">
+                        <table id="srednijZarabotokTable" dataContainer="srednijZarabotokDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="periodRegistracii" editable="true"/>
+                                <column id="otrabotanoDnej" editable="true"/>
+                                <column id="rezul1tat" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="srednijZarabotokTable.create"/>
+<!--                                <button action="srednijZarabotokTable.edit"/>-->
+                                <button action="srednijZarabotokTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="Дополнительно" spacing="true" margin="true">
+                    <form dataContainer="nacislenieZarplatyPoSrednemuZarabotkuDc">
+                        <column width="350px">
+                            <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                            <entityPicker id="avtorField" property="avtor">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

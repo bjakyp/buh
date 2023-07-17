@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://stranyMiraBrowse.caption"
+        focusComponent="stranyMirasTable">
+    <data readOnly="true">
+        <collection id="stranyMirasDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.StranyMira">
+            <fetchPlan extends="_base"/>
+            <loader id="stranyMirasDl">
+                <query>
+                    <![CDATA[select e from StranyMira e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="stranyMirasTable" spacing="true">
+        <filter id="filter"
+                dataLoader="stranyMirasDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="stranyMirasTable"
+                    width="100%"
+                    dataContainer="stranyMirasDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="kod"/>
+                <column id="naimenovanie"/>
+                <column id="naimenovaniePolnoe"/>
+                <column id="kodAl1fa2"/>
+                <column id="kodAl1fa3"/>
+                <column id="ucastnikEAES"/>
+                <column id="mezdunarodnoeNaimenovanie"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="stranyMirasTable.create"/>
+                <button id="editBtn" action="stranyMirasTable.edit"/>
+                <button id="removeBtn" action="stranyMirasTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

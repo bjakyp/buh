@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://spisanieTovarovEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="spisanieTovarovDc"
+                  class="kg.infosystems.buhproject.entity.documents.SpisanieTovarov">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="sklad" fetchPlan="_instance_name"/>
+                <property name="sobytie" fetchPlan="_instance_name"/>
+                <property name="dokumentOsnovanie" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="tovary" fetchPlan="_base">
+                    <property name="nomenklatura" fetchPlan="_instance_name"/>
+                    <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                    <property name="scetUceta" fetchPlan="_instance_name"/>
+                    <property name="scetZatrat" fetchPlan="_instance_name"/>
+                    <property name="subkonto1" fetchPlan="_instance_name"/>
+                    <property name="subkonto2" fetchPlan="_instance_name"/>
+                    <property name="subkonto3" fetchPlan="_instance_name"/>
+                </property>
+                <property name="komissia" fetchPlan="_base">
+                    <property name="fizLico" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="tovaryDc" property="tovary"/>
+            <collection id="komissiaDc" property="komissia"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="spisanieTovarovDc">
+                <column width="350px">
+                    <entityPicker id="sobytieField" property="sobytie">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="dokumentOsnovanieField" property="dokumentOsnovanie">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+                <column width="350px">
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data"/>
+<!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="vidFinansirovaniaField" property="vidFinansirovania">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="skladField" property="sklad">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+            </form>
+            <tabSheet id="tabSheet" height="600px">
+                <tab id="tab1" caption="Товары" spacing="true" margin="true" expand="tovaryBox">
+                    <groupBox id="tovaryBox" caption="msg://kg.infosystems.buhproject.entity.documents/SpisanieTovarov.tovary" expand="tovaryTable">
+                        <table id="tovaryTable" dataContainer="tovaryDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="nomenklatura" editable="true"/>
+                                <column id="vidFinansirovania" editable="true"/>
+                                <column id="kolicestvo" editable="true"/>
+                                <column id="scetUceta" editable="true"/>
+                                <column id="scetZatrat" editable="true"/>
+                                <column id="subkonto1" editable="true"/>
+                                <column id="subkonto2" editable="true"/>
+                                <column id="subkonto3" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="tovaryTable.create"/>
+<!--                                <button action="tovaryTable.edit"/>-->
+                                <button action="tovaryTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="Комиссия" spacing="true" margin="true" expand="komissiaBox">
+                    <groupBox id="komissiaBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/SpisanieTovarov.komissia" expand="komissiaTable">
+                        <table id="komissiaTable" dataContainer="komissiaDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="fizLico" editable="true"/>
+                                <column id="predsedatel1" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="komissiaTable.create"/>
+<!--                                <button action="komissiaTable.edit"/>-->
+                                <button action="komissiaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab3" caption="Дополнительно" spacing="true" margin="true">
+                    <form dataContainer="spisanieTovarovDc">
+                        <column width="350px">
+                            <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                            <entityPicker id="avtorField" property="avtor">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

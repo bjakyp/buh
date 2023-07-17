@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="main">
+        <addColumn schemaName="comps" tableName="TARIFY_PODOHODNOGO_NALOGA">
+            <column name="ORGANIZACII_ID" type="UUID"/>
+            <column name="STAVKI_PODOHODNOGO_NALOGA__ID" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2" author="main">
+        <createIndex indexName="IDX_TARIFY_PODOHODNOGO_NALOGA_ORGANIZACII" schemaName="comps"
+                     tableName="TARIFY_PODOHODNOGO_NALOGA">
+            <column name="ORGANIZACII_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="ORGANIZACII_ID" baseTableName="TARIFY_PODOHODNOGO_NALOGA"
+                                 baseTableSchemaName="comps"
+                                 constraintName="FK_TARIFY_PODOHODNOGO_NALOGA_ON_ORGANIZACII" referencedColumnNames="ID"
+                                 referencedTableName="Organizacii" referencedTableSchemaName="catalogs"/>
+    </changeSet>
+    <changeSet id="3" author="main">
+        <createIndex indexName="IDX_TARIFY_PODOHODNOGO_NALOGA_STAVKI_PODOHODNOGO_NALOGA_" schemaName="comps"
+                     tableName="TARIFY_PODOHODNOGO_NALOGA">
+            <column name="STAVKI_PODOHODNOGO_NALOGA__ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="STAVKI_PODOHODNOGO_NALOGA__ID"
+                                 baseTableName="TARIFY_PODOHODNOGO_NALOGA" baseTableSchemaName="comps"
+                                 constraintName="FK_TARIFY_PODOHODNOGO_NALOGA_ON_STAVKI_PODOHODNOGO_NALOGA_"
+                                 referencedColumnNames="ID" referencedTableName="STAVKI_PODOHODNOGO_NALOGA"
+                                 referencedTableSchemaName="comps"/>
+    </changeSet>
+    <changeSet id="4" author="main">
+        <dropColumn columnName="tarify_podohodnogo_naloga__id" schemaName="catalogs" tableName="organizacii"/>
+    </changeSet>
+    <changeSet id="5" author="main">
+        <dropColumn columnName="name" schemaName="comps" tableName="tarify_podohodnogo_naloga"/>
+    </changeSet>
+    <changeSet id="6" author="main">
+        <dropColumn columnName="tarify_podohodnogo_naloga_id" schemaName="comps" tableName="stavki_podohodnogo_naloga"/>
+    </changeSet>
+</databaseChangeLog>

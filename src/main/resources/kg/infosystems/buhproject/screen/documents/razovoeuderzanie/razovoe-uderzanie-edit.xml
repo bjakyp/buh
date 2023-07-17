@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://razovoeUderzanieEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="razovoeUderzanieDc"
+                  class="kg.infosystems.buhproject.entity.documents.RazovoeUderzanie">
+            <fetchPlan extends="_base">
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="podrazdelenie" fetchPlan="_instance_name"/>
+                <property name="vidRasceta" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="uderzania" fetchPlan="_base">
+                    <property name="sotrudnik" fetchPlan="_instance_name"/>
+                    <property name="dolznost1" fetchPlan="_instance_name"/>
+                    <property name="podrazdelenie" fetchPlan="_instance_name"/>
+                    <property name="vidRasceta" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="uderzaniaDc" property="uderzania"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="razovoeUderzanieDc">
+                <column width="350px">
+                    <entityPicker id="podrazdelenieField" property="podrazdelenie">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <checkBox id="vidUderzaniaVSpiskeField" property="vidUderzaniaVSpiske"/>
+                    <entityPicker id="vidRascetaField" property="vidRasceta">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+                <column width="350px">
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data"/>
+<!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <textField id="razmerField" property="razmer"/>
+                </column>
+            </form>
+            <tabSheet id="tabSheet" height="600px">
+                <tab id="tab1" caption="Удержания" spacing="true" margin="true" expand="uderzaniaBox">
+                    <groupBox id="uderzaniaBox"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/RazovoeUderzanie.uderzania" expand="uderzaniaTable">
+                        <table id="uderzaniaTable" dataContainer="uderzaniaDc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="sotrudnik" editable="true"/>
+                                <column id="dolznost1" editable="true"/>
+                                <column id="podrazdelenie" editable="true"/>
+                                <column id="vidRasceta" editable="true"/>
+                                <column id="razmer" editable="true"/>
+                                <column id="rezul1tat" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="uderzaniaTable.create"/>
+<!--                                <button action="uderzaniaTable.edit"/>-->
+                                <button action="uderzaniaTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="Дополнительно" spacing="true" margin="true">
+                    <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                    <entityPicker id="avtorField" property="avtor">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

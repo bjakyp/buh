@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://korrektirovkaDolgaEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="korrektirovkaDolgaDc"
+                  class="kg.infosystems.buhproject.entity.documents.KorrektirovkaDolga">
+            <fetchPlan extends="_base">
+                <property name="vidOperacii" fetchPlan="_instance_name"/>
+                <property name="organizacia" fetchPlan="_instance_name"/>
+                <property name="vidFinansirovania" fetchPlan="_instance_name"/>
+                <property name="kontragentDebitor" fetchPlan="_instance_name"/>
+                <property name="kontragentKreditor" fetchPlan="_instance_name"/>
+                <property name="scetDt" fetchPlan="_instance_name"/>
+                <property name="subkontoDt1" fetchPlan="_instance_name"/>
+                <property name="subkontoDt2" fetchPlan="_instance_name"/>
+                <property name="subkontoDt3" fetchPlan="_instance_name"/>
+                <property name="scetKt" fetchPlan="_instance_name"/>
+                <property name="subkontoKt1" fetchPlan="_instance_name"/>
+                <property name="subkontoKt2" fetchPlan="_instance_name"/>
+                <property name="subkontoKt3" fetchPlan="_instance_name"/>
+                <property name="avtor" fetchPlan="_instance_name"/>
+                <property name="debitorskaaZadolzennost1" fetchPlan="_base">
+                    <property name="scetUcetaRascetov" fetchPlan="_instance_name"/>
+                    <property name="korScetUcetaRascetov" fetchPlan="_instance_name"/>
+                    <property name="stat1a" fetchPlan="_instance_name"/>
+                </property>
+                <property name="kreditorskaaZadolzennost1" fetchPlan="_base">
+                    <property name="scetUcetaRascetov" fetchPlan="_instance_name"/>
+                    <property name="korScetUcetaRascetov" fetchPlan="_instance_name"/>
+                    <property name="stat1a" fetchPlan="_instance_name"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="debitorskaaZadolzennost1Dc" property="debitorskaaZadolzennost1"/>
+            <collection id="kreditorskaaZadolzennost1Dc" property="kreditorskaaZadolzennost1"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="korrektirovkaDolgaDc">
+                <column width="350px">
+                    <entityPicker id="vidOperaciiField" property="vidOperacii">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="kontragentDebitorField" property="kontragentDebitor">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="kontragentKreditorField" property="kontragentKreditor">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+                <column width="350px">
+                    <textField id="nomerField" property="nomer"/>
+                    <dateField id="dataField" property="data"/>
+<!--                    <dateField id="periodNomeraField" property="periodNomera"/>-->
+<!--                    <checkBox id="provedenField" property="proveden"/>-->
+                    <entityPicker id="organizaciaField" property="organizacia">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="vidFinansirovaniaField" property="vidFinansirovania">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </column>
+            </form>
+            <tabSheet id="tabSheet" height="600px">
+                <tab id="tab1" caption="Дебиторская задолженность" spacing="true" margin="" expand="debitorskaaZadolzennost1Box">
+                    <groupBox id="debitorskaaZadolzennost1Box"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/KorrektirovkaDolga.debitorskaaZadolzennost1" expand="debitorskaaZadolzennost1Table">
+                        <table id="debitorskaaZadolzennost1Table" dataContainer="debitorskaaZadolzennost1Dc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="summa" editable="true"/>
+                                <column id="summaUcetnaa" editable="true"/>
+                                <column id="scetUcetaRascetov" editable="true"/>
+                                <column id="korScetUcetaRascetov" editable="true"/>
+                                <column id="stat1a" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="debitorskaaZadolzennost1Table.create"/>
+<!--                                <button action="debitorskaaZadolzennost1Table.edit"/>-->
+                                <button action="debitorskaaZadolzennost1Table.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab2" caption="Кредиторская задолженность" spacing="true" margin="" expand="kreditorskaaZadolzennost1Box">
+                    <groupBox id="kreditorskaaZadolzennost1Box"
+                              caption="msg://kg.infosystems.buhproject.entity.documents/KorrektirovkaDolga.kreditorskaaZadolzennost1" expand="kreditorskaaZadolzennost1Table">
+                        <table id="kreditorskaaZadolzennost1Table" dataContainer="kreditorskaaZadolzennost1Dc" width="100%" editable="true">
+                            <actions>
+                                <action id="create" type="create"/>
+<!--                                <action id="edit" type="edit"/>-->
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="nomerStroki"/>
+                                <column id="summa" editable="true"/>
+                                <column id="summaUcetnaa" editable="true"/>
+                                <column id="scetUcetaRascetov" editable="true"/>
+                                <column id="korScetUcetaRascetov" editable="true"/>
+                                <column id="stat1a" editable="true"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="kreditorskaaZadolzennost1Table.create"/>
+<!--                                <button action="kreditorskaaZadolzennost1Table.edit"/>-->
+                                <button action="kreditorskaaZadolzennost1Table.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+                <tab id="tab3" caption="Счета списания" spacing="true" margin="">
+                    <form dataContainer="korrektirovkaDolgaDc">
+                        <column width="350px">
+                            <entityPicker id="scetDtField" property="scetDt">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <entityPicker id="subkontoDt1Field" property="subkontoDt1">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <entityPicker id="subkontoDt2Field" property="subkontoDt2">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <entityPicker id="subkontoDt3Field" property="subkontoDt3">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                        <column width="350px">
+                            <entityPicker id="scetKtField" property="scetKt">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <entityPicker id="subkontoKt1Field" property="subkontoKt1">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <entityPicker id="subkontoKt2Field" property="subkontoKt2">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                            <entityPicker id="subkontoKt3Field" property="subkontoKt3">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </tab>
+                <tab id="tab4" caption="Дополнительно" spacing="true" margin="">
+                    <form dataContainer="korrektirovkaDolgaDc">
+                        <column width="350px">
+                            <textArea id="kommentarijField" property="kommentarij" rows="5"/>
+                            <entityPicker id="avtorField" property="avtor">
+                                <actions>
+                                    <action id="entityLookup" type="entity_lookup"/>
+                                    <action id="entityClear" type="entity_clear"/>
+                                </actions>
+                            </entityPicker>
+                        </column>
+                    </form>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

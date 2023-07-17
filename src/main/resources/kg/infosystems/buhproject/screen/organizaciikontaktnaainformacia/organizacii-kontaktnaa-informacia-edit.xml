@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://organizaciiKontaktnaaInformaciaEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="organizaciiKontaktnaaInformaciaDc"
+                  class="kg.infosystems.buhproject.entity.parts.catalogs.OrganizaciiKontaktnaaInformacia">
+            <fetchPlan extends="_base">
+                <property name="tip" fetchPlan="_base"/>
+                <property name="vid" fetchPlan="_base"/>
+                <property name="vidDlaSpiska" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="organizaciiKontaktnaaInformaciaDc">
+                <column width="350px">
+                    <textField id="nomerStrokiField" property="nomerStroki"/>
+                    <entityPicker id="tipField" property="tip">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="vidField" property="vid">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <textField id="predstavlenieField" property="predstavlenie"/>
+                    <textArea id="znaceniaPolejField" property="znaceniaPolej" rows="5"/>
+                    <textField id="stranaField" property="strana"/>
+                    <textField id="regionField" property="region"/>
+                    <textField id="gorodField" property="gorod"/>
+                    <textField id="adresEPField" property="adresEP"/>
+                    <textField id="domennoeImaServeraField" property="domennoeImaServera"/>
+                    <textField id="nomerTelefonaField" property="nomerTelefona"/>
+                    <textField id="nomerTelefonaBezKodovField" property="nomerTelefonaBezKodov"/>
+                    <entityPicker id="vidDlaSpiskaField" property="vidDlaSpiska">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <dateField id="dejstvuetSField" property="dejstvuetS"/>
+                    <textArea id="znacenieField" property="znacenie" rows="5"/>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

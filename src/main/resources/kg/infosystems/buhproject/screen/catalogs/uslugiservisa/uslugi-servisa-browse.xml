@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://uslugiServisaBrowse.caption"
+        focusComponent="uslugiServisasTable">
+    <data readOnly="true">
+        <collection id="uslugiServisasDc"
+                    class="kg.infosystems.buhproject.entity.catalogs.UslugiServisa">
+            <fetchPlan extends="_base">
+                <property name="postavsikUslugi" fetchPlan="_instance_name"/>
+                <property name="tipUslugi" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="uslugiServisasDl">
+                <query>
+                    <![CDATA[select e from UslugiServisa e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="uslugiServisasTable" spacing="true">
+        <filter id="filter"
+                dataLoader="uslugiServisasDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="uslugiServisasTable"
+                    width="100%"
+                    dataContainer="uslugiServisasDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="kod"/>
+                <column id="naimenovanie"/>
+                <column id="identifikator"/>
+                <column id="pokazyvat1PriDobavleniiVTarif"/>
+                <column id="postavsikUslugi"/>
+                <column id="tarificiruetsa"/>
+                <column id="tipUslugi"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="uslugiServisasTable.create"/>
+                <button id="editBtn" action="uslugiServisasTable.edit"/>
+                <button id="removeBtn" action="uslugiServisasTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>
